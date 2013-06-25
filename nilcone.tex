@@ -1,0 +1,44 @@
+%type: notes
+%title: The nilpotent cone of sl(2)
+%tags: sl(2), symplectic variety, cone, nilpotent cone, Poisson algebra
+\documentclass[english]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+%\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+
+\title{The nilpotent cone of \texorpdfstring{$\liesl2ℂ$}{sl2C}}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+\noindent The nilpotent cone of $\liesl2ℂ$ is 
+\[
+    N = \Spec \rquot{ℂ[x,y,z]}{(x²+4yz)}.
+\]
+The Poisson structure is given by
+\[
+    \{x,y\} = 2y, \quad \{x,z\} = -2z, \quad \{y,z\} = x.
+\]
+To check that this is well-defined, one needs to compute that $\{x²+4yz,\, g(x,y,z)\} = 0$ for all $g$.
+
+Alternatively, if $N$ is given by the equation $x²+yz$, then one needs to set $\{y,z\} = \frac14 x$.
+If $N$ is given by $x²-yz$, then $\{y,z\} = -\frac14x$.
+
+Another way to give $N$ is 
+\[
+    N = \Spec ℂ[\frac12x²,\, -xy, -\frac12y²].
+\]
+Then the Poisson bracket is defined by
+\[
+    \{-xy, \frac12x²\} = x², \quad
+    \{-xy, -\frac12y²\} = y², \quad
+    \{\frac12x², -\frac12y²\} = -xy.
+\]
+
+%\printbibliography
+\end{document}
