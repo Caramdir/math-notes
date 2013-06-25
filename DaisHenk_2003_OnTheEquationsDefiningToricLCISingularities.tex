@@ -1,0 +1,75 @@
+%type: paper-notes
+%tags: toric varieties, l.c.i.
+%title: Notes on: Dais and Henk, "On the equations defining toric l.c.i.-singularities"
+\documentclass[english]{paper-notes}
+\usepackage{math-ag,math-alg}
+
+\addbibresource{math.bib}
+%\bibliography{math.bib}
+
+\paperref{DaisHenk:2003:OnTheEquationsDefiningToricLCISingularities}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\setcounter{MaxMatrixCols}{20}
+\def\NM{\mathbf m}
+\def\NP{\mathcal P_{\mathbf m}^{(d)}}
+\def\LL{\mathcal L_{\NM}^{(d)}}
+\def\dual{∨}
+
+\maketitle
+
+\section{Outline of the proof of the main theorem}
+
+By~\cite{Nakajima:1986:AffineTorusEmbeddingsWhichAreLCI}, we know that every affine l.c.i.\ toric variety can be obtained in the following way:
+\begin{enumerate}[1.]
+    \item Start with admissible \emph{free parameters} $\mathbf m = (m_{i,j}) ∈ ℤ^{(d-1)×d}$.
+    \item Construct the \emph{Nakajima polytope} $\mathcal P_{\mathbf m}^{(d)} ⊆ ℤ^d$.
+    \item Form the cone over $\NP$, denoted $τ_{\NP}$.
+    \item Form the associated toric variety $X = U_{τ_{\NP}} = \Spec ℂ[τ_{\NP}^\dual ∩ (ℤ^d)^\dual]$.
+\end{enumerate}
+
+The first step is to find a nice generating set for $τ_{\NP}^\dual ∩ (ℤ^d)^\dual$ (as additive semigroup), as this will give an embedding of $X$ into some affine space.
+For this let
+\[
+    \mathcal A_{\NM}^{(d)} =
+    \begin{pmatrix}
+        1 &   &   &        &        &   & m_{1,1} & m_{2,1} & m_{3,1} & \cdots & m_{d-1,1}   \\
+          & 1 &   &        &        &   & -1      & m_{2,2} & m_{3,2} &        & \vdots      \\
+          &   & 1 &        &        &   &         & -1      & m_{3,3} &        & \vdots      \\
+          &   &   & \ddots &        &   &         &         & \ddots  & \ddots & \vdots      \\
+          &   &   &        & \ddots &   &         &         &         & \ddots & m_{d-1,d-1} \\
+          &   &   &        &        & 1 &         &         &         &        & -1          \\
+    \end{pmatrix}
+    ∈ ℤ^{d×(2d-1)}.
+\]
+Let $\mathcal L_{\NM}^{(d)} ⊆ (ℤ^d)^\dual$ be the set of transposes of the column vectors of $\mathcal A_{\NM}^{(d)}$.
+Then~\cite[Lemma~4.3]{DaisHenk:2003:OnTheEquationsDefiningToricLCISingularities} shows that $\mathcal L_{\NM}^{(d)}$ generates $τ_{\NP}^\dual ∩ (ℤ^d)^\dual$ as additive semigroup.
+Thus it yields a surjective map (of commutative rings)
+\[
+    ϑ\colon ℂ[z₁,\dotsc, z_{2d-1}] → ℂ[τ_{\NP}^\dual ∩ (ℤ^d)^\dual],
+\]
+sending $z_1$ to (the characters corresponding to) the elements of $\mathcal L_{\NM}^{(d)}$.
+Let $\mathcal I$ be the kernel of this map.
+Any set of generators of $\mathcal I$ is a defining set of equations $U_{\NP}$.
+
+There is a general procedure for finding a generating set of $\mathcal I$:
+\begin{enumerate}[1.]
+    \item Find the \emph{integer lattice} $Λ_{\mathcal L_{\NM}^{(p)}}$ with respect to $\mathcal L_{\NM}^{(p)}$.
+        Thus by definition, $Λ_{\mathcal L_{\NM}^{(p)}}$ is the kernel of $\mathcal A_{\NM}^{(d)}$, i.e.\ describes all integer linear combinations of $0$ with vectors in $\LL$.
+    \item Find a basis $b₁,\dotsc,b_{d-1}$ of $Λ_{\LL}$ such that the matrix $\mathcal B = (b₁ \dots b_{d-1})$ is \emph{dominating}.
+    \item Form the \emph{lattice ideal} $\mathcal J_{\mathcal B}$ associated to $\mathcal B$.
+        It has generators 
+        \[
+            f_i = \prod_{j = 1}^{2d-1} z_j^{(b_i)_j^+} - \prod_{j = 1}^{2d-1} z_j^{(b_i)_j^-}, \qquad 1 \le i \le d-1.
+        \]
+    \item Since $\mathcal B$ is dominating, \cite[Theorem~1.5(ii)]{DaisHenk:2003:OnTheEquationsDefiningToricLCISingularities} ensures that $\mathcal J_{\mathcal B} = \mathcal I$.
+        Hence $f₁, \dotsc, f_{d-1}$ are equations for $U_{\NP}$ in $ℂ^{2d-1}$.
+\end{enumerate}
+
+The hard part of the proof is then the construction of a suitable basis $\mathcal B = \widehat\mathcal{B}_{\NM}^{(d)}$ in step 2.
+This is done recursively by modifying a \enquote{trivial basis} $\mathcal B_{\NM}^{(d)}$ and takes up most of Section~4 of \cite{DaisHenk:2003:OnTheEquationsDefiningToricLCISingularities}.
+
+\printbibliography
+\end{document}
