@@ -1,0 +1,331 @@
+%type: notes
+%title: Hodge theory
+%tags: Hodge structures, polarized Hodge structures
+\documentclass[english]{short-notes}
+
+\usepackage{math-general}
+\usepackage{math-ag}
+
+\newcommand\A{\sheaf A}
+
+\title{Hodge Theory}
+\author{Clemens Koppensteiner}
+\date{April 11, 2011}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Hodge Structures}
+    
+\subsection{Definition}
+
+\begin{Def}
+    A \emph{Hodge structure $V$ of weight $k$} consists of the following data:
+    \begin{itemize}
+        \item A free Abelian group $V_ℤ$ of finite rank.
+        \item A decomposition of complex vector spaces $V_ℂ = V_ℤ ⊗_ℤ ℂ = \bigoplus_{p+q=k} V^{p,q}$ with $\overline{V^{p,q}} = V^{q,p}$.
+            The indices $p,q$ can run over all integers.
+    \end{itemize}
+    The decomposition induces the \emph{Hodge filtration} $F$ of $V_ℂ$ by $F^pV_ℂ = \bigoplus_{r≥p} V^{r,k-r}$.
+\end{Def}
+
+One can recover $V^{p,q}$ from the filtration by $V^{p,q} = F^pV_ℂ ∩ \overline{F^q V_ℂ}$.
+
+\begin{Def}
+    A morphism of Hodge structures $V → W$ is a morphism of Abelian groups $φ\colon V_ℤ → W_ℤ$ such that $φ_ℂ\colon V_ℂ → W_ℂ$ is compatible with the Hodge filtration, i.e.\ $φ_ℂ(F^pV_ℂ) ⊆ F^pW_ℂ$.
+\end{Def}
+
+\begin{Ex}
+    Let $V$ be a Hodge structure of weight $-1$ with $F^pV_ℂ = V_ℂ$ for $p ≥ 1$, i.e.\ $V_ℂ = V^{-1,0} \oplus V^{0,-1}$.
+    As $\dim_ℂ V^{-1,0} = \dim_ℂ V^{0,-1}$, the free Abelian group $V_ℤ$ has rank $2n$ for some integer $n$.
+    The composition
+    \[ 
+    V_ℤ → V_ℂ \onto V_{0,-1}
+    \]
+    is injective, as the image is fixed by conjugation.
+    Thus $V_ℤ$ forms a lattice in $V^{0,-1}$, so that $\rquot{V^{0,-1}}{V_ℤ}$ is a complex torus of dimension $1$.
+
+    Conversely, let $X = W/Λ$ be a complex torus of dimension $n$.
+    Setting $V^{0,-1} = W$ in $Λ_ℂ$ gives a Hodge structure of weight $-1$ on $V_ℤ = Λ$.
+    Clearly the constructions are inverse and functorial.
+    Note that $Λ$ can be identified with $H₁(X,ℤ)$ and $W$ with the tangent space $T₀X \cong H¹(X,\O_X)^*$.
+
+    We could also look at pure Hodge structures of weight $k$ with Hodge filtration vanishing for negative indices.
+    This gives a complex torus in exactly the same way.
+    But now the natural identifications are $V = H¹(X,ℤ)$, $V^{1,0} = H^0(X,Ω_X¹)$ and $V^{0,1} = H¹(X,\O_X)$, which give an exact sequence
+    \[ 0 → H^0(X,Ω_X¹) → H¹(X,ℂ) → H¹(X,\O_X) → 0. \]
+    The quotient $\rquot{H¹(X,\O_X)}{H¹(X,ℤ)}$ is not the torus $X$, but the dual torus $\hat X$.
+    Dualizing, we again obtain an isomorphism of categories.
+\end{Ex}
+
+The tensor product of two Hodge structures is given by the tensor product on the integral structure with the Hodge filtration given by the tensor product of filtrations.
+Concretely, if $V$ is a Hodge structure of weight $k$ and $W$ one of weight $l$, then $V⊗W$ is of weight $k+l$ with
+\[
+\left( V ⊗ W \right)^{p,q} = \bigoplus_{\mathclap{\substack{p₁+p₂ = p\\q₁+q₂=q}}} V^{p₁,q₁} ⊗ V^{p₂,q₂}.
+\]
+
+\begin{Def}
+    The \emph{Tate Hodge structure} $ℤ(1)$ is the Hodge structure of weight $-2$ and rank $1$, purely in bidegree $(-1,-1)$ given by $2π\i ℤ ⊆ ℂ$.
+    The tensor power $ℤ(1)^{⊗n}$ ($n ∈ ℤ$) is denoted $ℤ(n)$. 
+    It is of weight $-2n$, rank $1$, purely in bidegree $(-n,-n)$, given by $(2π\i)^n ℤ ⊆ ℂ$.
+\end{Def}
+
+\subsection{Hodge Theory of Kähler Manifolds}
+
+Let $X$ be a Kähler manifold of dimension $n$.
+Let $V_ℤ = H^k(X,ℤ)$.
+Then $V_ℂ = V_ℤ ⊗_ℤ ℂ = H^k(X, ℂ)$.
+By Hodge theory, there exists a decomposition $H^k(X,ℂ) = \bigoplus_{p+q=k} H^{p,q}$.
+If we identify elements of $H^k(X,ℂ)$ with classes of differential forms via de Rham cohomology, then $H^{p,q}$ are exactly the classes of $(p,q)$-forms.
+Further, one can identify $H^{p,q}$ with $H^q(X,Ω^p)$.
+
+One way to look at this is via the \emph{Hodge-de Rham spectral sequence} (or \emph{Fröhlicher spectral sequence}).
+Let $(Ω_X^\cx,∂)$ be the holomorphic de Rham complex and give it the \enquote{naive} filtration $F^pΩ_X^\cx = Ω_X^{≥p}$.
+The holomorphic de Rham complex is quasi-isomorphic to the de Rham complex $(\sheaf A_X^\cx,\mathrm d)$ as a resolution of $ℂ$.
+Thus the cohomology groups of its global sections are $H^k(X,ℂ)$.
+To calculate these groups, we can pick a acyclic resolution of the holomorphic de Rham complex into a double complex, apply the global sections functor and compute the spectral sequence.
+Of course the natural resolution is by Dolbeault complexes:
+\[
+\begin{tikzpicture}
+    \matrix (m) [commutative diagram] {
+          & \vdots     & \vdots     & \vdots     &  \\
+        0 & \A_X^{0,2} & \A_X^{1,2} & \A_X^{2,2} & \cdots \\
+        0 & \A_X^{0,1} & \A_X^{1,1} & \A_X^{2,1} & \cdots \\
+        0 & \A_X^{0,0} & \A_X^{1,0} & \A_X^{2,0} & \cdots \\
+        ℂ & \O_X       & Ω_X¹       & Ω_X²       & \cdots \\
+        };
+    \draw[->]
+        (m-2-1) edge node[above] {$∂$} (m-2-2)
+        (m-2-2) edge node[above] {$∂$} (m-2-3)
+        (m-2-3) edge node[above] {$∂$} (m-2-4)
+        (m-2-4) edge node[above] {$∂$} (m-2-5)
+        (m-3-1) edge node[above] {$∂$} (m-3-2)
+        (m-3-2) edge node[above] {$∂$} (m-3-3)
+        (m-3-3) edge node[above] {$∂$} (m-3-4)
+        (m-3-4) edge node[above] {$∂$} (m-3-5)
+        (m-4-1) edge node[above] {$∂$} (m-4-2)
+        (m-4-2) edge node[above] {$∂$} (m-4-3)
+        (m-4-3) edge node[above] {$∂$} (m-4-4)
+        (m-4-4) edge node[above] {$∂$} (m-4-5)
+        (m-5-1) edge node[above] {$∂$} (m-5-2)
+        (m-5-2) edge node[above] {$∂$} (m-5-3)
+        (m-5-3) edge node[above] {$∂$} (m-5-4)
+        (m-5-4) edge node[above] {$∂$} (m-5-5)
+        (m-5-2) edge node[right] {$\cconj ∂$} (m-4-2)
+        (m-4-2) edge node[right] {$\cconj ∂$} (m-3-2)
+        (m-3-2) edge node[right] {$\cconj ∂$} (m-2-2)
+        (m-2-2) edge node[right] {$\cconj ∂$} (m-1-2)
+        (m-5-3) edge node[right] {$\cconj ∂$} (m-4-3)
+        (m-4-3) edge node[right] {$\cconj ∂$} (m-3-3)
+        (m-3-3) edge node[right] {$\cconj ∂$} (m-2-3)
+        (m-2-3) edge node[right] {$\cconj ∂$} (m-1-3)
+        (m-5-4) edge node[right] {$\cconj ∂$} (m-4-4)
+        (m-4-4) edge node[right] {$\cconj ∂$} (m-3-4)
+        (m-3-4) edge node[right] {$\cconj ∂$} (m-2-4)
+        (m-2-4) edge node[right] {$\cconj ∂$} (m-1-4);
+\end{tikzpicture}
+\]
+We take global sections.
+The zeroth page of the spectral sequence, $(E_0^{p,q},d_0)$ is 
+\[
+\begin{tikzpicture}
+    \matrix (m) [commutative diagram] {
+        \vdots  & \vdots     & \vdots     & \vdots     &  \\
+        0 & \A_X^{0,2}(X) & \A_X^{1,2}(X) & \A_X^{2,2}(X) & \cdots \\
+        0 & \A_X^{0,1}(X) & \A_X^{1,1}(X) & \A_X^{2,1}(X) & \cdots \\
+        0 & \A_X^{0,0}(X) & \A_X^{1,0}(X) & \A_X^{2,0}    & \cdots \\
+        0 & 0             & 0             &  0            & \cdots \\
+        };
+    \draw[->]
+        (m-5-1) edge (m-4-1)
+        (m-4-1) edge (m-3-1)
+        (m-3-1) edge (m-2-1)
+        (m-2-1) edge (m-1-1)
+        (m-5-2) edge (m-4-2)
+        (m-4-2) edge node[right] {$\cconj ∂$} (m-3-2)
+        (m-3-2) edge node[right] {$\cconj ∂$} (m-2-2)
+        (m-2-2) edge node[right] {$\cconj ∂$} (m-1-2)
+        (m-5-3) edge (m-4-3)
+        (m-4-3) edge node[right] {$\cconj ∂$} (m-3-3)
+        (m-3-3) edge node[right] {$\cconj ∂$} (m-2-3)
+        (m-2-3) edge node[right] {$\cconj ∂$} (m-1-3)
+        (m-5-4) edge (m-4-4)
+        (m-4-4) edge node[right] {$\cconj ∂$} (m-3-4)
+        (m-3-4) edge node[right] {$\cconj ∂$} (m-2-4)
+        (m-2-4) edge node[right] {$\cconj ∂$} (m-1-4);
+\end{tikzpicture}
+\]
+The next page, $(E₁^{p,q},d₁)$ is
+\[
+\begin{tikzpicture}
+    \matrix (m) [commutative diagram] {
+        \vdots & \vdots      & \vdots      & \vdots       &  \\
+        0      & H^2(X,\O_X) & H^2(X,Ω_X¹) & H^2(X,Ω_X²) & \cdots \\
+        0      & H^1(X,\O_X) & H^1(X,Ω_X¹) & H^1(X,Ω_X²) & \cdots \\
+        0      & H^0(X,\O_X) & H^0(X,Ω_X¹) & H^0(X,Ω_X²) & \cdots \\
+        0      & 0           & 0           & 0            & \cdots \\
+        };
+    \draw[->]
+        (m-2-1) edge (m-2-2)
+        (m-2-2) edge node[above] {$d₁$} (m-2-3)
+        (m-2-3) edge node[above] {$d₁$} (m-2-4)
+        (m-2-4) edge node[above] {$d₁$} (m-2-5)
+        (m-3-1) edge (m-3-2)
+        (m-3-2) edge node[above] {$d₁$} (m-3-3)
+        (m-3-3) edge node[above] {$d₁$} (m-3-4)
+        (m-3-4) edge node[above] {$d₁$} (m-3-5)
+        (m-4-1) edge (m-4-2)
+        (m-4-2) edge node[above] {$d₁$} (m-4-3)
+        (m-4-3) edge node[above] {$d₁$} (m-4-4)
+        (m-4-4) edge node[above] {$d₁$} (m-4-5)
+        (m-5-1) edge (m-5-2)
+        (m-5-2) edge (m-5-3)
+        (m-5-3) edge (m-5-4)
+        (m-5-4) edge (m-5-5);
+\end{tikzpicture}
+\]
+Now any further step can only decrease the dimensions of the spaces in the sequence.
+We know that $\bigoplus_{p+q=k} E^{p,q}_∞$ must be equal to $H^k(X,ℂ)$. 
+Hodge theory tells us this is already true for the first page, so that the spectral sequence degenerates here and $d₁ = 0$.
+Note that the \enquote{naive} filtration on the holomorphic de Rham complex induces the Hodge filtration via this spectral sequence.
+
+The upshot of looking at Hodge theory this way, is that the process is entirely algebraic and can be carried over to varieties that are not defined over $ℂ$ (the spectral sequence might not degenerate though).
+
+\subsection{Hodge Structures Via Actions of \texorpdfstring{$ℂ^*$}{ℂ*}}
+
+Let $S$ be the \emph{real} algebraic group $ℂ^*$, i.e.\ $S$ is obtained from $\mathbb{G}_m$ by Weil restriction of scalars from $ℂ$ to $ℝ$.
+Then a Hodge structure $V$ induces an algebraic action of $S$ on $V_ℝ$ by setting letting $z$ act on $V^{p,q}$ as $z^p\cconj z^q$.
+Conversely, if we have a real algebraic action of $S$ on a real vector space $V$, we obtain a decomposition of $V_ℂ = V ⊗_ℝ ℂ$ into $V^{p,q}$ by requiring that $z$ acts on $V^{p,q}$ by multiplication with $z^p\cconj z^q$.
+Then $V^{p,q} = \cconj{V^{q,p}}$.
+
+\begin{Def}
+    A \emph{real Hodge structure} consists of a finite dimensional real vector space $V$ with an action of the real algebraic group $S$ on $V$.
+    It is \emph{of weight $k$}, if $V^{p,q} = 0$ for $p+q \ne k$.
+\end{Def}
+
+This gives an alternative, equivalent, definition of a Hodge structure:
+
+\begin{Def}
+    A \emph{Hodge structure} of weight $k$ consists of a free Abelian group $V_ℤ$ of finite rank and real Hodge structure of weight $k$ on $V_ℝ = V ⊗_ℤ ℝ$.
+\end{Def}
+
+\section{Polarized Hodge Structures}
+
+\subsection{Definition}
+
+Let $V$ be a Hodge structure. 
+Then the action of $\i ∈ S$ on $V_ℝ$ induces an automorphism $C$.
+Concretely, $C$ acts on $V^{p,q}$ by multiplication with $\i^{p-q}$.
+
+\begin{Def}
+    A \emph{polarization} of a Hodge structure $V$ of weight $k$ is given by a morphism
+    \[
+    (\cdot,\cdot)\colon V ⊗ V → ℤ(-k),
+    \]
+    such that the real bilinear form $(2π\i)^k(x,Cy)$ is symmetric and positive definite on the real part of $V^{p,q} \oplus V^{q,p}$.
+\end{Def}
+
+Let us unravel this definition.
+The Hodge structure $V ⊗ V$ is of weight $2k$.
+As $Z(-k)$ is purely of bidegree $(k,k)$, a morphism is given by a map $(V⊗V)^{k,k} → ℤ(-k)^{k,k}$, respecting the integral structure.
+Now,
+\[ 
+\left( V ⊗ V \right)^{k,k} =
+\bigoplus_{\mathclap{p+q=k}} V^{p,q} ⊗ V^{q,p} =
+\bigoplus_{\mathclap{p+q=k}} V^{p,q} ⊗ \cconj{V^{p,q}}.
+\]
+Thus if $Q(x,y)$ denotes the homomorphism $V_ℤ ⊗ V_ℤ → ℤ$ underlying the morphism above, then the Hodge structure is orthogonal with respect to $Q_ℂ(x,\cconj y)$.
+Further, as $(x,Cy) = (2π\i)^kQ_ℝ(x,Cy)$ is symmetric, we have $(x,y) = (Cx,Cy) = (y,C²x) = (-1)^k(y,x)$ so that $Q$ is symmetric if $k$ is even and alternating otherwise.
+Let $x ∈ V^{p,q}$, then the positive definiteness requirement, orthogonality and symmetry imply that
+\begin{multline*}
+    0 < \i^k\i^k Q_ℝ(x+\bar x, C(x + \bar x)) =
+    (-1)^k\left(Q_ℝ(x,C\bar x) + Q_ℝ(\bar x, Cx)\right) = \\ =
+    2(-1)^k Q_ℝ(x,C\bar x) = 
+    2(-1)^k\i^{q-p}ℚ_ℝ(x,\bar x) =
+    2\i^{p-q}ℚ_ℝ(x,\bar x).
+\end{multline*}
+Thus we can alternatively define a polarization in the following way.
+\begin{Def}
+    A polarization on a Hodge structure $V$ is a bilinear form $Q$ on $V_ℤ$, such that, when extended linearly,
+    \begin{itemize}
+        \item $Q(x,y) = (-1)^kQ(y,x)$;
+        \item the Hodge decomposition is orthogonal with respect to $Q$;
+        \item $\i^{p-q}Q(x,\bar x) > 0$ for $x ∈ V^{p,q}$.
+    \end{itemize}
+\end{Def}
+
+\subsection{Lefschetz Decomposition And Intersection Form}
+
+Let $X$ be a compact Kähler manifold of dimension $n$ with Kähler form $ω$.
+Then cupping with the class $[ω]$ gives a morphism $L\colon H^k(X,ℂ) → H^{k+2}(X,ℂ)$.
+Since $ω$ is of bidegree $(1,1)$, this morphism is compatible with the Hodge structure on $H^*(X,ℂ)$.
+
+Write $Λ$ for the formal adjoint of $L$.
+Then it is known that $[L,Λ]$ acts on $H^k(X,ℂ)$ by multiplication with $k-n$.
+Set $V^k = H^{k+n}(X,ℂ)$ for $k=-n,\dotsc,n$ and set $V = \bigoplus V^k$.
+Then the operators $L$ and $Λ$ act on $V$. 
+Further let $M$ be the operator on $V$ that is multiplication by $k$ on $V^k$.
+\[
+\begin{tikzpicture}
+    \matrix[commutative diagram] (m) {
+    V^{-k} & V^{-k+1} & \cdots\!\cdots & V^{k-1} & V^{k} \\
+    };
+    \draw[->,bend left=45]
+        (m-1-1.north east) edge node[above] {$L$} (m-1-2.north west)
+        (m-1-2.north east) edge node[above] {$L$} (m-1-3.north west)
+        (m-1-3.north east) edge node[above] {$L$} (m-1-4.north west)
+        (m-1-4.north east) edge node[above] {$L$} (m-1-5.north west)
+        (m-1-5.south west) edge node[below] {$Λ$} (m-1-4.south east)
+        (m-1-4.south west) edge node[below] {$Λ$} (m-1-3.south east)
+        (m-1-3.south west) edge node[below] {$Λ$} (m-1-2.south east)
+        (m-1-2.south west) edge node[below] {$Λ$} (m-1-1.south east);
+    \draw[->] 
+        (m-1-1) edge[loop above] node[above] {$M$} (m-1-1)
+        (m-1-2) edge[loop above] node[above] {$M$} (m-1-3)
+        (m-1-4) edge[loop above] node[above] {$M$} (m-1-4)
+        (m-1-5) edge[loop above] node[above] {$M$} (m-1-5);
+\end{tikzpicture}
+\]
+One immediately verifies the following relations:
+\[
+[L,Λ] = M, \qquad
+[L,M] = 2L, \qquad
+[Λ,M] = -2L.
+\]
+Thus $L$, $Λ$ and $M$ form an $\mathfrak{sl}_2$-triple, i.e.\ the $ℂ$-algebra generated by them is the complexified Lie algebra of $\SL2ℝ$.
+So we have a representation of the complexified Lie algebra of $\SL2ℝ$ on $V$.
+By Lie theory, this representation splits into irreducible representations.
+The Lie algebra $\mathfrak{sl}_2$ has exactly on irreducible representation of dimension $j$ for each positive integer $j$.
+The representation of weight $j$ decomposes into $j$ eigenspaces for $M$ with eigenvalues $-j,-j+2,\dotsc,j$.
+The operator $L$ maps the eigenspace for $k$ to the eigenspace for $k+2$ and $Λ$ goes the other way.
+In particular, on the representation of weight $n$, $L^{j+1} = 0$, but $L^{j} \ne 0$.
+
+This can be used to find the decomposition of $V$ into irreducible representations, by finding the vectors (called lowest weight vectors) for which $L^{j+1}=0$, but $L^j \ne 0$.
+Note that we have already graded $V$ by the eigenvalues of $M$, so that $L^j \ne 0$ on $V^k$ if and only if $k \le -j$.
+In terms of cohomology this idea translates to the following definition.
+\begin{Def}
+    A cohomology class $α ∈ H^k(X,ℂ)$, $k ≤ n$ is called \emph{primitive} if $L^{n-k+1}α=0 ∈ H^{2n-k+1}$.
+    Equivalently, $α$ is primitive if $Λα = 0$.
+\end{Def}
+
+Thus the decomposition of $V$ into irreducible representations of $\mathfrak{sl₂}$ immediately implies the \emph{Lefschetz} decomposition:
+Every cohomology class $α ∈ H^k(X,ℂ)$ admits a unique decomposition $α = \sum_r L^r α_r$ with $α_r$ a primitive element of $H^{k-2r}(X,ℂ)$ ($k-2r ≤ \min\{n,2n-k\}$).
+
+As $ω$ is a real form, the same is true for $H^k(X,ℝ)$.
+If $ω$ is integral, i.e.\ belongs to $H²(X,ℤ) ⊆ H²(X,ℝ)$, then the same is true for $H^k(X,ℤ)$.
+Further, since $ω$ is a $(1,1)$-form, the decomposition is compatible with the Hodge decomposition.
+
+Now assume that $ω$ is integral.
+Let $H^k(X,ℂ)_{\mathrm{prim}}$ be the primitive elements of $H^k(X,ℂ)$ and use similar notations for cohomology with coefficients in $ℤ$.
+Then the $H^k(X,ℤ)_{\mathrm{prim}} ⊆ H^k(X,ℂ)_{\mathrm{prim}}$ is a Hodge structure of weight $k$ with decomposition $H^{p,q}_{\mathrm{prim}} = H^{p,q} ∩ H^k(X,ℂ)_{\mathrm{prim}}$.
+Define bilinear form $Q$ on $H^k(X,ℂ)$ by 
+\[
+Q(α,β) = (-1)^{\frac{k(k-1)}2}∫_X L^{n-k}α ∧ β = (-1)^{\frac{k(k-1)}2}∫_X ω^{n-k} ∧ α ∧ β.
+\]
+As $ω$ is integral, $Q$ takes integral values on integral classes.
+One shows that $Q$ is a polarization of $H^k_{\mathrm{prim}}$.
+\end{document}
