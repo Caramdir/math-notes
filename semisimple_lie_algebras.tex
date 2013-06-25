@@ -1,0 +1,198 @@
+%type: notes
+%title: Semisimple Lie algebras
+%tags: Lie theory, Lie algebra, semisimple Lie algebra, sl(2)
+\documentclass[english]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+
+\title{Some notes on semisimple Lie algebras}
+\author{Clemens Koppensteiner}
+
+\renewcommand\dual{*}
+\newcommand\dualroot[1]{#1^{∨}}
+
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+We work over the base field $ℂ$.
+The notation is based on \cite[Chapter~9]{HottaTakeuchiTanisaki:2008:DModulesPerverseSheavesRepresentationTheory}.
+The standard reference for Lie algebras is \cite{Humphreys:1978:IntroLieAlgebrasAndRepresentationTheory}.
+
+Let $\liealg g$ be a semisimple Lie algebra over $ℂ$.
+
+\begin{Def}
+The \emph{Killing form} of $\liealg g$ is
+\[
+κ(x,y)\colon \liealg g × \liealg g → ℂ,\ κ(x,y) = \trace(\ad(x)\ad(y)).
+\]
+It is a non-degenerate symmetric bilinear form.
+
+A \emph{Cartan subalgebra} $\liealg h$ of $\liealg g$ is a subalgebra that is maximal among all subalgebras satisfying the following conditions
+\begin{itemize}
+    \item $\liealg h$ is commutative;
+    \item for every element $h ∈ \liealg h$, the linear transformation $\ad(h)$ is semisimple (i.e.\ every invariant subspace has a complementary invariant subspace; equivalently: $\ad(h)$ is diagonalizable.
+\end{itemize}
+
+If $\liealg h₁$ and $\liealg h₂$ are Cartan subalgebras, then there exists some $g ∈ \Aut(\liealg g)$ such that $g(\liealg h₁) = \liealg h₂$.
+From now on we fix a Cartan subalgebra $\liealg h$ of $\liealg g$.
+
+For each $α ∈ \liealg h^\dual$ we set
+\[
+\liealg g_α = \left\{ x ∈ \liealg g : \ad(h)x = α(h)x \text{ for all } h ∈ \liealg h\right\}.
+\]
+Then $\liealg g_0 = \liealg h$ and each other $\liealg g_α$ is either $0$ or $1$-dimensional and $\liealg g = \bigoplus_{α ∈ \liealg h^\dual} \liealg g_α$.
+The \emph{root system} of $\liealg g$ (with respect to $\liealg h$) is
+\[
+\Delta = \left\{ α ∈ \liealg h^\dual \setminus \{0\}  : \liealg g_α \ne 0 \right\}.
+\]
+Then $Δ$ is a root system in $\liealg h^\dual$.
+In particular, this means that for each root $α ∈ Δ ⊆ \liealg h$ there exists a unique dual root $\dualroot α ∈ \liealg h$ such that $α(\dualroot α) = 2$ and the reflection
+\[ s_α\colon β \mapsto β - β(\dualroot α) β \]
+maps $Δ$ to itself.
+
+We fix a subset $Δ^+$, called \emph{positive roots} of $Δ$ such that $Δ^+ ∪ (-Δ^+) = Δ$, $Δ^+ ∩ (-Δ^+) = \emptyset$ and if $α,β ∈ Δ^+$ with $α + β ∈ Δ$, then $α + β ∈ Δ^+$.
+Any positive root that cannot be written as the sum of two positive root is called a \emph{simple root}.
+Let $Π$ denote the set of simple roots. 
+It is a basis for $\liealg h^\dual$.
+
+The group
+\[
+W = \gen{ s_α : α ∈ Δ } = \gen{ s_π : π ∈ Π}
+\]
+is called the \emph{Weyl group}.
+We have $W(Π) = Δ$.
+
+The \emph{root lattice} is the lattice
+\[
+Λ_r = \sum_{α ∈ Δ} ℤα = \bigoplus_{π ∈ Π} ℤα_i.
+\]
+Inside this, we have the \emph{dominant roots}
+\[
+Λ_r^+ = \sum_{α ∈ Δ^+} \mathbb N α = \bigoplus_{π ∈ Π} \mathbb N α_i,
+\]
+where $\mathbb N = \{0,1,2,\dotsc\}$.
+Let $Π = \{ α₁,\dotsc, α_n\}$.
+Define the \emph{fundamental weights} $λ_i$ by the equation $λ_i(\dualroot{α_j}) = δ_{ij}$.
+We obtain the \emph{weight lattice}
+\[
+Λ = \{ λ ∈ \liealg h^\dual : λ(\dualroot α) ∈ ℤ \text{ for all } α ∈ Δ\} = \bigoplus_{i=1}^n ℤλ_i
+\]
+and the dominant weights
+\[
+Λ^+ = \{ λ ∈ \liealg h^\dual : λ(\dualroot α) ∈ \mathbb N \text{ for all } α ∈ Δ^+\} = \bigoplus_{i=1}^n \mathbb N λ_i.
+\]
+Define a partial ordering $≤$ on $\liealg h^\dual$ by $α≤β$ if $β-α ∈ Λ_r^+$.
+\end{Def}
+
+\begin{Thm}
+    Any finite-dimensional representation of a semisimple Lie algebra $\liealg g$ is completely reducible.
+\end{Thm}
+
+For a finite dimensional representation $σ\colon \liealg g → \lieglof V$ and $α ∈ \liealg h^\dual$
+\[
+V_α = \left\{ v ∈ V : σ(h)(v) = α(h)v \text{ for all } h ∈ \liealg h \right\}.
+\]
+Then $V = \bigoplus_{α ∈ \liealg h^\dual} V_α$.
+If $V_α \ne 0$, then $α$ is called a \emph{weight} of $V$ and $V_α$ is the \emph{weight space} of $V$ with weight $λ$.
+Every weight is an element of the weight lattice $Λ$.
+
+\begin{Thm}
+    Let $V$ be a finite-dimensional irreducible $\liealg g$-module.
+    Then $V$ has a unique maximal weight (with respect to the partial order on $\liealg h^\dual$); it is called the \emph{highest weight} of $V$.
+
+    Conversely, if $λ ∈ Λ^+$ is a positive weight, then there exists a unique (up to isomorphism) irreducible $\liealg g$-module with highest weight $λ$.
+\end{Thm}
+
+The set $\dualroot Δ = \{ \dualroot α : α ∈ Δ\}$ is a root system in $\liealg h$.
+The Weyl groups of $Δ$ and $\dualroot Δ$ are naturally identified via $s_α \longleftrightarrow s_{\dualroot α}^{-1}$.
+Hence $W$ acts on $\liealg h$.
+
+\begin{Def}
+    The algebra $\liealg z = (\SymAlg \liealg h)^W$ is called the \emph{Harish-Chandra center}.
+    It is isomorphic (as algebras) to the center of the universal enveloping algebra of $\liealg g$.
+
+    Any algebra homomorphism $\liealg z → ℂ$ is called a \emph{central character}.
+    We can identify $\SymAlg \liealg h$ with the algebra of polynomial functions on $\liealg h^\dual$.
+    Using this we define, for each $α ∈ \liealg h^\dual$, a central character $χ_α\colon \liealg z → ℂ$ by $χ_α(z) = z(λ)$.
+\end{Def}
+
+\begin{Thm}
+    Every central character is of the form $χ_α$ for some $α ∈ \liealg h^\dual$.
+    For $α,β ∈ \liealg h^\dual$ the central characters $χ_α$ and $χ_β$ are equal if and only if $α$ and $β$ are in the same $W$-orbit.
+\end{Thm}
+
+In this way we get an action of $\liealg z$ on any representation of $\liealg g$: on an irreducible representation with highest weight $λ$, we let $z ∈ \liealg z$ act by multiplication with $χ_λ(z)$.
+
+\subsection*{\texorpdfstring{$\liesl2ℂ$}{sl2C}}
+
+The Lie algebra $\liesl2ℂ$ consists of all traceless $2×2$-matrices.
+The standard basis is
+\[
+E = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad
+F = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \quad
+H = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
+\]
+so that
+\[
+[E,F] = H, \quad
+[H,E] = 2E, \quad
+[H,F] = -2F.
+\]
+We choose a Cartan subalgebra
+\[
+\liealg h = Hℂ = \left\{h_a = \begin{psmallmatrix} a & 0 \\ 0 & -a\end{psmallmatrix} : a ∈ ℂ \right\}.
+\]
+For $b ∈ ℂ$, we denote the element $h_a ↦ ab$ of $\liealg h^\dual$ by $α_b$.
+From the commutator relations above, we see that $Eℂ = \liealg g_2$ is an eigenspace of $\ad(H)$ for the eigenvalue $2$ and $Fℂ$ is one for $-2$.
+Hence,
+\[
+Δ = \{ α_{-2}, α_2\} \text{ with }
+\dualroot{α_{-2}} = \begin{psmallmatrix} -1 & 0 \\ 0 & -1\end{psmallmatrix} \text{ and }
+\dualroot{α_{2}} = \begin{psmallmatrix} 1 & 0 \\ 0 & 1\end{psmallmatrix}.
+\]
+We compute that
+\[
+s_{α_2} = s_{α_{-2}}\colon α_b \mapsto -α_b = α_{-b}.
+\]
+Hence the Weyl group $W$ is isomorphic to $\rquot ℤ2$ acting by multiplication with $-1$.
+We set $Δ^+ = Π = \{ α_2\}$. 
+The fundamental weight is $α₁$.
+In the following picture the weight lattice $Λ$ is marked with dots and the root lattice $Λ_r$ is marked with circles.
+\[
+\begin{tikzpicture}
+    \draw[gray] (-4.5,0) -- (4.5,0) node[right] {$\liealg h^\dual$};
+    \foreach \i in {-4,-3,...,4} {
+        \fill (\i,0) circle [radius=0.5ex] node[above=1ex] {$\i$};
+    }
+    \foreach \i in {-4,-2,...,4} {
+        \draw (\i,0) circle [radius=1.0ex];
+    }
+    \draw[dashed] (0,-1) -- (0,1.5) node[above=-1.5ex,font=\small] {$s_{α₂} = s_{α_{-2}}$};
+    \draw[<->] (-0.5,1) -- (0.5,1);
+\end{tikzpicture}
+\]
+One easily checks that $W \cong \rquot ℤ2$ acts on $\liealg h$ also via multiplication by $-1$.
+The isomorphism $\liealg h \cong ℂ$ yields an isomorphism $\SymAlg \liealg h \cong \SymAlg ℂ \cong ℂ[t]$. 
+On $ℂ[t]$, the Weyl group acts by $t \mapsto -t$.
+Hence we have
+\[
+\liealg z = (\SymAlg \liealg h)^W \cong ℂ[t²].
+\]
+Let $V$ be an irreducible representation with highest weight $λ = α_b$. 
+Tracing through the identifications, we see that $f(t) ℂ[t²] \cong \liealg z$ acts on $V$ by multiplying with $f(b)$.
+If we further identify $ℂ[t²]$ with $ℂ[t]$, this becomes multiplying with $f(b²)$.
+We can now see $V$ as coherent sheaf over $\as 1$: it is the skyscraper sheaf with stalk $V$ supported at $λ²$.
+
+Alternatively, $\liealg z$ acts on $\End(V) \cong ℂ$ in the same way and we can see $\End(V)$ as the $1$-dimensional skyscraper supported at $λ²$.
+With this interpretation, for an arbitrary representation $V$, we can read of the irreducible components and their multiplicity by where the sheaf is supported and what dimensions the stalks have.
+
+
+\printbibliography
+\end{document}
