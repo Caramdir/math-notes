@@ -1,0 +1,36 @@
+%type: notes
+%title: Lie algebroids
+%tags: Lie algeroids
+\documentclass[english]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+%\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+
+\title{Lie algebroids}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+Let $X$ be a complex variety.
+
+\begin{Def}
+    A \emph{Lie algebroid} consists of 
+    \begin{itemize}
+        \item an $\O_X$-module $\sheaf A$;
+        \item the structure of a $ℂ$-Lie algebra on $\sheaf A$, i.e.\ a skew-symmetric $ℂ$-bilinear pairing $[,]\colon \sheaf A × \sheaf A → \sheaf A$ satisfying the Jacobi identity; and
+        \item an $\O_X$-linear map of $ℂ$-Lie algebras $σ\colon A → \sheaf T_X$, called the \emph{anchor map};
+    \end{itemize}
+    such that the Leibniz identity 
+    \[
+        [a,fb] = σ(a)(f)b + f[a,b]
+    \]
+    holds.
+\end{Def}
+
+%\printbibliography
+\end{document}
