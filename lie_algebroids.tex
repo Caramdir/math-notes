@@ -1,7 +1,7 @@
 %type: notes
 %title: Lie algebroids
 %tags: Lie algeroids
-\documentclass[english]{short-notes}
+\documentclass[english,no-theorem-numbers]{short-notes}
 
 \usepackage{math-alg,math-ag}
 
@@ -16,13 +16,13 @@
 
 \maketitle
 
-Let $X$ be a complex variety.
+Let $X$ be a complex variety, $\O_X$ its structure sheaf, $\sheaf T_X$ its tangent sheaf and $Ω¹_X$ the sheaf of $1$-forms on $X$ (i.e.~the contangent sheaf).
 
 \begin{Def}
     A \emph{Lie algebroid} consists of 
     \begin{itemize}
         \item an $\O_X$-module $\sheaf A$;
-        \item the structure of a $ℂ$-Lie algebra on $\sheaf A$, i.e.\ a skew-symmetric $ℂ$-bilinear pairing $[,]\colon \sheaf A × \sheaf A → \sheaf A$ satisfying the Jacobi identity; and
+        \item the structure of a $ℂ$-Lie algebra on $\sheaf A$, i.e.\ a skew-symmetric $ℂ$-bilinear pairing $[\,{,}\,]\colon \sheaf A × \sheaf A → \sheaf A$ satisfying the Jacobi identity; and
         \item an $\O_X$-linear map of $ℂ$-Lie algebras $σ\colon A → \sheaf T_X$, called the \emph{anchor map};
     \end{itemize}
     such that the Leibniz identity 
@@ -31,6 +31,37 @@ Let $X$ be a complex variety.
     \]
     holds.
 \end{Def}
+
+\begin{Exs}\leavevmode
+    \begin{itemize}
+        \item $\id\colon \sheaf T_X → \sheaf T_X$.
+        \item Any sub-$\O$-module of $\sheaf T_X$ with the inclusion map.
+            In particular the inclusion of Hamiltonian vector fields on a symplectic variety give a Lie algebroid.
+        \item If $X$ is a Poisson manifold, then the Poisson bivector and the Schouten(?) bracket give a Lie algebroid $Ω_X¹ → \sheaf T_X$.
+            \qedhere
+    \end{itemize}
+\end{Exs}
+
+\begin{Def}
+    Let $σ\colon \sheaf A → \sheaf T_X$ be a Lie algebroid.
+    A \emph{Lie algebroid module} of $\sheaf A$ is an $\O$-module $\sheaf M$ together with a $ℂ$-Lie algebra action of $\sheaf A$, i.e.~an $\O$-linear map $\sheaf A → \End_ℂ(\sheaf M)$ that is compatible with the Lie brackets, such that
+    \[
+        (a)(fm) = fa(m) + σ(a)(f)m, \qquad \text{for all } 
+        a ∈ \sheaf A,\, f ∈ \sheaf \O,\, m ∈ \sheaf M.
+    \]
+    A morphism of $\sheaf A$-modules is simply a morphism of $\O$-modules that is compatible with the $\sheaf A$-action.
+\end{Def}
+
+\begin{Prop}
+    The category of $\sheaf A$-modules is Abelian.
+\end{Prop}
+
+\section*{Questions}
+
+\begin{itemize}
+    \item Is there a well-behaved derived category of $\sheaf A$-modules?
+    \item If $X$ is singular, should $\sheaf T_X$ be replaced by the tangent complex $T^\cx X$?
+\end{itemize}
 
 %\printbibliography
 \end{document}
