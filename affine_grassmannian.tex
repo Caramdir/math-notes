@@ -1,0 +1,52 @@
+%type: notes
+%title: Affine Grassmannian
+%tags: affine Grassmannian, ind-schemes, Lie groups
+\documentclass[english,no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+%\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+\renewcommand\Gr{\operatorname{Gr}}
+
+\title{Affine Grassmannian}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+\section*{Example for \texorpdfstring{$\SL2$}{SL₂}}
+
+The affine Grassmannian $\Gr_{\SL2}$ is given by an increasing union of subvarieties $X_N$ with
+\[
+    X_N = \{ W \subseteq V_{2N} : tW \subseteq W \},
+\]
+where $V_{2N}$ are fixed vector spaces of dimension $2N$ and $t$ is given by the matrix
+\[
+    t = 
+    \begin{pmatrix}
+        0 & 1 &        &        &   \\
+          & 0 & 1      &        &   \\
+          &   & \ddots & \ddots &   \\
+          &   &        & 0      & 1 \\
+          &   &        &        & 0 
+    \end{pmatrix}.
+\]
+Let $\Gr_k^{2N}$ be the Grassmannian of $k$-planes in $V_{2N}$.
+Set
+\[
+    \widetilde Y =
+    \left\{ 
+        (W_k,\, v) ∈ \Gr_k^{2N} \times \liealg g : v W_k \subseteq W_k
+    \right\}.
+\]
+Then $\widetilde Y → Y = \Gr_k^{2n}$ with fiber $\liealg g$ and $\widetilde Y$ is smooth.
+
+Also $\widetilde Y → \liealg g$.
+Let $\widetilde Y_t$ be the fiber of this map over $t$, called \emph{Springer fiber}.
+It is equal to the piece in $X_N$ with $W$ of dimension $k$.
+
+%\printbibliography
+\end{document}
