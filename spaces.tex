@@ -1,0 +1,65 @@
+%type: notes
+%title: Spaces
+%tags: Spaces, affine schemes, ind-schemes, stacks, dg schemes, DAG, HAG
+\documentclass[english,no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+\addbibresource{math.bib}
+%\bibliography{math.bib}
+
+\title{Spaces}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\def\catCRing{\cat{CRing}_k}
+\def\catAffine{\cat{Aff}_k}
+\def\catSpaces{\cat{Spaces}_k}
+\def\catFun{\cat{Fun}}
+
+\maketitle
+
+The purpose of these notes is to bring some order into my understanding of the zoo of \enquote{spaces} that algebraic geometry (and related disciplines) studies.
+These notes take the functor-of-points POV throughout.
+
+\section{Algebraic Geometry}
+
+Fix a commutative ring $k$ and let $\catCRing$ be the category of commutative rings over $k$.
+
+The category $\catAffine$ of \emph{affine schemes} is the opposite category of $\catCRing$:
+\[
+    \catAffine = \oppcat{\catCRing}.
+\]
+
+There are several possible Grothendieck topologies on $\catAffine$: Zariski, étale, fppf, fpqc, \ldots
+The category of \emph{$k$-spaces} $\catSpaces$ is the category of sheaves of sets in the given topology.
+That is, $\catSpaces$ is the full subcategory of $\catFun(\oppcat\catAffine, \catSet)$ consisting of functors $F\colon \oppcat\catAffine → \catSet$ such that whenever $\{U_i → X\}$ is a cover, then
+\[
+    F(X) → \prod_i F(U_i) \rightrightarrows \prod_{i,j} F(U_i ×_X U_j)
+\]
+is an equalizer.
+Via the Yoneda embedding we consider $\catAffine$ as full subcategory of $\catSpaces$.\todo{The fact that a representable functor on $\catAffine$ is a sheaf in the various topologies needs a proof or reference.}
+
+
+\subsection{Schemes}
+
+\subsection{Stacks}
+
+\subsection{Indschemes}
+
+\section{Higher algebraic geometry}
+
+\section{Derived algebraic geometry}
+
+\subsection{Affine dg schemes}
+
+\subsection{Dg schemes}
+
+\subsection{Dg Indschemes}
+
+Reference: \cite{GaitsgoryRozenblyum:arXiv:DGindschemes}
+
+\printbibliography
+
+\end{document}
