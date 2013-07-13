@@ -1,6 +1,6 @@
 %type: notes
 %title: Differential graded algebras
-%tags: algebras, dg, dga, cdga, dg Lie algebras, graded, differential
+%tags: algebras, dg, dga, cdga, dg Lie algebras, graded, differential, coalgebras, dg coalgebras
 \documentclass[english,no-theorem-numbers]{short-notes}
 
 \usepackage{math-alg,math-ag}
@@ -11,7 +11,7 @@
 
 \title{Differential graded algebras}
 \author{Clemens Koppensteiner}
-\version{2}
+\version{3}
 
 \newcommand\degree[1]{|#1|}
 \newenvironment{verification}{\footnotesize\color{gray}}{}
@@ -360,6 +360,51 @@ A \emph{differential graded Lie algebra} (or \emph{dgla}) is a graded Lie algebr
         \end{multline*}%
     \end{verification}%
 \end{Ex}
+
+\section{Coalgebras}
+
+\subsection{Graded coalgebras}
+
+A \emph{graded $k$-coalgebra} is a graded $k$-vector space $C$ together with a $k$-linear comultiplication map $Δ\colon C → C \otimes C$ of degree $0$ and a counit $ε\colon C → k$ (with $k$ in degree $0$) such that the usual coalgebra axioms hold.
+
+Let $τ\colon C \otimes C → C \otimes C$ be the switching (or commutation) morphism, defined as $τ(a \otimes b) = (-1)^{\degree a \degree b} b \otimes a$ on homogeneous elements $a,b ∈ C$.
+A graded coalgebra is \emph{cocommutative} if $τ∘Δ = Δ$, i.e.~if for homogeneous $c ∈ C$
+\[
+    Δ(c) = 
+    \sum_{(c)} c_{(1)} \otimes c_{(2)} = \sum_{(c)} (-1)^{\degree{c_{(1)}}\degree{c_{(2)}}} c_{(2)} \otimes c_{(1)}.
+\]
+
+If $(C,Δ,ε)$ and $(C',Δ',ε')$ are graded coalgebras, then so is $C \otimes C'$, via
+\[
+    C \otimes C' \xrightarrow{Δ \otimes Δ'}
+    C \otimes C \otimes C' \otimes C' \xrightarrow{\id \otimes τ \otimes \id}
+    (C \otimes C') \otimes (C \otimes C')
+\]
+and
+\[
+    C \otimes C' \xrightarrow{ε \otimes ε'} k \otimes k \xrightarrow{\cong} k.
+\]
+Tensoring preserves cocommutativity.\todo{Is this correct?}
+
+If $(C,Δ,ε)$ is a graded coalgebra and $(A,μ,η)$ is a graded algebra, then $\Hom(C,A)$ is a graded algebra with product given by
+\[
+    f\cdot g = μ∘(f\otimes g)∘Δ, \qquad f,g ∈ \Hom(C,A)
+\]
+and unit $η ∘ ε\colon C → A$.\todo{Add verification.}
+
+A \emph{coderivation} of degree $p$ of $C$ is a linear map $ϑ ∈ \Hom^p(C,C)$ such that 
+\[
+    ϑ ∘ Δ = (ϑ ⊗ \id[C] + τ∘(ϑ⊗\id[C])∘τ)∘Δ
+\]
+and $ε∘θ=0$.\todo{Add diagram.}
+
+\subsection{Differential graded coalgebras}
+
+A \emph{differential graded coalgebra} (or \emph{dgc}) is a graded coalgebra $C$ together with a coderivation $∂$ on $C$ of degree $1$ such that $∂² = 0$.
+In other words, it is a comonoid in the category of chain complexes.
+
+%Todo: Verifications that Hom and tensor product respect the differential
+%Todo: examples (tensor coalgebra, exterior coalgebra)
 
 \printbibliography
 \end{document}
