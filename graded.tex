@@ -15,6 +15,7 @@
 
 \newcommand\degree[1]{|#1|}
 \newenvironment{verification}{\footnotesize\color{gray}}{}
+\AtBeginEnvironment{proof}{\footnotesize\color{gray}}
 \renewcommand\dual{*}
 \begin{document}
 
@@ -37,60 +38,76 @@ However we omit the term \enquote{pre-} from everything and use cohomological gr
 
 Let $k$ be a field (the definitions work the same for $k$ a commutative ring). 
 
-A \emph{graded vector space} is a vector space $V$ together with a decomposition
-\[
-V = \bigoplus_{i ∈ ℤ} V^i.
-\]
-An element $v∈V^i$ is called \emph{homogeneous} of degree $i$ and we write $\degree{v} = i$.
-For any integer $n$, we write $V[n]$ for the graded vector space with underlying vector space $V$ and grading $V[n]^i = V^{i+n}$.
+\begin{Def}[Graded vector space]
+    A \emph{graded vector space} is a vector space $V$ together with a decomposition
+    \[
+    V = \bigoplus_{i ∈ ℤ} V^i.
+    \]
+    An element $v∈V^i$ is called \emph{homogeneous} of degree $i$ and we write $\degree{v} = i$.
+    For any integer $n$, we write $V[n]$ for the graded vector space with underlying vector space $V$ and grading $V[n]^i = V^{i+n}$.
+\end{Def}
 
-A \emph{linear map of degree $n$} between graded vector spaces is a linear map $f\colon V → W$ such that $f(V^i) ⊆ W^{i+n}$ for all $i ∈ ℤ$.
-We write $\degree{f}$ for the degree of $f$.
-A \emph{morphism} of graded vector spaces is a linear map of degree $0$.
-The set of all linear maps of degree $n$ is denoted $\Hom^n(V,W) = \Hom^0(V,W[n])$ and we set
-\[
-\Hom(V,W) = \bigoplus_{n∈ℤ}\Hom^n(V,W)
-\]
+\begin{Def}[Map and morphism]
+    A \emph{linear map of degree $n$} between graded vector spaces is a linear map $f\colon V → W$ such that $f(V^i) ⊆ W^{i+n}$ for all $i ∈ ℤ$.
+    We write $\degree{f}$ for the degree of $f$.
+    A \emph{morphism} of graded vector spaces is a linear map of degree $0$.
+    The set of all linear maps of degree $n$ is denoted $\Hom^n(V,W) = \Hom^0(V,W[n])$ and we set
+    \[
+    \Hom(V,W) = \bigoplus_{n∈ℤ}\Hom^n(V,W)
+    \]
+\end{Def}
 
-The \emph{direct sum} of two graded vector spaces $V$, $W$ is the vector space $V ⊕ W$ with the grading
-\[
-(V⊕W)^i = V^i ⊕ W^i.
-\]
-The \emph{tensor product} of $V$ and $W$ is $V\otimes W$ with the grading
-\[
-(V\otimes W)^i = \bigoplus_{p+q=i} V^p \otimes W^q.
-\]
-If $f\colon V → V'$ and $g\colon W → W'$ are linear maps of degree $n$ and $n'$ respectively, then we define a map $f \otimes g\colon V\otimes V' → W \otimes W'$ of degree $n + n'$ by
-\[
-(f \otimes g)(v \otimes w) = (-1)^{\degree{v}\degree{g}}f(v)\otimes g(w).
-\]
-This sign convention is called the \emph{Koszul rule}.
-It is forced by the (necessary) sign rule for differentials on a tensor product (see below).
+\begin{Def}[Direct sum]
+    The \emph{direct sum} of two graded vector spaces $V$, $W$ is the vector space $V ⊕ W$ with the grading
+    \[
+    (V⊕W)^i = V^i ⊕ W^i.
+    \]
+\end{Def}
 
-The \emph{dual} of a graded vector space $V$ is
-\[
-V^\dual = \Hom(V,k).
-\]
-Hence,
-\[
-(V^\dual)^i = \Hom^i(V,k) = \Hom^0(V[-i],k) = (V^{-i})^\dual.
-\]
-If $f\colon V → W$ is of degree $\degree{f}$, then its \emph{transpose} $\transpose f\colon W^\dual → V^\dual$ is given by
-\[
-(\transpose f)φ = \left(v \mapsto (-1)^{\degree{f}\degree{φ}}φ(f(v))\right).
-\]
+\begin{Def}[Tensor product]
+    The \emph{tensor product} of $V$ and $W$ is $V\otimes W$ with the grading
+    \[
+    (V\otimes W)^i = \bigoplus_{p+q=i} V^p \otimes W^q.
+    \]
+    If $f\colon V → V'$ and $g\colon W → W'$ are linear maps of degree $n$ and $n'$ respectively, then we define a map $f \otimes g\colon V\otimes V' → W \otimes W'$ of degree $n + n'$ by
+    \[
+    (f \otimes g)(v \otimes w) = (-1)^{\degree{v}\degree{g}}f(v)\otimes g(w).
+    \]
+    This sign convention is called the \emph{Koszul rule}.
+    It is forced by the (necessary) sign rule for differentials on a tensor product (see below).
+\end{Def}
+
+\begin{Def}[Dual and transpose]
+    The \emph{dual} of a graded vector space $V$ is
+    \[
+    V^\dual = \Hom(V,k).
+    \]
+    Hence,
+    \[
+    (V^\dual)^i = \Hom^i(V,k) = \Hom^0(V[-i],k) = (V^{-i})^\dual.
+    \]
+    If $f\colon V → W$ is of degree $\degree{f}$, then its \emph{transpose} $\transpose f\colon W^\dual → V^\dual$ is given by
+    \[
+    (\transpose f)φ = \left(v \mapsto (-1)^{\degree{f}\degree{φ}}φ(f(v))\right).
+    \]
+\end{Def}
 
 \subsection{Differential graded vector spaces}
 
-A \emph{differential graded vector space (dgvs)}  is a graded vector space $V$ together with a \emph{differential} $d ∈ \Hom¹(V,V)$ such that $d∘d = 0$.
-A \emph{morphism} of dgvs is a linear map $f$ of degree $0$ that is compatible with the differential, i.e.\ such that $fd = df$.
+\begin{Def}[Differential graded vector space]
+    A \emph{differential graded vector space (dgvs)}  is a graded vector space $V$ together with a \emph{differential} $d ∈ \Hom¹(V,V)$ such that $d∘d = 0$.
+    A \emph{morphism} of dgvs is a linear map $f$ of degree $0$ that is compatible with the differential, i.e.\ such that $fd = df$.
+\end{Def}
 
 If $V$ is a dgvs, then $V[n]$ is a dgvs with the differential $(-1)^n d$.
-If $(V,d_V)$ and $(W,d_W)$ are dgvs, we can make $\Hom(V,W) = \bigoplus \Hom^n(V,W)$ into a dgvs with the differential
-\[
-D\colon \Hom(V,W) → \Hom(V,W), \quad D(f) = d_W ∘ f - (-1)^{\degree{f}} f ∘ d_V
-\]
-for homogeneous $f$.
+
+\begin{Def}[Hom-complex]
+    If $(V,d_V)$ and $(W,d_W)$ are dgvs, we can make $\Hom(V,W) = \bigoplus \Hom^n(V,W)$ into a dgvs with the differential
+    \[
+    D\colon \Hom(V,W) → \Hom(V,W), \quad D(f) = d_W ∘ f - (-1)^{\degree{f}} f ∘ d_V
+    \]
+    for homogeneous $f$.
+\end{Def}
 \begin{verification}
     This is a differential, as
     \[
@@ -103,11 +120,12 @@ for homogeneous $f$.
 We call $f\colon V → W$ \emph{compatible} with the differentials if $Df = 0$, i.e.\ $d_Wf = (-1)^{\degree f} f∘d_V$.
 We call $f$ of degree $0$ \emph{null-homotopic} if there exists $h$ of degree $-1$ such that $f = Dh$, i.e.~$f = dh + hd$.
 
-
+\begin{Def}[Tensor product]
 The \emph{tensor product} of two dgvs $(V,d_V)$ and $(W,d_W)$ carries the differential
 \[
 d(v\otimes w) = (d_V v) \otimes w + (-1)^{\degree v} v \otimes (d_W w).
 \]
+\end{Def}
 \begin{verification}
     This is indeed a differential:
     \begin{multline*}
@@ -122,8 +140,11 @@ If $V₁$, \dots, $V_n$ are dgvs, then this unambiguously induces a differential
 d(v₁ \otimes \dotsb \otimes v_n) = \\ =
 d(v₁) \otimes v₂ \otimes \dotsb \otimes v_n + (-1)^{\degree{v₁}} v₁ \otimes d(v₂) \otimes \dotsb \otimes v_n + \\ + \dotsb + (-1)^{\degree{v₁} + \dotsb + \degree{v_{n-1}}} v₁ \otimes \dotsb \otimes v_{n-1} \otimes d(v_n).
 \end{multline*}
-If $f\colon V → V'$ and $g\colon W → W'$ are linear maps that are compatible with the differentials, then $f \otimes g$ is compatible with the differentials on $V\otimes W$ and $V' \otimes W'$.
-\begin{verification}
+
+\begin{Prop}
+    If $f\colon V → V'$ and $g\colon W → W'$ are linear maps that are compatible with the differentials, then $f \otimes g$ is compatible with the differentials on $V\otimes W$ and $V' \otimes W'$.
+\end{Prop}
+\begin{proof}
     As,
     \begin{align*}
     d_{V'\otimes W'}\left( (f\otimes g)(v \otimes w) \right)  & =
@@ -133,12 +154,19 @@ If $f\colon V → V'$ and $g\colon W → W'$ are linear maps that are compatible
     (-1)^{\degree f + \degree g} \left( (-1)^{(\degree v + 1)\degree g} f(d_Vv) \otimes g(w) + (-1)^{\degree v + \degree v \degree g} f(v) \otimes g(d_Ww) \right)\\ &  =
     (-1)^{\degree f + \degree g} \left( f\otimes g \left( d_Vv \otimes w + (-1)^{\degree v} v \otimes d_Ww \right) \right)\\ &  =
     (-1)^{\degree f + \degree g} \left( f\otimes g \left( d_{V\otimes W} v \otimes w \right) \right).
+    \qedhere
     \end{align*}%
-\end{verification}%
+\end{proof}
+
+\begin{Def}[Dual]
 The \emph{dual} of a dgvs $(V,d)$ is $V^\dual$ with the differential $d^\dual = - \transpose d$, i.e.\ $(d^\dual f)(v) = - (-1)^{\degree f} f(dv)$.
-This agrees with the differential on $\Hom(V,k)$ defined above.
-Thus, the usual identification $\Hom(V,W) = W \otimes V^\dual$ is compatible with the differential.
-\begin{verification}
+\end{Def}
+
+\begin{Prop}
+    This agrees with the differential on $\Hom(V,k)$ defined above.
+    Thus, the usual identification $\Hom(V,W) = W \otimes V^\dual$ is compatible with the differential.
+\end{Prop}
+\begin{proof}
     The identification maps $w \otimes f$ to $φ_{w,f}\colon v \mapsto f(v)w$ with $\degree φ_{w,f} = \degree f + \degree w$.
     Then,
     \[
@@ -148,8 +176,9 @@ Thus, the usual identification $\Hom(V,W) = W \otimes V^\dual$ is compatible wit
     \[
     f(v)(d_Ww) + (-1)^{\degree w}(df)(v)w =
     f(v)(d_Ww) - (-1)^{\degree w + \degree f}f(dv)w.
+    \qedhere
     \]%
-\end{verification}%
+\end{proof}%
 
 \begin{Ex}
     Let $V$ be the dgvs corresponding to the cochain complex
@@ -164,45 +193,62 @@ Thus, the usual identification $\Hom(V,W) = W \otimes V^\dual$ is compatible wit
 
 \subsection{Graded algebras}
 
-A \emph{graded $k$-algebra} $A$ is a graded vector space $A$ together with multiplication such that $A^p\cdot A^q ⊆ A^{p+q}$ for all $p,q ∈ ℤ$.
-Instead of linear maps, we use $k$-algebra maps for the definition of graded maps and morphisms between graded algebras.
+\begin{Def}[Graded algebra]
+    A \emph{graded $k$-algebra} $A$ is a graded vector space $A$ together with multiplication such that $A^p\cdot A^q ⊆ A^{p+q}$ for all $p,q ∈ ℤ$.
+    Instead of linear maps, we use $k$-algebra maps for the definition of graded maps and morphisms between graded algebras.
+\end{Def}
 
+\begin{Def}[Commutativity]
 A graded algebra $A$ is \emph{graded commutative} (or simply \emph{commutative}) if for any homogeneous elements $a,b ∈ A$, we have $ab = (-1)^{\degree a \degree b}ba$.
+\end{Def}
 
-If $A$ and $B$ are graded algebras, then the product structure on the tensor product $A \otimes B$ is defined by
-\[
-(a \otimes b)(a' \otimes b') = (-1)^{\degree b \degree{a'}} aa' \otimes bb'.
-\]
-Tensor products preserve commutativity.
-\begin{verification}
-    \begin{multline*}
-    (a \otimes b)(a' \otimes b') = 
-    (-1)^{\degree b \degree{a'}} aa' \otimes b'b = 
-    (-1)^{\degree b \degree{a'}}(-1)^{\degree a \degree{a'}} (-1)^{\degree b \degree{b'}} a'a \otimes b'b = \\ =
-    (-1)^{\degree b \degree{a'}}(-1)^{\degree a \degree{a'}} (-1)^{\degree b \degree{b'}} (-1)^{\degree{b'} \degree a} (a' \otimes b')(a \otimes b) =
+\begin{Def}[Tensor product]
+    If $A$ and $B$ are graded algebras, then the product structure on the tensor product $A \otimes B$ is defined by
+    \[
+    (a \otimes b)(a' \otimes b') = (-1)^{\degree b \degree{a'}} aa' \otimes bb'.
+    \]
+\end{Def}
+
+\begin{Prop}
+    The tensor product of commutative graded algebras is commutative.
+\end{Prop}
+\begin{proof}
+    \begin{align*}
+    (a \otimes b)(a' \otimes b') & = 
+    (-1)^{\degree b \degree{a'}} aa' \otimes b'b \\ & = 
+    (-1)^{\degree b \degree{a'}}(-1)^{\degree a \degree{a'}} (-1)^{\degree b \degree{b'}} a'a \otimes b'b \\ & =
+    (-1)^{\degree b \degree{a'}}(-1)^{\degree a \degree{a'}} (-1)^{\degree b \degree{b'}} (-1)^{\degree{b'} \degree a} (a' \otimes b')(a \otimes b) \\ & =
     (-1)^{(\degree a + \degree b)(\degree{a'} + \degree{b'})} (a' \otimes b')(a \otimes b).
-    \end{multline*}%
-\end{verification}%
+    \qedhere
+    \end{align*}
+\end{proof}
 
-A \emph{derivation} of degree $p$ on $A$ is a $k$-linear map of $d\colon A → A$ of degree $p$ such that
+\begin{Def}[Derivation]
+A \emph{derivation} of degree $p$ on $A$ is a $k$-linear map $d\colon A → A$ of degree $p$ such that
 \[
 d(ab) = d(a)b + (-1)^{\degree d \degree a} a d(b),
 \]
 for homogeneous $a$, $b$.
+\end{Def}
+Since the map is $k$-linear and $\degree 1 = 0$, this implies that $d(1) = d(1) + d(1)$ and hence $d(1) = 0$.
 
 \subsection{Differential graded algebras}
 
-A \emph{differential graded algebra} (\emph{dga} for short) is a graded algebra $A$ together with a derivation $d\colon A → A$ of degree $1$ such that $d ∘ d = 0$.
+\begin{Def}[DGA]
+    A \emph{differential graded algebra} (\emph{dga} for short) is a graded algebra $A$ together with a derivation $d\colon A → A$ of degree $1$ such that $d ∘ d = 0$.
+\end{Def}
 Thus $d$ satisfies the \emph{graded Leibniz rule} 
 \[
 d(ab) = d(a)b + (-1)^{\degree a} ad(b).
 \]
 
+\begin{Prop}
 The tensor product of two dgas $A$, $B$ is again a dga, with the same rule for the differential as in the in case of a dgvs:
 \[
 d(a \otimes b) = d_Aa \otimes b + (-1)^{\degree a} a \otimes d_B b.
 \]
-\begin{verification}
+\end{Prop}
+\begin{proof}
     We have to check that this satisfies the Leibniz rule.
     \begin{align*}
     d( (a \otimes b)(a'\otimes b')) & =
@@ -215,8 +261,9 @@ d(a \otimes b) = d_Aa \otimes b + (-1)^{\degree a} a \otimes d_B b.
     (d(a) \otimes b)(a' \otimes b') + (-1)^{\degree a}(a \otimes d(b))(a' \otimes b') + \\
         &\qquad\qquad + (-1)^{\degree a + \degree b} (a \otimes b)(d(a') \otimes b') + (-1)^{\degree a + \degree{a'} + \degree b} (a \otimes b)(a' \otimes d(b')) \\ & =
     d(a \otimes b)(a' \otimes b') + (-1)^{\degree a + \degree b}(a \otimes b)d(a' \otimes b').
+    \qedhere
 \end{align*}%
-\end{verification}%
+\end{proof}%
 
 \begin{Ex}
     Let $(V,d)$ be a differential graded vector space.
