@@ -257,13 +257,62 @@ We denote the multiplication map by $μ\colon A \otimes A → A$ and the unit ma
 \end{proof}
 
 \begin{Def}[Derivation]
-A \emph{derivation} of degree $p$ on $A$ is a $k$-linear map $d\colon A → A$ of degree $p$ such that
-\[
-d(ab) = d(a)b + (-1)^{\degree d \degree a} a d(b),
-\]
-for homogeneous $a$, $b$.
+    A \emph{derivation} of degree $p$ on $A$ is a $k$-linear map $d\colon A → A$ of degree $p$ such that
+    \[
+        d ∘ μ = μ ∘ (d \otimes \id + τ∘(d \otimes \id)∘τ)\colon A \otimes A → A.
+    \]
 \end{Def}
-Since the map is $k$-linear and $\degree 1 = 0$, this implies that $d(1) = d(1) + d(1)$ and hence $d(1) = 0$.
+
+\begin{Prop}
+    A $k$-linear map $d\colon A → A$ is a derivation if and only if
+    \[
+        d(ab) = d(a)b + (-1)^{\degree d \degree a} a d(b),
+    \]
+    for all homogeneous $a, b ∈ A$.
+\end{Prop}
+
+\begin{proof}
+    One has $(d∘μ)(a \otimes b) = d(ab)$ and
+    \[
+        μ∘(d \otimes \id + τ∘(d \otimes id)∘τ)(a \otimes b) =
+        μ(d(a) \otimes b + (-1)^{\degree a \degree b + (\degree b + \degree d)\degree a}a \otimes d(b)) =
+        d(a)b + (-1)^{\degree d \degree a} a d(b).
+        \qedhere
+    \]
+\end{proof}
+
+Since the map is $k$-linear and $\degree 1 = 0$, this implies that $d(1) = d(1) + d(1)$ and hence $d ∘ η = 0$.
+
+\begin{Def}[Tensor product of derivations]
+    Let $d\colon A → A$ and $d'\colon A' → A'$ be derivations.
+    Then we define a derivation $\tilde d$ on $A \otimes A'$ by\todo{Is this correct?}
+    \[
+        \tilde d = d \otimes \id + τ ∘ (d' \otimes \id) ∘ τ\colon A \otimes A' → A \otimes A'.
+    \]
+\end{Def}
+
+Note that this is not the same as the tensor product of $d$ and $d'$ as linear maps.
+
+\begin{Prop}
+    The map $\tilde d$ is indeed a derivation.
+    For homogeneous $d, d'$ and $a, a'$ we have
+    \[
+        \tilde d (a \otimes a') = da \otimes a' + (-1)^{\degree{d'} \degree a}a\otimes d'a'.
+    \]
+\end{Prop}
+
+\begin{proof}
+    \todo{Add proof of first statement.}
+    The second statement follows from
+    \begin{multline*}
+        (τ  ∘ (d' \otimes \id) ∘ τ)(a \otimes a') = 
+        (-1)^{\degree a \degree{a'}}(τ ∘ (d' \otimes \id))(a' \otimes a) = \\ =
+        (-1)^{\degree a \degree{a'}}τ(d'a' \otimes a) =
+        (-1)^{\degree a \degree{a'} + (\degree{a'}+\degree{d'})\degree a} a \otimes d'a' =
+        (-1)^{\degree{d'}\degree a} a \otimes d'a'.
+        \qedhere
+    \end{multline*}
+\end{proof}
 
 \subsection{Differential graded algebras}
 
