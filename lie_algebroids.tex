@@ -12,6 +12,9 @@
 \title{Lie algebroids}
 \author{Clemens Koppensteiner}
 
+\newcommand\at{\operatorname{at}}
+\renewcommand\dual{*}
+
 \begin{document}
 
 \maketitle
@@ -46,5 +49,44 @@ Let $X$ be a complex variety, $\O_X$ its structure sheaf, $\sheaf T_X$ its tange
     If $X$ is singular, should $\sheaf T_X$ be replaced by the tangent complex $T^\cx X$?
 \end{Q}
 
-%\printbibliography
+\section{Atiyah classes}
+
+Set $J¹\sheaf A = (\O \oplus \sheaf A)^\dual$ (this is an ad-hoc definition; see \cite[Section~4.2.5]{CalaqueVanDenBergh:2010:HochschildCohomologyAndAtiyahClasses}).
+There are two monomorphisms $α_i\colon \O → J¹\sheaf A$:
+\begin{align*}
+    α₁\colon \O → J¹\sheaf A:& f \mapsto \left( (g,a) \mapsto fg + a(1) \right), \\
+    α₂\colon \O → J¹\sheaf A:& f \mapsto \left( (g,a) \mapsto gf + a(f) \right).
+\end{align*}
+Let $\sheaf E$ be an arbitrary $\O$-module.
+There exists a short exact sequence of $\O$-modules 
+\[
+    0 → \sheaf A^\dual \otimes_{\O} \sheaf E → J¹\sheaf A \otimes_{α₂,\O} \sheaf E → \sheaf E → 0,
+\]
+where the tensor product in the middle term is taken with respect to $α₂$, but the result is viewed as an $\O$-modules via $α₁$.
+This sequence corresponds to a class
+\[
+    \at_{\sheaf A}(\sheaf E) ∈ \Ext¹_\O(\sheaf E,\, \sheaf A^\dual \otimes \sheaf E).
+\]
+See \cite[Section~8]{CalaqueVanDenBergh:2010:HochschildCohomologyAndAtiyahClasses} for details.
+We also write $\at_{\sheaf A}(\sheaf E)$ for the corresponding morphism $\sheaf E → \sheaf A^\dual \otimes \sheaf E[1]$ in the derived category $D(X)$.
+I should check that for $\sheaf A = \sheaf T_X$ this yields the usual Atiyah class \cite[Section~1.1]{Markarian:2009:AtiyahClassHochschildCohomologyRiemannRoch}.
+
+Setting $\sheaf E = \sheaf A^\dual$ we obtain a morphism $\at_{\sheaf A}(\sheaf A^\dual)\colon \sheaf A^\dual → \sheaf A^\dual \otimes \sheaf A^\dual[1]$.
+Dually this gives a morphism $\sheaf A \otimes \sheaf A [-1] → \sheaf A$ or 
+\[
+    \sheaf A[-1] \otimes \sheaf A[-1] → \sheaf A[-1],
+\]
+i.e.\ a bilinear map on $\sheaf A[-1]$.
+
+\begin{Conjecture}
+    This map gives $\sheaf A[-1]$ the structure of a Lie algebra object in $D(X)$.
+\end{Conjecture}
+
+It seems likely that one can translate the proof of \cite[Proposition~1]{Markarian:2009:AtiyahClassHochschildCohomologyRiemannRoch}.
+
+\begin{Conjecture}
+    If $\sheaf A$ comes from a groupoid, then this Lie algebra structure coincides with the one constructed in \cite[Section~G.1]{ArinkinGaitsgory:arXiv:SingularSupport}.
+\end{Conjecture}
+
+\printbibliography
 \end{document}
