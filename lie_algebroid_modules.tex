@@ -16,6 +16,20 @@
 
 \maketitle
 
+\begin{Def}
+    Let $σ\colon \sheaf A → \sheaf T_X$ be a Lie algebroid.
+    A \emph{Lie algebroid module} of $\sheaf A$ is an $\O$-module $\sheaf M$ together with a $ℂ$-Lie algebra action of $\sheaf A$, i.e.~an $\O$-linear map $\sheaf A → \End_ℂ(\sheaf M)$ that is compatible with the Lie brackets, such that
+    \[
+        (a)(fm) = fa(m) + σ(a)(f)m, \qquad \text{for all } 
+        a ∈ \sheaf A,\, f ∈ \sheaf \O,\, m ∈ \sheaf M.
+    \]
+    A morphism of $\sheaf A$-modules is simply a morphism of $\O$-modules that is compatible with the $\sheaf A$-action.
+\end{Def}
+
+\begin{Prop}
+    The category of $\sheaf A$-modules is Abelian.
+\end{Prop}
+
 Seeing Lie algebroids as a generalization of the tangent sheaf, one can see Lie algebroid modules (or modules over the universal enveloping algebra) as generalizations of $D$-modules.
 In particular I am interested in modules for Hamiltonian functions on a symplectic variety (or more generally a Poisson variety).
 
