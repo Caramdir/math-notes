@@ -63,6 +63,34 @@ Hence,
         Is the assignment $\sheaf L \mapsto \operatorname{HH}_{\sheaf L}^{\cx}$ functorial?
 \end{enumerate}
 
+\section{Groupoids and algebroids}
+
+In \cite[Section~F.4]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, the authors construct an $\mathbb E₂$-algebra $\mathcal A_{\mathcal G}$ associated to a groupoid $\mathcal G$ over $Z$.
+
+\begin{Question}
+    Let $\sheaf L$ be the Lie algebroid associated to the groupoid $\mathcal G$.
+    Is the Hochschild cohomology of $\sheaf L$ the same as $\mathcal A_{\mathcal G}$ (at least on the level of cohomology)?
+\end{Question}
+
+\begin{enumerate}
+    \item Assume that $\sheaf L$ is a vector bundle (and $Z$ smooth).
+        \begin{enumerate}
+            \item
+                Can we see the equivalence directly from the definition?
+                For example, is $J_Z\sheaf L \cong \O_{\mathcal G}$?
+                (For the pair groupoid this is contained in \cite[Proposition~6.1]{CalaqueRossiVanDenBergh:2010:HochschildCoHomlogyForLieAlgebroids}.)
+            \item
+                Is the Lie algebra in \cite[Proposition G.1.7]{ArinkinGaitsgory:arXiv:v2:SingularSupport} the same as $\sheaf L[-1]$ with the bracket given by the Atiyah class of $\sheaf L^*$?
+            \item
+                Does the Lie bracket on $\sheaf L$ extend to give a Gerstenhaber bracket on $U(\sheaf L[-1])$?
+                Is this the same Gerstenhaber bracket as the one induced by the $\mathbb E₂$-structure on $\mathcal A_{\mathcal G}$?
+                How does this compare (via HKR) with $\SymAlg \sheaf L[-1] = \bigwedge^\ast \sheaf L$?
+        \end{enumerate}
+    \item Can these concepts be generalized to the non-smooth setting, i.e.~where $\sheaf L$ is only a perfect complex?
+    \item Can we thus define singular support for arbitrary $\sheaf L$, and is this useful?
+        For $D(Z)$ this would be strictly less information that the full singular support (when $\sheaf L$ is the tangent complex), but maybe the category of $\mathcal A_{\mathcal G}$- ($\mathcal A_{\sheaf L}$-)modules has a nice description in special cases?
+\end{enumerate}
+
 \printbibliography
 
 \end{document}
