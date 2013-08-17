@@ -1,0 +1,49 @@
+%type: notes
+%title: perfect sheaves
+%tags: algebraic geometry, O-modules
+\documentclass[english,no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+\addbibresource{math.bib}
+%\bibliography{global.bib}
+
+
+\title{Perfect sheaves}
+\author{Clemens Koppensteiner}
+
+\newcommand\at{\operatorname{at}}
+\renewcommand\dual{*}
+
+\begin{document}
+
+\maketitle
+
+\begin{Def}[{\cite[Definition~3.1]{BenZviFrancisNadler:2010:IntegralTransformsAndDrinfeldCenters}}]
+    Let $A$ be a derived commutative ring.
+    An $A$-module $M$ is \emph{perfect} if lies in the smallest $∞$-subcategory of $\catModules A$ containing $A$ and closed under finite colimits and retracts.
+    For a derived stack $X$, the $∞$-category $\catPerf X$ is the full $∞$-subcategory of $\catQCoh X$ consisting of those sheaves $M$ whose restriction $f^∗M$ to any affine $f\colon U → X$ over $X$ is a perfect module.
+\end{Def}
+
+\begin{Claim}
+    If $X$ is a Noetherian scheme, than $M ∈ \catQCoh X$ is perfect if and only if it is bounded and its cohomology modules are vector bundles on $X$.
+\end{Claim}
+
+\begin{Def}[{\cite[Definition~3.3]{BenZviFrancisNadler:2010:IntegralTransformsAndDrinfeldCenters}}]
+    An object $M$ of a stable symmetric monoidal $∞$-category $\cat C$ is said to be (strongly) \emph{dualizable} if there is an object $M^∨$ and unit and trace maps 
+    \[
+        1 \xrightarrow{u} M⊗M^∨ \xrightarrow{τ} 1
+    \]
+    such that the composite map
+    \[
+        M \xrightarrow{u⊗\id} M⊗M^∨⊗M \xrightarrow{\id⊗τ} M
+    \]
+    is the identity.
+\end{Def}
+
+\begin{Prop}[{\cite[Proposition~3.6]{BenZviFrancisNadler:2010:IntegralTransformsAndDrinfeldCenters}}]
+    For a derived stack $X$, an object of $\catQCoh X$ is dualizable if and only if it is perfect.
+\end{Prop}
+
+\printbibliography
+\end{document}
