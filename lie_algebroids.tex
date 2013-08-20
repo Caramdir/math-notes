@@ -17,6 +17,10 @@
 
 \begin{document}
 
+\newcommand\unit{\operatorname{unit}}
+\newcommand\grpd{\mathcal}
+\newcommand\algd{\sheaf}
+
 \maketitle
 
 Let $X$ be a complex variety, $\O_X$ its structure sheaf, $\sheaf T_X$ its tangent sheaf and $Ω¹_X$ the sheaf of $1$-forms on $X$ (i.e.~the contangent sheaf).
@@ -48,6 +52,27 @@ Let $X$ be a complex variety, $\O_X$ its structure sheaf, $\sheaf T_X$ its tange
 \begin{Q}
     If $X$ is singular, should $\sheaf T_X$ be replaced by the tangent complex $T^\cx X$?
 \end{Q}
+
+\section{The Lie algebroid of a Lie groupoid}
+
+Let $\grpd G$ be a Lie groupoid over $X$ with source and target maps $s,t\colon \grpd G → X$ and unit $\unit\colon X → \grpd G$.
+To $\grpd G$ we can associate a Lie algebroid $\algd L_{\grpd G}$ in the following way \cite[Definition~3.5.8]{Mackenzie:2005:GeneralTheoryOfLieGroupoidsAndLieAlgebroids}:
+The vector bundle underlying $\algd L_{\grpd G}$ is
+\[
+    \algd L_{\grpd G} = \unit^*\sheaf T_{\grpd G/X},
+\]
+where $T_{\grpd G/X}$ is the relative tangent bundle of $s\colon \grpd G → X$.
+The bracket is given via right-invariant vector fields and the anchor is the defined via the tangent map of $t$.
+
+Since $X \xrightarrow{\unit} \grpd G \xrightarrow{s} X$ is the identity, the triangle
+\[
+    \unit^* T^*(\grpd G/X) → T^*(X/X) → T^*(X/\grpd G)
+\]
+of cotangent complexes and hence an isomorphism
+\[
+    T^*(X/\grpd G) \cong \unit^*(T^*(\grpd G/X))[1] \cong (\algd L_{\grpd G}[-1])^\dual
+\]
+in the derived category.
 
 \section{Atiyah classes}
 
