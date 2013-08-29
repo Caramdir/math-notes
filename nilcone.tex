@@ -9,14 +9,17 @@
 %\bibliography{global.bib}
 
 
-\title{The nilpotent cone of \texorpdfstring{$\liesl2ℂ$}{sl2C}}
+\title{the nilpotent cone of \texorpdfstring{$\liesl2ℂ$}{sl2C}}
 \author{Clemens Koppensteiner}
 
 \begin{document}
 
+\newcommand\D{\mathrm{d}}
+
 \maketitle
 
-\noindent The nilpotent cone of $\liesl2ℂ$ is 
+\section{the poisson structure}
+The nilpotent cone of $\liesl2ℂ$ is 
 \[
     N = \Spec \rquot{ℂ[x,y,z]}{(x²+4yz)}.
 \]
@@ -41,6 +44,36 @@ Then the Poisson bracket is defined by
 \]
 
 Note that in particular $HP_0(X) = \rquot{\O_N}{\{\O_N,\O_N\}} = ℂ$.
+
+\section{(co)tangent space and anchor map}
+
+We use the first equation above, i.e.~set $N = \Spec \rquot{ℂ[x,y,z]}{(f)}$ with $f=x²+4yz$.
+The cotangent complex of $N$ is given by
+\[
+    \mathbb L_N = 
+    \bigl( \O_N \xrightarrow{\begin{psmallmatrix}∂_xf\\∂_yf\\∂_zf\end{psmallmatrix}} \O_N³\bigr) = 
+    \bigl( \O_N \xrightarrow{\begin{psmallmatrix}2x\\4z\\4y\end{psmallmatrix}} \O_N³\bigr).
+\]
+Hence the cotangent sheaf is 
+\[
+    Ω¹_N = H^0(\mathbb L_N) = \rquot{\left( \O_N \D x + \O_N\D y + \O_N \D z \right)}{(2x \D x,\, 4z\D y,\, 4y \D z)}.
+\]
+The Poisson tensor $Ω ∈ \sheaf T_N ∧ \sheaf T_N$ induces an $\O_N$-module map
+\[
+    ω\colon Ω¹_N → \sheaf T_N\colon g\D f \mapsto g\{f,\,{-}\}.
+\]
+Explicitly, the computations above show that
+\begin{align*}
+    \D x & \mapsto  2y∂_y - 2z∂_z, \\
+    \D y & \mapsto -2y∂_x + x∂_z, \\
+    \D z & \mapsto  2z∂_x - x∂_y.
+\end{align*}
+Note that all of these vanish at the origin. 
+Further, one computes that 
+\[
+    ω(\D f) = ω(2x\D x + 4z\D y + 4y \D z) = 0,
+\]
+so that $ω$ (trivially) extends to a map of complexes $ω\colon \mathbb L_N → \mathbb T_N$ (with $0$ maps in non-zero degrees).
 
 %\printbibliography
 \end{document}
