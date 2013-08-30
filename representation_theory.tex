@@ -1,0 +1,87 @@
+%type: notes
+%title: Basic definitions of representation theory
+%tags: representation theory
+\documentclass[english, no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+
+\title{basic definitions of (geometric) representation theory}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+Let $G$ be an affine algebraic group over an algebraically closed field $k$ of characteristic $0$.
+
+\begin{Def}
+    A \emph{representation} of $G$ is an homomorphism $ρ\colon G → \operatorname{GL}(V)$ for some finite dimensional vector space $V$ over $k$.
+\end{Def}
+
+\begin{Def}
+    The \emph{character} of a representation $ρ$ is the map $\trace ∘ ρ \colon G → k$.
+\end{Def}
+
+Characters are constant on adjoint orbits, i.e.~are elements of $\O(G)^G$ (where the meaning of $\O$ depends on the context).
+
+\begin{Def}
+    A \emph{torus} is an affine algebraic group which is isomorphic to a product of $\mathbb G_m = \GL 1$.
+\end{Def}
+
+\begin{Def}
+    An element of $\GL n$ is called \emph{semisimple} if it is diagonalizable.
+    An element of $G$ is \emph{semisimple} if its image is so for any embedding of $G$ into a $\GL n$.
+\end{Def}
+
+\begin{Def}
+    An element of $\GL n$ is called \emph{unipotent} if all its eigenvalues are $1$.
+    An element of $G$ is \emph{unipotent} if its image is so for any embedding of $G$ into a $\GL n$.
+\end{Def}
+
+The last two definitions are independent of the embedding of $G$ into $\GL n$ (and the choice of $n$).
+
+\begin{Thm}[Jordan decomposition]
+    Any element $g∈G$ can be written uniquely as a product $g=su$ with $s$ semisimple, $u$ unipotent and $[s,u] = 1$.
+\end{Thm}
+
+\begin{Def}
+    The \emph{radical} $R(G)$ of $G$ is the maximal closed, connected, normal, solvable subgroup of $G$.
+    If $R(G) = 1$, then $G$ is called \emph{semisimple}.
+\end{Def}
+
+\begin{Def}
+    The \emph{unipotent radical} $R_u(G)$ of $G$ is the set of unipotent elements of $R(G)$.
+    If $R_u(G) = 1$, then $G$ is called \emph{reductive}.
+\end{Def}
+
+\begin{Def}
+    A subgroup $P$ of $G$ is called \emph{parabolic} if $\rquot GP$ is projective.
+    A \emph{Borel subgroup} of $G$ is a minimal parabolic subgroup.
+\end{Def}
+
+\begin{Prop}
+    A subgroup of $G$ is a Borel if and only if it is a maximal closed, connected solvable subgroup.
+    A subgroup of $G$ is parabolic if and only if it contains a Borel subgroup of $G$.
+\end{Prop}
+
+\begin{Def}
+    Let $P$ be a parabolic subgroup.
+    Then $\rquot{P}{R_u(P)}$ is called a \emph{Levi} of $G$.
+\end{Def}
+
+The normalizer of a parabolic $P$ is equal to $P$. 
+Thus the set $[P]$ of all conjugates to $P$ in $G$ is isomorphic to $\rquot GP$.
+Every Borel subgroups is conjugate
+
+\begin{Def}
+    Let $P$ be a parabolic subgroup of $G$.
+    Then the projective variety $\rquot GP$ is called the \emph{partial flag variety} corresponding to $P$.
+    If $P = B$ is a Borel, then $\mathcal{Fl} = \rquot GB$ is called the \emph{flag variety of $G$}.
+\end{Def}
+
+%\printbibliography
+\end{document}
