@@ -58,6 +58,13 @@ The last two definitions are independent of the embedding of $G$ into $\GL n$ (a
     If $R_u(G) = 1$, then $G$ is called \emph{reductive}.
 \end{Def}
 
+$R_u(G)$ is a closed connected normal subgroup of $G$.
+
+\begin{Ex}
+    The group $\GL n$ is reductive and $R(\GL n)$ consists of the scalar matrices.
+    The groups $\SL n$, $\SO n$ (for $n \ge 3$) and $\Sp{2m}$ are semisimple.
+\end{Ex}
+
 \begin{Def}
     A subgroup $P$ of $G$ is called \emph{parabolic} if $\rquot GP$ is projective.
     A \emph{Borel subgroup} of $G$ is a minimal parabolic subgroup.
@@ -81,6 +88,43 @@ Every Borel subgroups is conjugate
     Let $P$ be a parabolic subgroup of $G$.
     Then the projective variety $\rquot GP$ is called the \emph{partial flag variety} corresponding to $P$.
     If $P = B$ is a Borel, then $\mathcal{Fl} = \rquot GB$ is called the \emph{flag variety of $G$}.
+\end{Def}
+
+\begin{Def}
+    Let $T$ be a torus of $G$. 
+    Then the \emph{Weyl group of $T$ in $G$} is
+    \[
+        W(T) = \rquot{N_G(T)}{Z_G(T)}.
+    \]
+    where $N_G(T)$ is the normalizer and $Z_G(T)$ the centralizer of $T$ in $G$.
+    If $H$ is a maximal torus, then $W = W(H)$ is the \emph{Weyl group} of $G$.
+\end{Def}
+
+Any two maximal tori of $G$ are conjugate.
+Hence the Weyl group of $G$ is defined up to non-canonical isomorphism.
+Note that if $H$ is a maximal torus, then $Z_G(H) = H$.
+The Weyl group of $G$ is always finite.
+
+If $T$ is a torus, then $W(T)$ has a natural action on $T$ by conjugation.
+
+Each Borel subgroup $B$ contains a unique maximal torus $H$.
+Setting $N = R_u(B)$ one gets a decomposition
+\[
+    B = HN, \qquad H∩N = \{1\}.
+\]
+
+\begin{Thm}[Bruhat decomposition]
+    Let $B$ be a Borel subgroup of $G$ with corresponding maximal torus $H$ and Weyl group $W$.
+    Then
+    \[
+        G = \coprod_{w ∈ W} BwB.
+    \]
+\end{Thm}
+
+Note that the double coset $BwB$ does not depend on the choice of representative of $w$ in $N_G(H)$.
+
+\begin{Def}
+    The locally closed subvarieties $X_w = BwB$ are called \emph{Schubert cells} and the closures $\overline{X_w}$ are called \emph{Schubert varieties} of $G$.
 \end{Def}
 
 %\printbibliography
