@@ -1,0 +1,46 @@
+%type: notes
+%title: The commuting stack
+%tags: representation theory, elliptic curve, local systems, geometric langlands
+\documentclass[english, no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag,math-gl}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+
+\title{the commuting stack}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+Let $G$ be a reductive algebraic group and let $E$ be an elliptic curve.
+The moduli space of local $G$-systems on $E$ is called the \emph{commuting stack}:
+\[
+    \Loc_G(E) = \rquot{\{π₁(E) → G\}}G,
+\]
+where the quotient is taken via the adjoint action of $G$ on itself.
+Picking a basis for $π₁(E)$, one has
+\[
+    \Loc_G'(E) = \{π₁(E) → G\} = \{(a,b) ∈ G : [a,b] = 1 \},
+\]
+i.e.\ a pullback diagram
+\[
+    \begin{tikzpicture}
+        \matrix[commutative diagram] (m) {
+            \Loc_G'(E) & G² \\
+            1 & G \\
+        };
+        \path[commutative diagram arrows]
+            (m-1-1) edge (m-1-2) edge (m-2-1)
+            (m-1-2) edge node[right] {$[\,{,}\,]$} (m-2-2)
+            (m-2-1) edge (m-2-2);
+    \end{tikzpicture}
+\]
+We probably want to interpret this diagram as a diagram in derived schemes.
+
+
+%\printbibliography
+\end{document}
