@@ -1,0 +1,39 @@
+%type: notes
+%title: Spectral Eisenstein series functors
+%tags: representation theory, geometric Langlands, local systems
+\documentclass[english, no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag, math-gl}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+
+\title{spectral eisenstein series functors}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+The following is mainly taken from \cite[Section~12]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
+
+Let $C$ be a curve over a $ℂ$, $G$ a reductive group.
+We are interested in the dg category $\catIndCoh{\Loc_G}$ of ind-coherent sheaves on the derived moduli stack of local $G$-systems on $C$.
+
+Let $P$ be a parabolic subgroup of $G$ and $L$ the corresponding Levi.
+We write
+\[
+    p^P\colon \Loc_P → \Loc_G, \qquad q^P\colon \Loc_P → \Loc_L.
+\]
+The map $p^P$ is schematic and proper and the map $q^P$ is quasi-smooth \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
+
+\begin{Def}
+    The \emph{spectral Eisenstein functor} for $P$ is
+    \[
+        \Eis^P\colon (p^P)_*^\IndCoh ∘ (q^P)^!\colon \catIndCoh{\Loc_M} → \catIndCoh{\Loc_G}.
+    \]
+\end{Def}
+
+\printbibliography
+\end{document}
