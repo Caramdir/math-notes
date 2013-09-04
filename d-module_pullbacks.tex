@@ -1,0 +1,51 @@
+%type: notes
+%title: D-module pullbacks
+%tags: d-modules
+\documentclass[english, no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag, math-gl}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+
+\title{\texorpdfstring{$D$}{D}-module pullbacks}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+The following is taken from \url{http://mathoverflow.net/a/69333} by Sam Gunningham.
+
+\bigskip
+\noindent Just to clear up some notational confusion (there doesn't seem to be any completely standard notation):
+
+\paragraph{in bernstein's notes.}
+The \enquote{easy} pullback (i.e.~the one that coincides with the pullback of the underlying $\mathcal O$-module) is denoted $Lf^\Delta$.
+\begin{align*}
+    f^! & = Lf^\Delta [\dim X - \dim Y] & & \text{(right adjoint to $f_!$)} \\
+    f^\ast & = \mathbb D f^! \mathbb D & & \text{(left adjoint to $f_\ast$)}
+\end{align*}
+Note that $f^\ast$ and $f^!$ agree with the corresponding functors for constructable sheaves (*not* for the underlying $\mathcal O$-modules).
+
+\paragraph{in hotta, takeuchi, tanisaki.}
+The easy pullback is denoted $Lf^\ast$ to agree with the $\mathcal O$-module functor.
+Berstein's $f^!$ is now called $f^\dagger$.
+Bernstein's $f^\ast$ is now called $f^\star$
+
+\paragraph{in david ben-zvi's answer (and in many other places).}
+The easy pullback is $f^\dagger$, and the rest agrees with Berstein's notation.
+
+\bigskip
+\noindent 
+In my opinion, the most important notational feature to be preserved is that $(f^\ast , f_\ast)$ and $(f_! , f^!)$ form adjoint pairs.
+
+When $f$ is smooth, $f^\ast = \mathbb D f^! \mathbb D = f^! [2(\dim Y - \dim X)]$, and the easy inverse image functor is self dual (and preserves the t-structure).
+
+One way to think about these different pullbacks is that the easy inverse image preserves the structure sheaf $\mathcal O_Y$.
+This corresponds to the constant sheaf \emph{shifted in perverse degree} under the RH correspondence.
+On the other hand $f^\ast$ preserves the \enquote{constant sheaf} whereas $f^!$ preserves the dualizing sheaf (for a smooth complex variety, these correspond to the D-modules $\mathcal O[-n]$ and $\mathcal O[n]$).
+
+%\printbibliography
+\end{document}
