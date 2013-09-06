@@ -37,11 +37,15 @@ The map $p^P$ is schematic and proper and the map $q^P$ is quasi-smooth \cite[Le
 
 The functor $(p^P)_*^\IndCoh$ is defined in \cite[Proposition~3.1.1]{Gaitsgory:preprint:IndcoherentSheaves} and the functor $(q^P)^!$ exists by \cite[Theorem~5.2.2]{Gaitsgory:preprint:IndcoherentSheaves}.
 
-\begin{Prop}[{\cite[Corollary~12.2.3]{ArinkinGaitsgory:arXiv:v2:SingularSupport}}]
-    The functor $\Eis^P$ sends $\catCoh{\Loc_M}$ to $\catCoh{\Loc_G}$.
-\end{Prop}
-
 For ease of notation, I will sometimes drop the $P$ from the notation.
+
+\begin{Q}
+    Let $P$ and $Q$ be two parabolics with equivalents Levis.
+    Are the functors $\Eis^P$ and $\Eis^Q$ isomorphic?
+    (Compare Proposition~3.1.9 in Sam's thesis.)
+\end{Q}
+
+Following Sam's arguments and constructions, this leads to the following question.
 
 \begin{Q}
     Does the functor $\Eis$ have adjoints?
@@ -56,11 +60,35 @@ For ease of notation, I will sometimes drop the $P$ from the notation.
     \end{itemize}
 \end{Rem}
 
+\begin{Prop}[{\cite[Corollary~12.2.3]{ArinkinGaitsgory:arXiv:v2:SingularSupport}}]
+    The functor $\Eis^P$ sends $\catCoh{\Loc_M}$ to $\catCoh{\Loc_G}$.
+\end{Prop}
+
+\begin{Cor}
+    $\Eis^P$ has a (continuous) right adjoint.
+    We will denote it by $\CT^P$ (for \emph{spectral constant term functor}).
+\end{Cor}
+
+\begin{proof}
+    The functor $\Eis$ is continuous, so by the adjoint functor theorem \cite[Corollay~5.5.2.9]{Lurie:2009:HigherToposTheory} it has a right adjoint.
+    By \cite[Proposition~5.5.7.2]{Lurie:2009:HigherToposTheory}, the right adjoint is continuous.
+\end{proof}
+
 \begin{Q}
-    Let $P$ and $Q$ be two parabolics with equivalents Levis.
-    Are the functors $\Eis^P$ and $\Eis^Q$ isomorphic?
-    (Compare Proposition~3.1.9 in Sam's thesis.)
+    Is $\CT$ also a left adjoint?
 \end{Q}
+
+\begin{Q}
+    How does $\CT$ differ from $q_*^\IndCoh ∘ p^!$?
+\end{Q}
+
+This question might be reduced with the following steps:
+\begin{itemize}
+    \item How does $q_*^\IndCoh$ differ from the right adjoint of $q^!$ (which must exist for the same reasons as $\CT$)?
+    \item How does $q^!$ differ from $q^{\IndCoh,*}$ (the left adjoint to $q_*^\IndCoh$)?
+    \item Since $q^! = q^{\mathrm{QCoh},!}(\O_{\Loc_L}) \otimes q^{\IndCoh,*}$: what is $q^{\mathrm{QCoh},!}(\O_{\Loc_L})$?
+    \item Maybe making the proof of \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport} explicit leads to nicer properties of $q$? See also \cite[Proposition~9.4.5]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
+\end{itemize}
 
 \printbibliography
 \end{document}
