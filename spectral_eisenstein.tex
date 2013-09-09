@@ -31,7 +31,7 @@ We write
 The map $p^P$ is schematic and proper and the map $q^P$ is quasi-smooth \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
 
 \begin{Def}
-    The \emph{spectral Eisenstein functor} for $P$ is
+    The \emph{spectral Eisenstein series functor} for $P$ is
     \[
         \Eis^P\colon (p^P)_*^\IndCoh ∘ (q^P)^!\colon \catIndCoh{\Loc_M} → \catIndCoh{\Loc_G}.
     \]
@@ -42,12 +42,18 @@ The functor $(p^P)_*^\IndCoh$ is defined in \cite[Proposition~3.1.1]{Gaitsgory:p
 For ease of notation, I will sometimes drop the $P$ from the notation.
 
 \begin{Q}
-    Let $P$ and $Q$ be two parabolics with equivalents Levis.
-    Are the functors $\Eis^P$ and $\Eis^Q$ isomorphic?
-    (Compare Proposition~3.1.9 in Sam's thesis.)
+    We are interested in the following questions:
+    \begin{itemize}
+        \item 
+            Let $P$ and $Q$ be two parabolics with equivalents Levis.
+            Are the functors $\Eis^P$ and $\Eis^Q$ isomorphic?
+            (Compare Proposition~3.1.9 in Sam's thesis.)
+        \item 
+            Are the images of the $\Eis$ for non-equivalent Levis orthogonal?
+    \end{itemize}
 \end{Q}
 
-Following Sam's arguments and constructions, this leads to the following question.
+\section*{adjoints}
 
 \begin{Q}
     Does the functor $\Eis$ have adjoints?
@@ -100,6 +106,16 @@ Let $\sheaf K_P^\dual$ denote the dual of $(q^P)^{\mathrm{QCoh},!}(\O_{\Loc_L})$
         \sheaf F \mapsto q_*^\IndCoh(\sheaf K_P^\dual \otimes p^!(\sheaf F)).
     \]
 \end{Lem}
+
+\begin{Rem}
+    Assume there exists $\sheaf L ∈ \catIndCoh{\Loc_P}$ such that $\sheaf K = \sheaf L \otimes \sheaf L$ (such $\sheaf L$ does not need to exist in general; for example if $\sheaf K$ is in odd degree).
+    Then setting $\Eis(\sheaf F) = p_*^\IndCoh(\sheaf L^\dual \otimes q^!(\sheaf F))$ yields the much more symmetric $\CT(\sheaf G) = q_*^\IndCoh(\sheaf L^\dual \otimes p^!(\sheaf G))$.
+    It would also ensure that $\Eis ∘ {\mathbb D} = \mathbb D ∘ \Eis$, at least on $\cat{Coh}$ (see~\cite[Corollary~9.5.9]{Gaitsgory:preprint:IndcoherentSheaves}).
+
+    Of course, it would be even better if $\sheaf K = \sheaf L = \O_{\Loc_P}$.
+\end{Rem}
+
+\section*{the \enquote{steinberg functor}}
 
 For two parabolics $P$ and $Q$ with Levis $L$ and $M$, let
 \[ 
