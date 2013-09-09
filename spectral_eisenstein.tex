@@ -1,7 +1,7 @@
 %type: notes
 %title: Spectral Eisenstein series functors
 %tags: representation theory, geometric Langlands, local systems
-\documentclass[english, no-theorem-numbers]{short-notes}
+\documentclass[english]{short-notes}
 
 \usepackage{math-alg,math-ag, math-gl}
 
@@ -107,7 +107,8 @@ Let $\sheaf K_P^\dual$ denote the dual of $(q^P)^{\mathrm{QCoh},!}(\O_{\Loc_L})$
     \]
 \end{Lem}
 
-\begin{Rem}
+\begin{Rem}%
+    \label{rem:symmetric}%
     Assume there exists $\sheaf L ∈ \catIndCoh{\Loc_P}$ such that $\sheaf K = \sheaf L \otimes \sheaf L$ (such $\sheaf L$ does not need to exist in general; for example if $\sheaf K$ is in odd degree).
     Then setting $\Eis(\sheaf F) = p_*^\IndCoh(\sheaf L^\dual \otimes q^!(\sheaf F))$ yields the much more symmetric $\CT(\sheaf G) = q_*^\IndCoh(\sheaf L^\dual \otimes p^!(\sheaf G))$.
     It would also ensure that $\Eis ∘ {\mathbb D} = \mathbb D ∘ \Eis$, at least on $\cat{Coh}$ (see~\cite[Corollary~9.5.9]{Gaitsgory:preprint:IndcoherentSheaves}).
@@ -142,6 +143,14 @@ Let $α^P = q^P ∘ π^P$ and analogously $α^Q$.
     \end{align*}
     where the first equality is (proper) base change and the second one the compatibility of the pushforward with the action of $\cat{QCoh}$.
 \end{proof}
+
+\begin{Rem}
+    In the symmetric situation of Remark~\ref{rem:symmetric}, one gets
+    \[
+        \CT^Q ∘ \Eis^P ({\cdot}) = 
+        (α^Q)_*^\IndCoh \biggl( \bigl( (π^Q)^*(\sheaf L_Q^\dual) \otimes (π^P)^*(\sheaf L_P^\dual) \bigr) \otimes (α^P)^!({\cdot})\biggr)
+    \]
+\end{Rem}
 
 \begin{Q}
     Is
