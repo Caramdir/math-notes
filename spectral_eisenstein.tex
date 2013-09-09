@@ -14,6 +14,8 @@
 
 \begin{document}
 
+\newcommand\ST[2]{\operatorname{ST}(#1,#2)}
+
 \maketitle
 
 The following is mainly taken from \cite[Section~12]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
@@ -89,6 +91,60 @@ This question might be reduced with the following steps:
     \item Since $q^! = q^{\mathrm{QCoh},!}(\O_{\Loc_L}) \otimes q^{\IndCoh,*}$: what is $q^{\mathrm{QCoh},!}(\O_{\Loc_L})$?
     \item Maybe making the proof of \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport} explicit leads to nicer properties of $q$? See also \cite[Proposition~9.4.5]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
 \end{itemize}
+
+Let $\sheaf K_P^\dual$ denote the dual of $(q^P)^{\mathrm{QCoh},!}(\O_{\Loc_L})$ (in $\catQCoh P$).
+
+\begin{Lem}
+    The functor $\CT_P$ is equal to
+    \[
+        \sheaf F \mapsto q_*^\IndCoh(\sheaf K_P^\dual \otimes p^!(\sheaf F)).
+    \]
+\end{Lem}
+
+For two parabolics $P$ and $Q$ with Levis $L$ and $M$, let
+\[ 
+    \ST P Q =
+    \Loc_P ×_{\Loc G} \Loc Q
+\]
+and denote the two projection functors by $π^P$ and $π^Q$.
+Let $α^P = q^P ∘ π^P$ and analogously $α^Q$.
+
+\begin{Cor}
+    \[
+        \CT^Q ∘ \Eis^P ({\cdot}) = 
+        (α^Q)_*^\IndCoh \bigl( (π^Q)^*(\sheaf K_Q^\dual) \otimes (α^P)^!({\cdot})\bigr)\colon
+        \catIndCoh{\Loc_L} → \catIndCoh{\Loc_M}.
+    \]
+\end{Cor}
+
+\begin{proof}
+    \begin{align*}
+        \CT^Q ∘ \Eis^P (\sheaf F) &=
+        (q^Q)_*^\IndCoh\biggl( \sheaf K_Q^\dual \otimes \bigl( (p^Q)^! ∘ (p^P)_*^\IndCoh ∘ (q^P)^!(\sheaf F)\bigr)\biggr) \\ & =
+        (q^Q)_*^\IndCoh\biggl( \sheaf K_Q^\dual \otimes \bigl( (π^Q)_*^\IndCoh ∘ (π^P)^! ∘ (q^P)^!(\sheaf F)\bigr)\biggr) \\ & =
+        (α^Q)_*^\IndCoh \bigl( (π^Q)^*(\sheaf K_Q^\dual) \otimes (α^P)^!(\sheaf F)\bigr),
+    \end{align*}
+    where the first equality is (proper) base change and the second one the compatibility of the pushforward with the action of $\cat{QCoh}$.
+\end{proof}
+
+\begin{Q}
+    Is
+    \[
+        \sheaf K_Q^\dual =
+        \mathbb D_{\Loc_Q}^{\mathrm{naive}} (q^Q)^{\mathrm{QCoh},!}(\O_{\Loc_M}) =
+        (q^Q)^* (\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M}),
+    \]
+    and hence
+    \[
+        (π^Q)^*(\sheaf K_Q^\dual) =
+        (α^Q)^*(\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M})?
+    \]
+    Further, is $\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M} = \O_{\Loc_M}$?
+\end{Q}
+
+\begin{Q}
+    Does $\ST P Q$ have a natural (equidimensional) stratification?
+\end{Q}
 
 \printbibliography
 \end{document}
