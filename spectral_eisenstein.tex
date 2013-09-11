@@ -14,7 +14,8 @@
 
 \begin{document}
 
-\newcommand\ST[2]{\operatorname{ST}(#1,#2)}
+\newcommand\STs[2]{\operatorname{ST}(#2,#1)}
+\newcommand\STf[2]{\operatorname{ST}_{#2,#1}}
 
 \maketitle
 
@@ -119,19 +120,26 @@ Let $\sheaf K_P^\dual$ denote the dual of $q_P^{\mathrm{QCoh},!}(\O_{\Loc_L})$ (
 
 \section*{the \enquote{steinberg functor}}
 
-For two parabolics $P$ and $Q$ with Levis $L$ and $M$, let
-\[ 
-    \ST P Q =
-    \Loc_P ×_{\Loc G} \Loc Q
-\]
-and denote the two projection functors by $π_P$ and $π_Q$.
-Let $α_P = q_P ∘ π_P$ and analogously $α_Q$.
+In this section let $P$ and $Q$ be two parabolic subgroups of $G$ with Levis $L$ and $M$ respectively.
+
+\begin{Def}
+    The \emph{spectral Steinberg functor} is
+    \[
+        \STf P Q = \CT_Q ∘ \Eis_P \colon \catIndCoh{\Loc_L} → \catIndCoh{\Loc_M}.
+    \]
+    The \emph{spectral Steinberg stack} is
+    \[ 
+        \STs P Q =
+        \Loc_P ×_{\Loc G} \Loc_Q.
+    \]
+    The two projections from $\STs P Q$ will be denoted by $π_P$ and $π_Q$.
+    Further, let $α_P = q_P ∘ π_P$ and analogously $α_Q$.
+\end{Def}
 
 \begin{Cor}
     \[
-        \CT_Q ∘ \Eis_P ({\cdot}) = 
-        (α_Q)_*^\IndCoh \bigl( π_Q^*(\sheaf K_Q^\dual) \otimes α_P^!({\cdot})\bigr)\colon
-        \catIndCoh{\Loc_L} → \catIndCoh{\Loc_M}.
+        \STf P Q ({-}) = 
+        (α_Q)_*^\IndCoh \bigl( π_Q^*(\sheaf K_Q^\dual) \otimes α_P^!({-})\bigr).
     \]
 \end{Cor}
 
@@ -169,7 +177,7 @@ Let $α_P = q_P ∘ π_P$ and analogously $α_Q$.
 \end{Q}
 
 \begin{Q}
-    Does $\ST P Q$ have a natural (equidimensional) stratification?
+    Does $\STs P Q$ have a natural (equidimensional) stratification?
 \end{Q}
 
 \printbibliography
