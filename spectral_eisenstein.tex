@@ -26,27 +26,28 @@ We are interested in the dg category $\catIndCoh{\Loc_G}$ of ind-coherent sheave
 Let $P$ be a parabolic subgroup of $G$ and $L$ the corresponding Levi.
 We write
 \[
-    p^P\colon \Loc_P → \Loc_G, \qquad q^P\colon \Loc_P → \Loc_L.
+    p_P\colon \Loc_P → \Loc_G, \qquad q_P\colon \Loc_P → \Loc_L.
 \]
-The map $p^P$ is schematic and proper and the map $q^P$ is quasi-smooth \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
+The map $p_P$ is schematic and proper and the map $q_P$ is quasi-smooth \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
 
 \begin{Def}
     The \emph{spectral Eisenstein series functor} for $P$ is
     \[
-        \Eis^P\colon (p^P)_*^\IndCoh ∘ (q^P)^!\colon \catIndCoh{\Loc_M} → \catIndCoh{\Loc_G}.
+        \Eis_P^G = (p_P)_*^\IndCoh ∘ q_P^!\colon \catIndCoh{\Loc_M} → \catIndCoh{\Loc_G}.
     \]
 \end{Def}
 
-The functor $(p^P)_*^\IndCoh$ is defined in \cite[Proposition~3.1.1]{Gaitsgory:preprint:IndcoherentSheaves} and the functor $(q^P)^!$ exists by \cite[Theorem~5.2.2]{Gaitsgory:preprint:IndcoherentSheaves}.
+The functor $(p_P)_*^\IndCoh$ is defined in \cite[Proposition~3.1.1]{Gaitsgory:preprint:IndcoherentSheaves} and the functor $q_P^!$ exists by \cite[Theorem~5.2.2]{Gaitsgory:preprint:IndcoherentSheaves}.
 
-For ease of notation, I will sometimes drop the $P$ from the notation.
+When the group $G$ is clear from context, we set $\Eis_P = \Eis_P^G$.
+If there is only on parabolic $P$, then $p = p_P$, etc.
 
 \begin{Q}
     We are interested in the following questions:
     \begin{itemize}
         \item 
             Let $P$ and $Q$ be two parabolics with equivalents Levis.
-            Are the functors $\Eis^P$ and $\Eis^Q$ isomorphic?
+            Are the functors $\Eis_P$ and $\Eis_Q$ isomorphic?
             (Compare Proposition~3.1.9 in Sam's thesis.)
         \item 
             Are the images of the $\Eis$ for non-equivalent Levis orthogonal?
@@ -69,12 +70,12 @@ For ease of notation, I will sometimes drop the $P$ from the notation.
 \end{Rem}
 
 \begin{Prop}[{\cite[Corollary~12.2.3]{ArinkinGaitsgory:arXiv:v2:SingularSupport}}]
-    The functor $\Eis^P$ sends $\catCoh{\Loc_M}$ to $\catCoh{\Loc_G}$.
+    The functor $\Eis_P$ sends $\catCoh{\Loc_M}$ to $\catCoh{\Loc_G}$.
 \end{Prop}
 
 \begin{Cor}
-    $\Eis^P$ has a (continuous) right adjoint.
-    We will denote it by $\CT^P$ (for \emph{spectral constant term functor}).
+    $\Eis_P^G$ has a (continuous) right adjoint.
+    We will denote it by $\CT_P^G = \CT_P$ (for \emph{spectral constant term functor}).
 \end{Cor}
 
 \begin{proof}
@@ -98,7 +99,7 @@ This question might be reduced with the following steps:
     \item Maybe making the proof of \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport} explicit leads to nicer properties of $q$? See also \cite[Proposition~9.4.5]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
 \end{itemize}
 
-Let $\sheaf K_P^\dual$ denote the dual of $(q^P)^{\mathrm{QCoh},!}(\O_{\Loc_L})$ (in $\catQCoh P$).
+Let $\sheaf K_P^\dual$ denote the dual of $q_P^{\mathrm{QCoh},!}(\O_{\Loc_L})$ (in $\catQCoh{\Loc_P}$).
 
 \begin{Lem}
     The functor $\CT_P$ is equal to
@@ -123,23 +124,23 @@ For two parabolics $P$ and $Q$ with Levis $L$ and $M$, let
     \ST P Q =
     \Loc_P ×_{\Loc G} \Loc Q
 \]
-and denote the two projection functors by $π^P$ and $π^Q$.
-Let $α^P = q^P ∘ π^P$ and analogously $α^Q$.
+and denote the two projection functors by $π_P$ and $π_Q$.
+Let $α_P = q_P ∘ π_P$ and analogously $α_Q$.
 
 \begin{Cor}
     \[
-        \CT^Q ∘ \Eis^P ({\cdot}) = 
-        (α^Q)_*^\IndCoh \bigl( (π^Q)^*(\sheaf K_Q^\dual) \otimes (α^P)^!({\cdot})\bigr)\colon
+        \CT_Q ∘ \Eis_P ({\cdot}) = 
+        (α_Q)_*^\IndCoh \bigl( π_Q^*(\sheaf K_Q^\dual) \otimes α_P^!({\cdot})\bigr)\colon
         \catIndCoh{\Loc_L} → \catIndCoh{\Loc_M}.
     \]
 \end{Cor}
 
 \begin{proof}
     \begin{align*}
-        \CT^Q ∘ \Eis^P (\sheaf F) &=
-        (q^Q)_*^\IndCoh\biggl( \sheaf K_Q^\dual \otimes \bigl( (p^Q)^! ∘ (p^P)_*^\IndCoh ∘ (q^P)^!(\sheaf F)\bigr)\biggr) \\ & =
-        (q^Q)_*^\IndCoh\biggl( \sheaf K_Q^\dual \otimes \bigl( (π^Q)_*^\IndCoh ∘ (π^P)^! ∘ (q^P)^!(\sheaf F)\bigr)\biggr) \\ & =
-        (α^Q)_*^\IndCoh \bigl( (π^Q)^*(\sheaf K_Q^\dual) \otimes (α^P)^!(\sheaf F)\bigr),
+        \CT_Q ∘ \Eis_P (\sheaf F) &=
+        (q_Q)_*^\IndCoh\biggl( \sheaf K_Q^\dual \otimes \bigl( p_Q^! ∘ (p_P)_*^\IndCoh ∘ q_P^!(\sheaf F)\bigr)\biggr) \\ & =
+        (q_Q)_*^\IndCoh\biggl( \sheaf K_Q^\dual \otimes \bigl( (π_Q)_*^\IndCoh ∘ π_P^! ∘ q_P^!(\sheaf F)\bigr)\biggr) \\ & =
+        (α_Q)_*^\IndCoh \bigl( π_Q^*(\sheaf K_Q^\dual) \otimes α_P^!(\sheaf F)\bigr),
     \end{align*}
     where the first equality is (proper) base change and the second one the compatibility of the pushforward with the action of $\cat{QCoh}$.
 \end{proof}
@@ -147,8 +148,8 @@ Let $α^P = q^P ∘ π^P$ and analogously $α^Q$.
 \begin{Rem}
     In the symmetric situation of Remark~\ref{rem:symmetric}, one gets
     \[
-        \CT^Q ∘ \Eis^P ({\cdot}) = 
-        (α^Q)_*^\IndCoh \biggl( \bigl( (π^Q)^*(\sheaf L_Q^\dual) \otimes (π^P)^*(\sheaf L_P^\dual) \bigr) \otimes (α^P)^!({\cdot})\biggr)
+        \CT_Q ∘ \Eis_P ({\cdot}) = 
+        (α_Q)_*^\IndCoh \biggl( \bigl( π_Q^*(\sheaf L_Q^\dual) \otimes π_P^*(\sheaf L_P^\dual) \bigr) \otimes α_P^!({\cdot})\biggr)
     \]
 \end{Rem}
 
@@ -156,13 +157,13 @@ Let $α^P = q^P ∘ π^P$ and analogously $α^Q$.
     Is
     \[
         \sheaf K_Q^\dual =
-        \mathbb D_{\Loc_Q}^{\mathrm{naive}} (q^Q)^{\mathrm{QCoh},!}(\O_{\Loc_M}) =
-        (q^Q)^* (\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M}),
+        \mathbb D_{\Loc_Q}^{\mathrm{naive}} q_Q^{\mathrm{QCoh},!}(\O_{\Loc_M}) =
+        q_Q^* (\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M}),
     \]
     and hence
     \[
-        (π^Q)^*(\sheaf K_Q^\dual) =
-        (α^Q)^*(\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M})?
+        π_Q^*(\sheaf K_Q^\dual) =
+        α_Q^*(\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M})?
     \]
     Further, is $\mathbb D_{\Loc_M}^{\mathrm{naive}}\O_{\Loc_M} = \O_{\Loc_M}$?
 \end{Q}
