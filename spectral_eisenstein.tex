@@ -195,5 +195,60 @@ In this section let $P$ and $Q$ be two parabolic subgroups of $G$ with Levis $L$
     Does $\STs P Q$ have a natural (equidimensional) stratification?
 \end{Q}
 
+\subsection*{a \texorpdfstring{$G$}{G}-equivariant formulation}
+
+Let $[P] \cong G/P$ denote the partial flag variety corresponding to the parabolic $P$, i.e.~the set of all conjugates of $P$.
+
+We consider the \enquote{Betti version} of the moduli of local systems.
+Let $\Loc_G'$ be the non-stacky moduli.
+If $X$ is an elliptic curve this is the (derived) fiber product $\{1\} ×_G G²$ (with $[{,}]\colon G² → G$).
+By definition, $\Loc_G = \rquot{\Loc_G'}G$.
+
+\begin{Def}
+    Let $\Loc_{[P]}'$ be the dg scheme over $[P]$ with fibers $\Loc_{P'}'$ over $P' ∈ [P]$.
+\end{Def}
+
+\begin{Q}
+    How to define/construct this in a formally correct way?
+\end{Q}
+
+\begin{Claim}
+    There is a canonical isomorphism of derived stacks $\Loc_P \cong \rquot{\smash{\Loc_{[P]}'}}G$.
+\end{Claim}
+
+We set 
+\[
+    \Loc_{[P∩Q]}' = \Loc_{[P]}' ×_{\Loc_G'} \Loc_{[Q]}'.
+\]
+Informally, this is the dg scheme over $[P] × [Q]$ with fibers $\Loc_{P'∩Q'}$ over $(P',Q') ∈ [P]×[Q]$.
+
+\begin{Claim}
+    There is a canonical isomorphism of derived stacks $\STs P Q \cong \rquot{\smash{\Loc_{[P∩Q]}'}}G$.
+\end{Claim}
+
+Note that the $G$-orbits on $[P]×[Q]$ are indexed by ${}_QW_P = \dquot{W_Q}{W}{W_P}$.
+Thus orbits on $[P]×[Q]$ induce a stratification of $\Loc_{[P∩Q]}'$ indexed by $_QW_P$, and hence one of $\STs P Q$.
+The strata are denoted $\STs P Q _w$
+
+\begin{Conjecture}
+    The strata are equidimensional.
+\end{Conjecture}
+
+\begin{Q}
+    Can the stratification of $\STs P Q$ be obtained without the detour through $\Loc'$?
+    How to obtain a stratification for the \enquote{de Rham moduli stack}?
+\end{Q}
+
+Next we should define functors ${\STf P Q} _w\colon \catIndCoh{\Loc_L} → \catIndCoh{\Loc_M}$ given by restriction of $α$ and $β$ to $\STs P Q _w$.
+This is an obvious definition for $\STf P Q ^*$, but in the ${}^!$-version we need to tensor with a line bundle too.
+
+\begin{Q}
+    Do the functors ${\STf P Q}_w$ respect nilpotent singular support?    
+\end{Q}
+
+\begin{Q}
+    Is $\STf P Q = \bigoplus_w {\STf P Q}_w$?
+\end{Q}
+
 \printbibliography
 \end{document}
