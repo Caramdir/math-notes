@@ -14,6 +14,7 @@
 
 \begin{document}
 
+\newcommand\sym{\mathrm{sym}}
 \newcommand\STs[2]{\operatorname{ST}(#2,#1)}
 \newcommand\STf[2]{\operatorname{ST}_{#2,#1}}
 
@@ -118,6 +119,19 @@ Let $\sheaf K_P^\dual$ denote the dual of $q_P^{\mathrm{QCoh},!}(\O_{\Loc_L})$ (
     Of course, it would be even better if $\sheaf K = \sheaf L = \O_{\Loc_P}$.
 \end{Rem}
 
+\begin{Notation}%
+    There are several different ways to define the Eisenstein series functor (and consequently the constant term functor).
+    We will use the following notation:
+    \begin{itemize}
+        \item $\Eis = \Eis^! = p_*^\IndCoh ∘ q^!$ with $\CT = \CT^! = q_*^\IndCoh(\sheaf K_P^\dual \otimes p^!({-}))$.
+            This variant is used in \cite{ArinkinGaitsgory:arXiv:SingularSupport}.
+        \item $\Eis^* = p_*^\IndCoh ∘ q^*$ with $\CT^* = q_*^\IndCoh ∘ p^!$.
+            This variant is used in \cite{Gaitsgory:preprint:OutlineOfGLCForGL2} and denoted simply $\Eis_{\mathrm{spec}}$ there.
+        \item $\Eis^\sym$ and $\CT^\sym$ for the versions defined in Remark~\ref{rem:symmetric} (if existing).
+    \end{itemize}
+    Analogous notation is applied for functors derived from these.
+\end{Notation}
+
 \section*{the \enquote{steinberg functor}}
 
 In this section let $P$ and $Q$ be two parabolic subgroups of $G$ with Levis $L$ and $M$ respectively.
@@ -156,7 +170,8 @@ In this section let $P$ and $Q$ be two parabolic subgroups of $G$ with Levis $L$
 \begin{Rem}
     In the symmetric situation of Remark~\ref{rem:symmetric}, one gets
     \[
-        \CT_Q ∘ \Eis_P ({\cdot}) = 
+        \STf P Q ^\sym =
+        \CT^\sym_Q ∘ \Eis^\sym_P ({\cdot}) = 
         (α_Q)_*^\IndCoh \biggl( \bigl( π_Q^*(\sheaf L_Q^\dual) \otimes π_P^*(\sheaf L_P^\dual) \bigr) \otimes α_P^!({\cdot})\biggr)
     \]
 \end{Rem}
