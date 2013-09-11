@@ -32,6 +32,14 @@ We write
 \]
 The map $p_P$ is schematic and proper and the map $q_P$ is quasi-smooth \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
 
+\begin{Q}
+    Does $q_P$ have more properties than just being quasi-smooth?
+    What is its relative dualizing sheaf?
+    
+    Maybe making the proof of \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport} explicit leads to nicer properties of $q$?
+    See also \cite[Proposition~9.4.5]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
+\end{Q}
+
 \begin{Def}
     The \emph{spectral Eisenstein series functor} for $P$ is
     \[
@@ -67,7 +75,6 @@ If there is only on parabolic $P$, then $p = p_P$, etc.
         \item $p_*^\IndCoh$ has the right adjoint $p^!$ \cite[3.3.7]{Gaitsgory:preprint:IndcoherentSheaves}.
         \item There is an adjunction $(q^{\IndCoh,*},q_*^\IndCoh)$ \cite[Corollary~1.2.5]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
         \item For general maps, $q^!$ does not need to be adjoint to $q_*^\IndCoh$.
-        \item Possibly \cite[Proposition~5.4.2]{Gaitsgory:preprint:IndcoherentSheaves} (compatibility with adjunction for proper maps) can help.
     \end{itemize}
 \end{Rem}
 
@@ -88,18 +95,6 @@ If there is only on parabolic $P$, then $p = p_P$, etc.
 \begin{Q}
     Is $\CT$ also a left adjoint?
 \end{Q}
-
-\begin{Q}
-    How does $\CT$ differ from $q_*^\IndCoh ∘ p^!$?
-\end{Q}
-
-This question might be reduced with the following steps:
-\begin{itemize}
-    \item How does $q_*^\IndCoh$ differ from the right adjoint of $q^!$ (which must exist for the same reasons as $\CT$)?
-    \item How does $q^!$ differ from $q^{\IndCoh,*}$ (the left adjoint to $q_*^\IndCoh$)?
-    \item Since $q^! = q^{\mathrm{QCoh},!}(\O_{\Loc_L}) \otimes q^{\IndCoh,*}$: what is $q^{\mathrm{QCoh},!}(\O_{\Loc_L})$?
-    \item Maybe making the proof of \cite[Lemma~12.2.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport} explicit leads to nicer properties of $q$? See also \cite[Proposition~9.4.5]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
-\end{itemize}
 
 Let $\sheaf K_P^\dual$ denote the dual of $q_P^{\mathrm{QCoh},!}(\O_{\Loc_L})$ (in $\catQCoh{\Loc_P}$).
 
