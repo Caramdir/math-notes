@@ -47,7 +47,7 @@ The map $p_P$ is schematic and proper and the map $q_P$ is quasi-smooth \cite[Le
     \]
 \end{Def}
 
-The functor $(p_P)_*^\IndCoh$ is defined in \cite[Proposition~3.1.1]{Gaitsgory:preprint:IndcoherentSheaves} and the functor $q_P^!$ exists by \cite[Theorem~5.2.2]{Gaitsgory:preprint:IndcoherentSheaves}.
+The functor $(p_P)_*^\IndCoh$ is defined in~\cite[Proposition~3.1.1]{Gaitsgory:preprint:IndcoherentSheaves} and the functor $q_P^!$ exists by \cite[Theorem~5.2.2]{Gaitsgory:preprint:IndcoherentSheaves}.
 
 When the group $G$ is clear from context, we set $\Eis_P = \Eis_P^G$.
 If there is only on parabolic $P$, then $p = p_P$, etc.
@@ -165,9 +165,15 @@ In this section let $P$ and $Q$ be two parabolic subgroups of $G$ with Levis $L$
 \begin{Rem}
     In the symmetric situation of Remark~\ref{rem:symmetric}, one gets
     \[
-        \STf P Q ^\sym =
-        \CT^\sym_Q ∘ \Eis^\sym_P ({\cdot}) = 
-        (α_Q)_*^\IndCoh \biggl( \bigl( π_Q^*(\sheaf L_Q^\dual) \otimes π_P^*(\sheaf L_P^\dual) \bigr) \otimes α_P^!({\cdot})\biggr)
+        \STf P Q ^\sym({-}) =
+        \CT^\sym_Q ∘ \Eis^\sym_P ({-}) = 
+        (α_Q)_*^\IndCoh \biggl( \bigl( π_Q^*(\sheaf L_Q^\dual) \otimes π_P^*(\sheaf L_P^\dual) \bigr) \otimes α_P^!({-})\biggr),
+    \]
+    while
+    \[
+        \STf P Q ^*({-}) =
+        \CT^*_Q ∘ \Eis^*_P ({-}) = 
+        (α_Q)_*^\IndCoh \bigl( π_P^*(\sheaf K_P) \otimes α_P^!({-})\bigr).
     \]
 \end{Rem}
 
@@ -235,7 +241,6 @@ The strata are denoted $\STs P Q _w$
 \end{Q}
 
 Next we should define functors ${\STf P Q} _w\colon \catIndCoh{\Loc_L} → \catIndCoh{\Loc_M}$ given by restriction of $α$ and $β$ to $\STs P Q _w$.
-This is an obvious definition for $\STf P Q ^*$, but in the ${}^!$-version we need to tensor with a line bundle too.
 
 \begin{Q}
     Do the functors ${\STf P Q}_w$ respect nilpotent singular support?    
