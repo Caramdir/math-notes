@@ -276,5 +276,45 @@ This in turn induces a filtration on $\STf PQ$.
     What can we say about this filtration?
 \end{Q}
 
+\section{outline}
+\subsection{the problem}
+
+By \cite[Corollary~12.3.10]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, the essential images of of $\catQCoh{\Loc_L} ⊂ \cat{IndCoh}_{\mathrm{Nilp}}(\Loc_L)$ under the functor $\Eis_P^G$ for all parabolic subgroups $P$ of $G$ (including $P=G$) generate $\cat{IndCoh}_{\mathrm{Nilp}}(\Loc_G)$.
+
+The goal is to make this statement more precise:
+\begin{itemize}
+    \item Does it suffice to look at the images of the \enquote{cuspidal} part $\catQCoh{\Loc_L^{\mathrm{irred}}}$?
+    \item For two equivalent Levis, are the images the same?
+    \item Are the images (of the cuspidal parts) orthogonal?
+    \item Can the images (of the cuspidal parts) be described as modules of a monad on $\catQCoh{\Loc_L}$?
+\end{itemize}
+
+A further question: How important is the nilpotent singular support condition for this decomposition?
+
+\subsection{the functors}
+
+To show the orthogonality of the images, we have to show that $\Hom(\Eis_L \sheaf F,\, \Eis_M \sheaf G) \ne 0$ for cuspidal $\sheaf F$, $\sheaf G$ only if $M$ and $N$ are equivalent Levis.
+To do so we show that $\CT_M ∘ \Eis_L = 0$ if $M$ and $N$ are not equivalent.
+Here $\CT$ is a two-sided adjoint to $\Eis$.
+
+This raises the question whether a two-sided adjoint even exists.
+By general abstract nonsense, $\Eis$ has a right adjoint, which is easy to describe.
+The question of a left adjoint (which does not necessarily need to equal the right adjoint for our purposes) is harder.
+
+In any case, we need to study the functor $\STf P Q = \CT_Q ∘ \Eis_P$.
+
+\subsection{a filtration of the steinberg functor}
+
+The functor $\STf P Q $ can be described via pull-push over the derived stack $\STs P Q$.
+The latter comes with a map to $_PW_Q$ which induces a filtration on $\STf P Q$.
+The corresponding subquotient functors are ${\STf PQ}_w$ and are given by pull-push over the inverse image of $w$ via $\STs PQ → {}_PW_Q$.
+
+\subsection{a description of the subquotient functors}
+
+We describe ${\STf PQ}_w$ as $\Eis ∘ \CT$ over a common Levi of $^wL$ and $M$.
+If $L$ and $M$ are not equivalent (and hence the common Levi proper) this functor has to vanish on \emph{cuspidal} sheaves by definition.
+
+\subsection{describing the images}
+
 \printbibliography
 \end{document}
