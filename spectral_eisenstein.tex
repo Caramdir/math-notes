@@ -23,6 +23,7 @@
 \newcommand\irred{\mathrm{irred}}
 \newcommand\red{\mathrm{red}}
 \newcommand\globNilp{\mathcal{N}}
+\newcommand\twist[1]{\operatorname{T}_{#1}}
 
 \maketitle
 
@@ -287,7 +288,8 @@ This in turn induces a filtration on $\STf PQ$.
 % try to get some more uniform notation
 \renewcommand\Eis[2][]{\operatorname{Eis}_{#2}^{#1}}   % \Eis_P^G
 \renewcommand\CT[2][]{\operatorname{CT}^{#2}_{#1}}     % \CT_G^P
-\renewcommand\STf[3][]{\operatorname{ST}_{#2\IfNoValueF{#1}{,#1}}^{#3}}
+\RenewDocumentCommand\STf{omm}{\operatorname{ST}_{#2\IfNoValueF{#1}{,#1}}^{#3}}
+\renewcommand\STs[3][]{\operatorname{ST}(#3,#2)_{#1}}
 \newcommand\relW[2]{W_{#1}^{#2}}
 
 \subsection{the problem}
@@ -314,7 +316,19 @@ This raises the question whether a two-sided adjoint even exists.
 By general abstract nonsense, $\Eis P$ has a right adjoint, which is easy to describe.
 The question of a left adjoint (which does not necessarily need to equal the right adjoint for our purposes) is harder.
 
-In any case, we need to study the functor $\STf P Q = \CT[G]Q ∘ \Eis[G]P$.
+In any case, we need to study the \emph{Steinberg functor} $\STf P Q = \CT[G]Q ∘ \Eis[G]P$.
+
+\subsection{Adjoints}
+
+\begin{Claim}
+    \label{claim:CT-formula}
+    The right adjoint to $\Eis[G]P$ is given by
+    \[
+        \CT[G]P\colon \catIndCoh{\Loc_G} → \catIndCoh{\Loc_L}\colon \sheaf F \mapsto ω_{\Loc_M} \otimes q_*^\IndCoh p^!(\sheaf F).
+    \]
+\end{Claim}
+
+The endofunctor $ω_{\Loc_M} \otimes {-}$ of $\catIndCoh{\Loc_M}$ will be denoted $\twist Q$.
 
 \subsubsection{Cuspidal sheaves}
 
@@ -343,10 +357,34 @@ By \cite[(12.3) and Proposition~12.3.3]{ArinkinGaitsgory:arXiv:v2:SingularSuppor
 \subsection{a filtration of the steinberg functor}
 
 The functor $\STf P Q $ can be described via pull-push over the derived stack $\STs P Q$.
-The latter comes with a map to $\relW PQ$ which induces a filtration on $\STf P Q$.
-The corresponding subquotient functors are $\STf[w]PQ$ and are given by pull-push over the inverse image of $w$ via $\STs PQ → \relW PQ$.
+Concretely we have (assuming Claim~\ref{claim:CT-formula})
+\[
+    \STf PQ = \twist Q ∘ (α_Q)_*^\IndCoh ∘ α_P^! \sheaf F.
+\]
+By definition we have a map $π\colon \STs PQ → \relW PQ$ which induces a filtration on $\STf PQ$.
+For $w ∈ \relW PQ$ let $\STs[w]PQ = π^{-1}(w)$.
+Note that this is a locally closed substack.
+Let $j_w\colon \STs[w]PQ \hookrightarrow \STs PQ$ denote the inclusion and let $α_{P,w} = α_P ∘ j_w$ (resp.~$α_{Q,w} = α_Q ∘ j_w$) be the restriction of $α_P$ (resp.~$α_Q$).
+Define
+\[
+    \STf[w] PQ =
+    \twist Q ∘ {(α_{Q,w})}_*^\IndCoh ∘ α_{P,w}^! =
+    \twist Q ∘ {(α_Q)}_*^\IndCoh ∘ {(j_w)}_*^\IndCoh ∘ j_w^! ∘ α_P^! \sheaf F.
+\]
+
+\begin{Claim}
+    $\STf PQ(\sheaf F)$ is an iterated extension of the sheaves $\STf[w] PQ(\sheaf F)$.
+\end{Claim}
+
+Thus we need to describe the functors $\STf[w]PQ$.
 
 \subsection{a description of the subquotient functors}
+
+\begin{Claim}
+    \[
+        \STs[w]PQ = \Loc_{^wP∩Q}.
+    \]
+\end{Claim}
 
 We describe $\STf[w]PQ$ as $\Eis[M]{R} ∘ \CT[^wL]{R}$ over a common Levi of $^wL$ and $M$.
 If $L$ and $M$ are not equivalent (and hence the common Levi proper) this functor has to vanish on \emph{cuspidal} sheaves by definition.
