@@ -372,7 +372,7 @@ Define
     \twist Q ∘ {(α_Q)}_*^\IndCoh ∘ {(j_w)}_*^\IndCoh ∘ j_w^! ∘ α_P^! \sheaf F.
 \]
 
-\begin{Claim}
+\begin{Claim}\label{claim:ST_as_iterated_extension}
     $\STf PQ(\sheaf F)$ is an iterated extension of the sheaves $\STf[w] PQ(\sheaf F)$.
 \end{Claim}
 
@@ -388,6 +388,23 @@ Thus we need to describe the functors $\STf[w]PQ$.
 
 We describe $\STf[w]PQ$ as $\Eis[M]{R} ∘ \CT[^wL]{R}$ over a common Levi of $^wL$ and $M$.
 If $L$ and $M$ are not equivalent (and hence the common Levi proper) this functor has to vanish on \emph{cuspidal} sheaves by definition.
+More precisely, we need to show the following claim.
+
+\begin{Claim}
+    If $\Eis[M]{P_M} ∘ \CT[L]{Q_L} \sheaf F = 0$, then $\STf[w] PQ \sheaf F = 0$ (where $w$ corresponds to the orbit of $(P,Q)$).
+\end{Claim}
+
+\begin{Cor}
+    If $^wL$ is not a Levi of $M$, then $\STf[w] PQ = 0$ on cuspidal sheaves.
+\end{Cor}
+
+\begin{Cor}
+    If $L$ is not conjugate to a Levi of $M$, then $\STf PQ = 0$ on cuspidal sheaves.
+\end{Cor}
+
+\begin{proof}
+    In this case all $\STf[w] PQ$ vanish and hence $\STf PQ = 0$ by Claim~\ref{claim:ST_as_iterated_extension}.
+\end{proof}
 
 \subsection{describing the images}
 
