@@ -286,15 +286,17 @@ This in turn induces a filtration on $\STf PQ$.
 \section{outline}
 
 % try to get some more uniform notation
-\renewcommand\Eis[2][]{\operatorname{Eis}_{#2}^{#1}}   % \Eis_P^G
-\renewcommand\CT[2][]{\operatorname{CT}^{#2}_{#1}}     % \CT_G^P
+\RenewDocumentCommand\Eis{omo}{\operatorname{Eis}_{#2}^{\IfValueTF{#3}{#3\IfValueT{#1}{,#1}}{\IfValueT{#1}{#1}}}}
+\RenewDocumentCommand\CT{omo}{\operatorname{CT}^{#2\IfNoValueF{#1}{,#1}}_{\IfNoValueF{#3}{#3}}}
 \RenewDocumentCommand\STf{omm}{\operatorname{ST}_{#2\IfNoValueF{#1}{,#1}}^{#3}}
 \renewcommand\STs[3][]{\operatorname{ST}(#3,#2)_{#1}}
+\newcommand\STm{\operatorname{ST}}
 \newcommand\relW[2]{W_{#1}^{#2}}
+\newcommand\DSerre[1][]{\mathbb{D}^{\mathrm{Serre}}_{#1}}
 
 \subsection{the problem}
 
-By \cite[Corollary~12.3.10]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, the essential images of of $\catQCoh{\Loc_L} ⊂ \cat{IndCoh}_{\mathrm{Nilp}}(\Loc_L)$ under the functor $\Eis[G]P$ for all parabolic subgroups $P$ of $G$ (including $P=G$) generate $\cat{IndCoh}_{\mathrm{Nilp}}(\Loc_G)$.
+By \cite[Corollary~12.3.10]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, the essential images of of $\catQCoh{\Loc_L} ⊂ \cat{IndCoh}_{\mathrm{Nilp}}(\Loc_L)$ under the functor $\Eis P[G]$ for all parabolic subgroups $P$ of $G$ (including $P=G$) generate $\cat{IndCoh}_{\mathrm{Nilp}}(\Loc_G)$.
 
 The goal is to make this statement more precise:
 \begin{itemize}
@@ -316,24 +318,48 @@ This raises the question whether a two-sided adjoint even exists.
 By general abstract nonsense, $\Eis P$ has a right adjoint, which is easy to describe.
 The question of a left adjoint (which does not necessarily need to equal the right adjoint for our purposes) is harder.
 
-In any case, we need to study the \emph{Steinberg functor} $\STf P Q = \CT[G]Q ∘ \Eis[G]P$.
+In any case, we need to study the \emph{Steinberg functor} $\STf P Q = \CT Q[G] ∘ \Eis P[G]$.
 
 \subsubsection{Adjoints}
 
 \begin{Claim}
     \label{claim:CT-formula}
-    The right adjoint to $\Eis[G]P$ is given by
+    The right adjoint to $\Eis P[G]$ is given by
     \[
-        \CT[G]P\colon \catIndCoh{\Loc_G} → \catIndCoh{\Loc_L}\colon \sheaf F \mapsto ω_{\Loc_M} \otimes q_*^\IndCoh p^!(\sheaf F).
+        \CT P[G]\colon \catIndCoh{\Loc_G} → \catIndCoh{\Loc_L}\colon \sheaf F \mapsto ω_{\Loc_L} \otimes q_*^\IndCoh p^!(\sheaf F).
     \]
 \end{Claim}
 
-The endofunctor $ω_{\Loc_M} \otimes {-}$ of $\catIndCoh{\Loc_M}$ will be denoted $\twist Q$.
+The endofunctor $ω_{\Loc_L} \otimes {-}$ of $\catIndCoh{\Loc_L}$ will be denoted $\twist P$.
+
+\begin{Lem}
+    There is a canonical isomorphism $\Eis P = \Eis[!]P \cong \DSerre[\Loc_G] ∘ \Eis[*] P ∘ \DSerre[\Loc_L]$ as functors $\catCoh{\Loc_L} → \catCoh{\Loc_L}$.
+    Hence the functor $\DSerre ∘ \CT[*]P \DSerre$ is left adjoint to $\Eis P$ (when restricted to coherent sheaves).
+\end{Lem}
+
+\begin{proof}
+    The first assertion follows from \cite[Corollary~9.5.9]{Gaitsgory:preprint:IndcoherentSheaves}:
+    \[
+        \Eis[*]P ∘ \DSerre =
+        p_*^\IndCoh ∘ q^! ∘ \DSerre \cong
+        \DSerre ∘ p_*^\IndCoh ∘ q^*.
+    \]
+    The second assertion follows from the fact that $\CT[*]P$ is right adjoint to $\Eis[*]P$:
+    \begin{multline*}
+        (\sheaf G,\, \DSerre \Eis[*]P \DSerre \sheaf F) =
+        (\Eis[*]P \DSerre \sheaf F,\, \DSerre \sheaf G) =
+        (\DSerre \sheaf F,\, \CT[*]P \DSerre \sheaf G) = \\
+        (\DSerre \CT[*]P \DSerre \sheaf G,\, \sheaf F).
+        \qedhere
+    \end{multline*}
+\end{proof}
+
+Note that since $q$ is not proper we do not have $\DSerre q_*^\IndCoh = q_*^\IndCoh \DSerre$.
 
 \subsubsection{Cuspidal sheaves}
 
 \begin{Def}
-    A sheaf $\sheaf F ∈ \catIndCoh{\Loc_G}$ is \emph{cuspidal} if it is in the kernel of $\CT P$ for all for all proper parabolic subgroups $P$ of $G$.
+    A sheaf $\sheaf F ∈ \catIndCoh{\Loc_G}$ is \emph{cuspidal} if it is in the kernel of $\CT P$ (or equivalently $\CT[*]P$) for all for all proper parabolic subgroups $P$ of $G$.
     The full subcategory of cuspidal sheafs will be denoted $\catIndCoh{\Loc_G}_\cusp$.
 \end{Def}
 
@@ -386,12 +412,12 @@ Thus we need to describe the functors $\STf[w]PQ$.
     \]
 \end{Claim}
 
-We describe $\STf[w]PQ$ as $\Eis[M]{R} ∘ \CT[^wL]{R}$ over a common Levi of $^wL$ and $M$.
+We describe $\STf[w]PQ$ as $\Eis R[M] ∘ \CT R[^wL]$ over a common Levi of $^wL$ and $M$.
 If $L$ and $M$ are not equivalent (and hence the common Levi proper) this functor has to vanish on \emph{cuspidal} sheaves by definition.
 More precisely, we need to show the following claim.
 
 \begin{Claim}
-    If $\Eis[M]{P_M} ∘ \CT[L]{Q_L} \sheaf F = 0$, then $\STf[w] PQ \sheaf F = 0$ (where $w$ corresponds to the orbit of $(P,Q)$).
+    If $\Eis{P_M}[M] ∘ \CT{Q_L}[L] \sheaf F = 0$, then $\STf[w] PQ \sheaf F = 0$ (where $w$ corresponds to the orbit of $(P,Q)$).
 \end{Claim}
 
 \begin{Cor}
@@ -407,6 +433,28 @@ More precisely, we need to show the following claim.
 \end{proof}
 
 \subsection{describing the images}
+
+For $L$ a Levi of $G$, we write $\catIndCoh[\globNilp]{\Loc_G}^{[L]}$ for the full subcategory generated by the image of $\catIndCoh[\globNilp]{\Loc_L}_\cusp$ under $\Eis P[G]$.
+We have adjoint functors
+\[
+    \Eis P[G] \colon \catIndCoh[\globNilp]{\Loc_L}_\cusp \leftrightarrows \catIndCoh[\globNilp]{\Loc_G}^{[L]} \cocolon \CT P[G]
+\]
+and hence a monad $\STm = \STf PP = \CT P ∘ \Eis P$ on $\catIndCoh[\globNilp]{\Loc_L}_\cusp$.
+
+\begin{Claim}
+    The functor $\CT P[G]$ is conservative.
+\end{Claim}
+
+\begin{Cor}
+    There is an equivalence of categories
+    \[
+        \catIndCoh[\globNilp]{\Loc_G}^{[L]} \cong \catIndCoh[\globNilp]{\Loc_L}_\cusp^{\STm}.
+    \]
+\end{Cor}
+
+\begin{proof}
+    Follows from the Bar--Beck--Lurie theorem \cite[Theorem~6.2.0.6]{Lurie:2012-draft:HigherAlgebra}.
+\end{proof}
 
 \printbibliography
 \end{document}
