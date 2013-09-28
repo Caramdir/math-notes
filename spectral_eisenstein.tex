@@ -293,6 +293,7 @@ This in turn induces a filtration on $\STf PQ$.
 \newcommand\STm{\operatorname{ST}}
 \newcommand\relW[2]{W_{#1}^{#2}}
 \newcommand\DSerre[1][]{\mathbb{D}^{\mathrm{Serre}}_{#1}}
+\newcommand\op{\mathrm{op}}
 
 \subsection{the problem}
 
@@ -332,29 +333,22 @@ In any case, we need to study the \emph{Steinberg functor} $\STf P Q = \CT Q[G] 
 
 The endofunctor $ω_{\Loc_L} \otimes {-}$ of $\catIndCoh{\Loc_L}$ will be denoted $\twist P$.
 
+Unfortunately, there is no reason to think that the functor $\CT P[G]$ does not need to send coherent sheaves to coherent sheaves.
+
 \begin{Lem}
-    There is a canonical isomorphism $\Eis P = \Eis[!]P \cong \DSerre[\Loc_G] ∘ \Eis[*] P ∘ \DSerre[\Loc_L]$ as functors $\catCoh{\Loc_L} → \catCoh{\Loc_L}$.
-    Hence the functor $\DSerre ∘ \CT[*]P \DSerre$ is left adjoint to $\Eis P$ (when restricted to coherent sheaves).
+    There is an isomorphism of functors $\Eis[!]P ∘ \DSerre[\Loc_L] \cong \DSerre[\Loc_G] ∘ \Eis[*,\op]P$ as functors $\catIndCoh{\Loc_L}^\dual → \catIndCoh{\Loc_L}$ (using the notation of \cite[Section~2.3.2]{Gaitsgory:preprint:GL.DGcat}).
 \end{Lem}
 
 \begin{proof}
-    The first assertion follows from \cite[Corollary~9.5.9]{Gaitsgory:preprint:IndcoherentSheaves}:
+    By \cite[Section~9.2.3]{Gaitsgory:preprint:IndcoherentSheaves},
     \[
-        \Eis[*]P ∘ \DSerre =
-        p_*^\IndCoh ∘ q^! ∘ \DSerre \cong
-        \DSerre ∘ p_*^\IndCoh ∘ q^*.
+        \Eis[!]P ∘ \DSerre \cong
+        {(p^!)}^\dual ∘ {(q_*^\IndCoh)}^\dual ∘ \DSerre =
+        \CT[*,\dual]P ∘ \DSerre.
     \]
-    The second assertion follows from the fact that $\CT[*]P$ is right adjoint to $\Eis[*]P$:
-    \begin{multline*}
-        (\sheaf G,\, \DSerre \Eis[*]P \DSerre \sheaf F) =
-        (\Eis[*]P \DSerre \sheaf F,\, \DSerre \sheaf G) =
-        (\DSerre \sheaf F,\, \CT[*]P \DSerre \sheaf G) = \\
-        (\DSerre \CT[*]P \DSerre \sheaf G,\, \sheaf F).
-        \qedhere
-    \end{multline*}
+    By \cite[Lemma~2.3.3]{Gaitsgory:preprint:GL.DGcat} the right adjoint $\CT[*]P$ of $\Eis[*]P$ is isomorphic to $\Eis[*,\op,\dual]P$.
+    Hence $\CT[*,\dual]P \cong \Eis[*,\op]P$.
 \end{proof}
-
-Note that since $q$ is not proper we do not have $\DSerre q_*^\IndCoh = q_*^\IndCoh \DSerre$.
 
 \subsubsection{Cuspidal sheaves}
 
