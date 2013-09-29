@@ -292,7 +292,7 @@ This in turn induces a filtration on $\STf PQ$.
 \renewcommand\STs[3][]{\operatorname{ST}(#3,#2)_{#1}}
 \newcommand\STm{\operatorname{ST}}
 \newcommand\relW[2]{W_{#1}^{#2}}
-\newcommand\DSerre[1][]{\mathbb{D}^{\mathrm{Serre}}_{#1}}
+\newcommand\DSerre[1][]{\mathbf{D}^{\mathrm{Serre}}_{#1}}
 \newcommand\op{\mathrm{op}}
 
 \subsection{the problem}
@@ -340,7 +340,7 @@ Unfortunately, there is no reason to think that the functor $\CT P[G]$ does not 
 \end{Q}
 
 \begin{Lem}
-    There is an isomorphism of functors $\Eis[!]P ∘ \DSerre[\Loc_L] \cong \DSerre[\Loc_G] ∘ \Eis[*,\op]P$ as functors $\catIndCoh{\Loc_L}^\dual → \catIndCoh{\Loc_L}$ (using the notation of \cite[Section~2.3.2]{Gaitsgory:preprint:GL.DGcat}).
+    There is an isomorphism of functors $\Eis[!]P ∘ \DSerre[\Loc_L] \cong \DSerre[\Loc_G] ∘ \Eis[*,\op]P$ as functors $\catIndCoh{\Loc_L}^\dual → \catIndCoh{\Loc_G}$ (using the notation of \cite[Section~2.3.2]{Gaitsgory:preprint:GL.DGcat}).
 \end{Lem}
 
 \begin{proof}
@@ -373,9 +373,9 @@ By \cite[(12.3) and Proposition~12.3.3]{ArinkinGaitsgory:arXiv:v2:SingularSuppor
 \begin{Conjecture}
     There exists a decomposition
     \[
-        \catIndCoh[\globNilp]{\Loc_G} = \bigoplus_L \Eis{P(L)}\bigl(\catQCoh{\Loc_G^\irred}\bigr),
+        \catIndCoh[\globNilp]{\Loc_G} = \bigoplus_L \Eis{P(L)}\bigl(\catQCoh{\Loc_L^\irred}\bigr),
     \]
-    where $L$ ranges over the conjugacy classes of Levis of $G$ (including $L=G$), $P(L)$ is a parabolic subgroup representing $L$ and $\catQCoh{\Loc_G^\irred}$ is identified with a subcategory of $\catIndCoh[\globNilp]{\Loc_G}$ via \eqref{eq:QCohIrredIdentification}.
+    where $L$ ranges over the conjugacy classes of Levis of $G$ (including $L=G$), $P(L)$ is a parabolic subgroup representing $L$ and $\catQCoh{\Loc_L^\irred}$ is identified with a subcategory of $\catIndCoh[\globNilp]{\Loc_L}$ via \eqref{eq:QCohIrredIdentification}.
 \end{Conjecture}
 
 \subsection{a filtration of the steinberg functor}
