@@ -335,6 +335,10 @@ The endofunctor $ω_{\Loc_L} \otimes {-}$ of $\catIndCoh{\Loc_L}$ will be denote
 
 Unfortunately, there is no reason to think that the functor $\CT P[G]$ does not need to send coherent sheaves to coherent sheaves.
 
+\begin{Q}
+    Does $\CT P$ preserve compactness for $X = \ps 1$ or $X$ an elliptic curve?
+\end{Q}
+
 \begin{Lem}
     There is an isomorphism of functors $\Eis[!]P ∘ \DSerre[\Loc_L] \cong \DSerre[\Loc_G] ∘ \Eis[*,\op]P$ as functors $\catIndCoh{\Loc_L}^\dual → \catIndCoh{\Loc_L}$ (using the notation of \cite[Section~2.3.2]{Gaitsgory:preprint:GL.DGcat}).
 \end{Lem}
@@ -435,10 +439,6 @@ We have adjoint functors
 \]
 and hence a monad $\STm = \STf PP = \CT P ∘ \Eis P$ on $\catIndCoh[\globNilp]{\Loc_L}_\cusp$.
 
-\begin{Claim}
-    The functor $\CT P[G]$ is conservative.
-\end{Claim}
-
 \begin{Cor}
     There is an equivalence of categories
     \[
@@ -447,8 +447,13 @@ and hence a monad $\STm = \STf PP = \CT P ∘ \Eis P$ on $\catIndCoh[\globNilp]{
 \end{Cor}
 
 \begin{proof}
-    Follows from the Bar--Beck--Lurie theorem \cite[Theorem~6.2.0.6]{Lurie:2012-draft:HigherAlgebra}.
+    The functor $\CT P[G]$ restricted to $\catIndCoh[\globNilp]{\Loc_G}^{[L]}$ is (tautologically) conservative.
+    Hence the result follows from the Bar--Beck--Lurie theorem \cite[Theorem~6.2.0.6]{Lurie:2012-draft:HigherAlgebra}.
 \end{proof}
+
+\begin{Q}
+    Can the monad $\STm$ be described in a more direct way, \enquote{internal} to $\catIndCoh[\globNilp]{\Loc_L}_\cusp$?
+\end{Q}
 
 \printbibliography
 \end{document}
