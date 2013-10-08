@@ -1,0 +1,60 @@
+%type: notes
+%title: Spectral Hecke category
+%tags: representation theory, geometric Langlands
+\documentclass[english]{short-notes}
+
+\usepackage{math-alg,math-ag, math-gl}
+\usepackage{xparse}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+\title{the spectral hecke category}
+\author{Clemens Koppensteiner}
+
+\newcommand\pt{\mathrm{pt}}
+\newcommand\sHecke[1]{\operatorname{Hecke}_#1^{\mathrm{spec}}}
+\newcommand\sHeckeStack[1]{%
+    \rquot{\pt}{#1} 
+    ×\limits_{\rquot{\liealg{\MakeLowercase{#1}}}{#1}}%
+    \rquot{\pt}{#1}}
+\newcommand\sHeckeCat[1]{\catIndCoh[\rquot{\mathrm{Nilp}(\liealg{\MakeLowercase{#1}}^*)}{#1}]{\sHecke G}}
+\newcommand\Sing{\operatorname{Sing}}
+
+\begin{document}
+
+\maketitle
+
+\begin{Def}
+    The \emph{spectral Hecke stack} is the dg stack
+    \[
+        \sHecke G = \sHeckeStack G.
+    \]
+    The \emph{spectral Hecke category} is $\sHeckeCat G$.
+\end{Def}
+
+Note that the Kozul dual description of the singular support of applies to $\sHecke G$.
+Hence its singular support stack is $\Sing(\sHecke G) = \rquot{\liealg g^*}G$.
+
+\begin{Q}
+    How does $\sHecke G$ compare to $\Loc_G(\ps 1)$?
+\end{Q}
+
+\begin{Q}
+    Can we describe $\sHeckeCat G$ in terms of parabolic induction?
+\end{Q}
+
+\begin{Q}
+    Can we describe the filtration of $\sHeckeCat G$ by closures of nilpotent orbits?
+    What are the corresponding subcategories of $\operatorname{Sph}(G,x)$?
+\end{Q}
+
+\section*{\enquote{naive} geometric satake}
+
+As a \enquote{warm-up} can one answer these questions for the categories in the \enquote{naive} geometric Satake
+\[
+    \operatorname{Rep}(\ld G) \cong \cat{Perv}(\mathrm{Gr}_G)^{G(\O)}?
+\]
+
+\printbibliography
+\end{document}
