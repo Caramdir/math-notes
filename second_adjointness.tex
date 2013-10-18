@@ -49,7 +49,7 @@ Specifically, since $q$ is smooth we have an isomorphism of functors $q^! \cong 
     The map $q_*$ sends $\catCoh{\B P}$ to $\catCoh{\B L}$.
 \end{Claim}
 
-Hence we can define a left adjoint $q_!$ to $q^!$ as the ind-extension of $\mathbb D_{\mathrm{Serre}} q_* \mathbb \mathbb D_{\mathrm{Serre}}\colon \catCoh{\B P} → \catCoh{\B L}$ (see \cite[Corollary~9.5.9(a)]{Gaitsgory:preprint:IndcoherentSheaves} and \cite{Gaitsgory:preprint:GL.DGcat}).
+Hence we can define a left adjoint $q_!$ to $q^!$ as the ind-extension of $\mathbb D_{\mathrm{Serre}} q_* \mathbb D_{\mathrm{Serre}}\colon \catCoh{\B P} → \catCoh{\B L}$ (see \cite[Corollary~9.5.9(a)]{Gaitsgory:preprint:IndcoherentSheaves} and \cite{Gaitsgory:preprint:GL.DGcat}).
 
 \begin{Cor}
     The left adjoint to $\Ind$ is $\Res_L = q_!p^*$.
@@ -67,14 +67,11 @@ and $\Res_L^- = q^-_!(p^-)^*$.
     \]
 \end{Claim}
 
-This should follow from some version of Braden's \enquote{Hyperbolic Localization} Theorem \cite{Braden:2003:HyperbolicLocalizationOfIC, DrinfeldGaitsgory:arXiv:OnATheoremOfBraden} for quasi- (or ind-) coherent sheaves and the following claim.
-\begin{Claim}
-    \[\B L \cong \B P ×_{\B G} \B P^-.\]
-\end{Claim}
-This gives a Cartesian diagram
+This should follow from some version of Braden's \enquote{Hyperbolic Localization} Theorem \cite{Braden:2003:HyperbolicLocalizationOfIC, DrinfeldGaitsgory:arXiv:OnATheoremOfBraden} for quasi- (or ind-) coherent sheaves.
+We have a (non-Cartesian) commutative diagram
 \[
     \begin{tikzpicture}
-        \matrix[commutative diagram] (m) {
+        \matrix[spaced commutative diagram] (m) {
             \B L & \B P^- \\
             \B P & \B G \\
         };
@@ -86,12 +83,10 @@ This gives a Cartesian diagram
             (m-2-1) edge node[above] {$p$} (m-2-2);
     \end{tikzpicture}
 \]
-with $ℂ^*$-actions similar to the ones in \cite{DrinfeldGaitsgory:preprint:GeometricConstantTermFunctors}.
-Thus, by the (hypothetical) version of Braden's Theorem and base change, we get
+with $ℂ^*$-actions similar to the ones in \cite{DrinfeldGaitsgory:preprint:GeometricConstantTermFunctors} (see also \cite[Section~11]{DrinfeldGaitsgory:arXiv:CompactGenerationOfDModOnBunG}).
+Thus by the (hypothetical) version of Braden's Theorem we get
 \[
     q_*p^! \cong
-    f^*p^! \cong
-    {f^-}^! {p^-}^* \cong
     q^-_! {p^-}^*.
 \]
 
