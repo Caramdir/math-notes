@@ -124,8 +124,36 @@ Setting $N = R_u(B)$ one gets a decomposition
 Note that the double coset $BwB$ does not depend on the choice of representative of $w$ in $N_G(H)$.
 
 \begin{Def}
-    The locally closed subvarieties $X_w = BwB$ are called \emph{Schubert cells} and the closures $\overline{X_w}$ are called \emph{Schubert varieties} of $G$.
+    The locally closed subvarieties $X_w = \rquot{BwB}B$ of $X = \mathcal{Fl}$ are called \emph{Schubert cells} and the closures $\overline{X_w}$ are called \emph{Schubert varieties} of $G$.
 \end{Def}
+
+\section*{examples}
+
+\subsection*{\texorpdfstring{$G = \SL2$}{G = SL2}}
+
+We have
+\begin{align*}
+    \SL2 &= \left\{\begin{psmallmatrix}a & b\\ c & d\end{psmallmatrix} : ad-bc = 1\right\}, \\
+    B    &= \left\{\begin{psmallmatrix}a & b\\ 0 & d\end{psmallmatrix} : ad = 1\right\}, \\
+    H    &= \left\{\begin{psmallmatrix}a & 0\\ 0 & d\end{psmallmatrix} : ad = 1\right\}, \\
+    N    &= \left\{\begin{psmallmatrix}1 & b\\ 0 & 1\end{psmallmatrix}\right\}, \\
+    W    &= \rquot{N_G(T)}{T} = 
+                \left\{\begin{psmallmatrix}1 & 0\\ 0 & 1\end{psmallmatrix},
+                \begin{psmallmatrix}0 & 1\\ -1 & 0\end{psmallmatrix}\right\} \cong \rquot ℤ2,\\
+    \rquot GB &= \mathcal{Fl} = \left\{ \{0\} \subsetneq L \subsetneq ℂ²\right\} \cong \ps 1, \\
+    W    &= \lquot{B}{\mathcal{Fl}} = \dquot BGB = \{ (1:0), \{(z:1)\} \}.
+\end{align*}
+The Bruhat decomposition is 
+\[
+G = B\begin{psmallmatrix}1 & 0\\ 0 & 1\end{psmallmatrix}B \amalg
+B\begin{psmallmatrix}0 & 1\\ -1 & 0\end{psmallmatrix}B,
+\] 
+with
+\[
+    B\begin{psmallmatrix}1 & 0\\ 0 & 1\end{psmallmatrix}B = B
+    \qquad\text{and}\qquad
+    B\begin{psmallmatrix}0 & 1\\ -1 & 0\end{psmallmatrix}B = \left\{\begin{psmallmatrix} a & b \\ c & d\end{psmallmatrix} : ad-bc = 1 \text{ and } c \ne 0\right\}.
+\]
 
 %\printbibliography
 \end{document}
