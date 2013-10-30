@@ -13,7 +13,9 @@
 \title{spectral eisenstein series functors}
 \author{Clemens Koppensteiner}
 
+\usepackage{tikz-cd}
 \begin{document}
+
 
 \newcommand\sym{\mathrm{sym}}
 \newcommand\STs[2]{\operatorname{ST}(#2,#1)}
@@ -24,6 +26,7 @@
 \newcommand\red{\mathrm{red}}
 \newcommand\globNilp{\mathcal{N}}
 \newcommand\twist[1]{\operatorname{T}_{#1}}
+\newcommand\LocRS{\Loc^{\mathrm{R.S.}}}
 
 \maketitle
 
@@ -473,6 +476,52 @@ The global nilpotent cone $\globNilp$ has a natural stratification by orbits.
 
 \begin{Q}
     Can one describe the induced filtration of $\catIndCoh[\globNilp]{\Loc_G}$?
+\end{Q}
+
+\subsection[Singular support via the Hecke category]{singular support via the hecke category}
+
+We fix a point $x ∈ C$ and let $\LocRS_G$ be the stack of local systems with at most a simple pole at $x$ \cite[Section~9.6]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
+We get the following diagram with Cartesian squares:
+\[
+    \begin{tikzcd}
+        \Loc_G \arrow{r}\arrow{d} & \LocRS_G \arrow{d} \\
+        \Bun_G \arrow{r}\arrow{d} & \rquot{\liealg g}{G} ×\limits_{\rquot{\pt}G} \Bun_G \arrow{d}\\
+        \rquot{\pt}G \arrow{r} & \rquot{\liealg g}{G}
+    \end{tikzcd}
+\]
+As explained in \cite[Section~11.7 and~8.4]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, this yields an action of the group dg stack $\mathcal G_{\rquot{\pt}{\rquot{\liealg g}{G}}}$ (i.e.~the spectral Hecke stack $\sHecke G$) on $\Loc_G$.
+In other words, we have an action map
+\[
+    a\colon \sHecke G × \Loc_G → \Loc_G.
+\]
+Thus we obtain adjoint functors
+\[
+    \mathsf F = a_* \colon \catIndCoh{\sHecke G × \Loc_G} \rightleftarrows \catIndCoh{\Loc_G}\cocolon a^! = \mathsf G.
+\]
+Note that
+\[
+    \catIndCoh{\sHecke G × \Loc_G} \cong \catIndCoh{\sHecke G} \otimes\limits_{\catIndCoh{\rquot{\pt}G}} \catIndCoh{\Loc_G}
+\]
+Let $\liealg n^* ⊆ \liealg g^*$ be the nilpotent cone.
+Let $N = \rquot{\liealg n^*}{G} × \Loc_G$ be the image of $\globNilp$ under the closed embedding $\Sing(\Loc_G) \hookrightarrow \rquot{\liealg g^*}G × \Loc_G$.
+Then by \cite[Proposition~8.4.2]{ArinkinGaitsgory:arXiv:v2:SingularSupport} the functors $\mathsf F$ and $\mathsf G$ restrict to
+\[
+    \left(\catIndCoh{\sHecke G} \otimes\limits_{\catIndCoh{\rquot{\pt}G}} \catIndCoh{\Loc_G}\right)_N
+    \leftrightarrows
+    \catIndCoh[\globNilp]{\Loc_G},
+\]
+where the left side is the same as
+\[
+    \catIndCoh[\rquot{\liealg n^*}{G}]{\sHecke G} \otimes\limits_{\catIndCoh{\rquot{\pt}G}} \catIndCoh{\Loc_G}.
+\]
+Thus the conservativeness of $\mathsf G$, \cite[Corollary~4.8.3]{ArinkinGaitsgory:arXiv:v2:SingularSupport} and the Barr--Beck Theorem yield the following characterisation of $\catIndCoh[\globNilp]{\Loc_G}$.
+\begin{Prop}
+    The category $\catIndCoh[\globNilp]{\Loc_G}$ is equivalent to the category of modules of the monad $\mathsf{GF} = a^!a_*$ on $\catIndCoh[\rquot{\liealg n^*}{G}]{\sHecke G} \otimes\limits_{\catIndCoh{\rquot{\pt}G}} \catIndCoh{\Loc_G}$.
+\end{Prop}
+A similar statement does of course hold for any other nilpotent orbit closure.
+
+\begin{Q}
+    Can we give a good description of the monad $a^!a_*$?
 \end{Q}
 
 \printbibliography
