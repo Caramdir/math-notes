@@ -1,0 +1,66 @@
+%type: notes
+%title: $BG$
+%tags: representation theory, stacks, principal bundles
+\documentclass[english, no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag,math-gl}
+
+\addbibresource{math.bib}
+%\bibliography{global.bib}
+
+
+\title{\texorpdfstring{$BG$}{BG}}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+\begin{Def}
+    Let $G$ be an algebraic group.
+    Then $BG$ is the quotient stack $[\rquot{\pt}G]$.
+\end{Def}
+
+For any scheme $X$ the set $BG(X) = \Maps(X, BG)$ is the set of principal $G$-bundles on $X$.
+The cover $\pt → BG$ corresponds to the trivial $G$-bundle on $\pt$.
+Obviously the stack $BG$ is smooth.
+In particular $\catIndCoh{BG} = \catQCoh{BG}$.
+
+If $H \le G$ is a subgroup then there is a map $BH → BG$, given on $BH(X) → BG(X)$ as extension of $H$-bundles to $G$-bundles.
+
+The following two lemmas are \cite[Exercise~1.21]{Heinloth:2010:LecturesModuliStackVectorBundlesOnCurve}
+\begin{Lem}
+    If $H$ is a closed subgroup of $G$, then 
+    \[
+        \pt ×_{BG} BH = \rquot GH.
+    \]
+\end{Lem}
+
+\begin{Lem}
+    If $H$ is a closed normal subgroup of $G$, then
+    \[
+        \pt ×_{B(G/H)} BG = BH.
+    \]
+\end{Lem}
+
+Further useful notes (though in the topological setting) are \cite{Mitchell:unpublished:NotesOnPrincipalBundles}.
+
+\section*{the case of a reductive group}
+
+From now on let $G$ be reductive, $B$ a Borel and $H$ the corresponding torus.
+We consider the correspondence 
+\[
+    BG \xleftarrow{p} BB \xrightarrow{q} BH.
+\]
+
+Since $G/B$ is a smooth projective variety, the map $p$ is proper, smooth and representable.
+The map $p$ is smooth, but \emph{not} representable.
+
+Thus the maps $p^*$, $p_*$ and $p^!$ are all defined, preserve coherence and give two pairs of adjoint functors $(p^*,p_*)$ and $(p_*,p^!)$.
+The functors $p^*$ and $p^!$ differ (at most) by twisting with a line bundle.
+
+Further $q^*$, $q_*$ and $q^!$ are defined and $q^*$ and $q^!$ differ by twisting with a line bundle.
+The pair $(q^*, q_*)$ is adjoint.
+
+\printbibliography
+\end{document}
