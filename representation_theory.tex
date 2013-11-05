@@ -8,13 +8,16 @@
 \addbibresource{global.bib}
 %\bibliography{global.bib}
 
+\newcommand\Humph[1]{\cite[#1]{Humphreys:1975:LinearAlgebraicGroups}}
+\newcommand\open{\circ}
 
 \title{basic definitions of (geometric) representation theory}
 \author{Clemens Koppensteiner}
 
 \begin{document}
-
 \maketitle
+
+\section*{general theory}
 
 Let $G$ be an affine algebraic group over an algebraically closed field $k$ of characteristic $0$.
 
@@ -29,17 +32,18 @@ Let $G$ be an affine algebraic group over an algebraically closed field $k$ of c
 Characters are constant on adjoint orbits, i.e.~are elements of $\O(G)^G$ (where the meaning of $\O$ depends on the context).
 
 \begin{Def}
-    A \emph{torus} is an affine algebraic group which is isomorphic to a product of $\mathbb G_m = \GL 1$.
-\end{Def}
-
-\begin{Def}
     An element of $\GL n$ is called \emph{semisimple} if it is diagonalizable.
     An element of $G$ is \emph{semisimple} if its image is so for any embedding of $G$ into a $\GL n$.
+    The subset of all semisimple elements of $G$ is denoted by $G_s$.
 \end{Def}
+
+In general $G_s$ is neither closed nor a subgroup.
 
 \begin{Def}
     An element of $\GL n$ is called \emph{unipotent} if all its eigenvalues are $1$.
     An element of $G$ is \emph{unipotent} if its image is so for any embedding of $G$ into a $\GL n$.
+    The subset of all unipotent elements of $G$ is denoted by $G_u$.
+    A group $G$ is called unipotent if $G = G_u$.
 \end{Def}
 
 The last two definitions are independent of the embedding of $G$ into $\GL n$ (and the choice of $n$).
@@ -53,6 +57,8 @@ The last two definitions are independent of the embedding of $G$ into $\GL n$ (a
     If $R(G) = 1$, then $G$ is called \emph{semisimple}.
 \end{Def}
 
+Equivalently, $G$ is semisimple if it has no closed connected commutative normal subgroup except ${1}$.
+
 \begin{Def}
     The \emph{unipotent radical} $R_u(G)$ of $G$ is the set of unipotent elements of $R(G)$.
     If $R_u(G) = 1$, then $G$ is called \emph{reductive}.
@@ -64,6 +70,87 @@ $R_u(G)$ is a closed connected normal subgroup of $G$.
     The group $\GL n$ is reductive and $R(\GL n)$ consists of the scalar matrices.
     The groups $\SL n$, $\SO n$ (for $n \ge 3$) and $\Sp{2m}$ are semisimple.
 \end{Ex}
+
+If $G$ is reductive, then $R(G) = Z(G)^\open$ is a torus \Humph{Lem.~19.5}.
+
+\subsection*{tori}
+
+\begin{Def}
+    A \emph{torus} is an affine algebraic group which is isomorphic to a product of $\mathbb G_m = \GL 1$.
+\end{Def}
+
+\begin{Def}
+    A \emph{character} of a torus $T$ is a morphisms of algebraic groups $T → \Gm$.
+    The set of all characters if $X(T) = \Hom(T, \Gm)$.
+    A \emph{cocharacter} or {one-parameter subgroup} of $T$ is a morphism of algebraic groups $\Gm → T$.
+\end{Def}
+
+If $T \cong \Gm^n$, then $X(T) = ℤ^n$.
+
+\begin{Thm}[\Humph{Cor~16.3}]
+    Let $T$ be a torus in $G$.
+    Then $N_G(T)^\open = Z_G(T)^\open$, where $N_G(T)$ is the normalizer and $Z_G(T)$ the centralizer of $T$ in $G$.
+    In particular $\rquot{N_G(T)}{Z_G(T)}$ is finite.
+\end{Thm}
+
+\begin{Def}
+    Let $T$ be a torus of $G$. 
+    Then the \emph{Weyl group of $T$ in $G$} is
+    \[
+        W(T) = \rquot{N_G(T)}{Z_G(T)}.
+    \]
+    If $H$ is a maximal torus, then $W = W(H)$ is the \emph{Weyl group} of $G$.
+\end{Def}
+
+Any two maximal tori of $G$ are conjugate.
+Hence the Weyl group of $G$ is defined up to non-canonical isomorphism.
+Note that if $H$ is a maximal torus, then $Z_G(H) = H$.
+The Weyl group of $G$ is always finite.
+
+If $T$ is a torus, then $W(T)$ has a natural action on $T$ by conjugation.
+
+\subsection*{solvable and nilpotent groups}
+
+A group is called \emph{solvable} if its \emph{derived series} $D^{i}G = [D^{i-1}G,D^{i-1}G]$ terminates in $1$.
+All $D^iG$ are closed normal subgroups of $G$. 
+If $G$ is connected, then so are the $D^iG$.
+
+\begin{Lem}
+    Subgroups and homeomorphic images of solvable groups are solvable.
+    If $N$ is a normal subgroup of $G$ with $N$ and $G/N$ solvable, then $G$ is solvable.
+    If $A, B$ are normal solvable subgroups of $G$, then so is $AB$.
+\end{Lem}
+
+A group is called \emph{nilpotent} if its \emph{descending central series} $C^{i}G = [C^{i-1}G,G]$ terminates in $1$.
+All $C^iG$ are closed normal subgroups of $G$. 
+If $G$ is connected, then so are the $C^iG$.
+
+\begin{Lem}[\Humph{Prop.~17.4}]
+    Subgroups and homeomorphic images of solvable groups are solvable.
+    If $\rquot{G}{Z(G)}$ is nilpotent, then so is $G$.
+    If $G$ is nilpotent, then $\dim Z(G) \ge 1$ and if $H$ is a proper closed subgroup of $G$, then $\dim H < \dim N_G(H)$.
+    In particular if $H$ is a closed subgroup of codimension $1$ in a nilpotent group, then $H$ is normal.
+\end{Lem}
+
+\begin{Thm}[\Humph{Cor.~17.5}]
+    Every unipotent subgroup of of $\GL n$ is nilpotent.
+\end{Thm}
+
+If $G$ is connected and solvable, there is a split short exact sequence 
+\[
+    1 → G_u → G → T → 1,
+\]
+with $T$ a maximal torus \Humph{Thm.~19.3}. 
+Thus $G \cong T ⋉ G_u$.
+All maximal tori of $G$ are conjugate under $G^∞ = C^∞G$.
+
+If $G$ is connected and nilpotent, then $G_s$ is a closed subgroup and $G \cong G_s × G_u$.
+
+Moreover, if $H$ is a subgroup of a connected solvable $G$ with $H$ consisting of semisimple elements, then $H$ lies in a torus and $C_G(H) = N_G(H)$ is connected.
+
+\subsection*{borel subgroups}
+
+\subsection*{parabolic subgroups}
 
 \begin{Def}
     A subgroup $P$ of $G$ is called \emph{parabolic} if $\rquot GP$ is projective.
@@ -90,22 +177,6 @@ Every Borel subgroups is conjugate
     If $P = B$ is a Borel, then $\mathcal{Fl} = \rquot GB$ is called the \emph{flag variety of $G$}.
 \end{Def}
 
-\begin{Def}
-    Let $T$ be a torus of $G$. 
-    Then the \emph{Weyl group of $T$ in $G$} is
-    \[
-        W(T) = \rquot{N_G(T)}{Z_G(T)}.
-    \]
-    where $N_G(T)$ is the normalizer and $Z_G(T)$ the centralizer of $T$ in $G$.
-    If $H$ is a maximal torus, then $W = W(H)$ is the \emph{Weyl group} of $G$.
-\end{Def}
-
-Any two maximal tori of $G$ are conjugate.
-Hence the Weyl group of $G$ is defined up to non-canonical isomorphism.
-Note that if $H$ is a maximal torus, then $Z_G(H) = H$.
-The Weyl group of $G$ is always finite.
-
-If $T$ is a torus, then $W(T)$ has a natural action on $T$ by conjugation.
 
 Each Borel subgroup $B$ contains a unique maximal torus $H$.
 Setting $N = R_u(B)$ one gets a decomposition
@@ -155,5 +226,5 @@ with
     B\begin{psmallmatrix}0 & 1\\ -1 & 0\end{psmallmatrix}B = \left\{\begin{psmallmatrix} a & b \\ c & d\end{psmallmatrix} : ad-bc = 1 \text{ and } c \ne 0\right\}.
 \]
 
-%\printbibliography
+\printbibliography
 \end{document}
