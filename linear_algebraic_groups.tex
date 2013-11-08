@@ -1,6 +1,6 @@
 %type: notes
-%title: Basic definitions of representation theory
-%tags: representation theory
+%title: Linear algebraic groups
+%tags: representation theory, algebraic groups, group theory
 \documentclass[english, no-theorem-numbers]{short-notes}
 
 \usepackage{math-alg,math-ag}
@@ -12,7 +12,7 @@
 \newcommand\open{\circ}
 \newcommand\conn{\circ}
 
-\title{basic definitions of (geometric) representation theory}
+\title{linear algebraic groups}
 \author{Clemens Koppensteiner}
 
 \begin{document}
@@ -24,15 +24,15 @@
 
 Let $G$ be an affine algebraic group over an algebraically closed field $k$ of characteristic $0$.
 
-\begin{Def}
-    A \emph{representation} of $G$ is an homomorphism $ρ\colon G → \operatorname{GL}(V)$ for some finite dimensional vector space $V$ over $k$.
-\end{Def}
-
-\begin{Def}
-    The \emph{character} of a representation $ρ$ is the map $\trace ∘ ρ \colon G → k$.
-\end{Def}
-
-Characters are constant on adjoint orbits, i.e.~are elements of $\O(G)^G$ (where the meaning of $\O$ depends on the context).
+%\begin{Def}
+%    A \emph{representation} of $G$ is an homomorphism $ρ\colon G → \operatorname{GL}(V)$ for some finite dimensional vector space $V$ over $k$.
+%\end{Def}
+%
+%\begin{Def}
+%    The \emph{character} of a representation $ρ$ is the map $\trace ∘ ρ \colon G → k$.
+%\end{Def}
+%
+%Characters are constant on adjoint orbits, i.e.~are elements of $\O(G)^G$ (where the meaning of $\O$ depends on the context).
 
 \begin{Def}
     An element of $\GL n$ is called \emph{semisimple} if it is diagonalizable.
@@ -93,7 +93,6 @@ If $T \cong \Gm^n$, then $X(T) = ℤ^n$.
 \begin{Thm}[\Humph{Cor~16.3}]
     Let $T$ be a torus in $G$.
     Then $N_G(T)^\open = Z_G(T)^\open$, where $N_G(T)$ is the normalizer and $Z_G(T)$ the centralizer of $T$ in $G$.
-    In particular $\rquot{N_G(T)}{Z_G(T)}$ is finite.
 \end{Thm}
 
 \begin{Def}
@@ -111,11 +110,13 @@ If $T \cong \Gm^n$, then $X(T) = ℤ^n$.
 
 Hence the Weyl group of $G$ is defined up to non-canonical isomorphism.
 
+\begin{Prop}[\Humph{Prop.~24.1A}]
+    The Weyl group of $G$ is finite.
+\end{Prop}
+
 \begin{Thm}[\Humph{Thm.~22.3}]
     If $H$ is a maximal torus, then $Z_G(H)$ is connected and hence equal to $H$.
 \end{Thm}
-
-The Weyl group of $G$ is always finite.
 
 If $T$ is a torus, then $W(T)$ has a natural action on $T$ by conjugation.
 
@@ -185,6 +186,7 @@ In the following statements it might be necessary to assume that $G$ is connecte
 The projective variety $\mathcal{Fl} = \rquot GB$ is called the \emph{flag variety of $G$}.
 Its points are parametrize with the collection $\mathcal B$ of all Borel subgroups of $G$ (by sending each Borel to its unique fixed point in $\mathcal{Fl}$.
 The action of $G$ on $\mathcal B$ by conjugation corresponds to the action of $G$ on $\mathcal Fl$ by left multiplication.
+If $H$ is any subgroup of $G$, then the set $\mathcal B^H$ of Borel subgroups containing $H$ correspond to the set of fixed points of $H$ on $\mathcal{Fl}$.
 
 The maximal tori (resp.~maximal connected unipotent subgroups) of $G$ are those of the Borel subgroups of $G$, and are all conjugate.
 
@@ -194,7 +196,7 @@ The maximal tori (resp.~maximal connected unipotent subgroups) of $G$ are those 
 \end{Prop}
 
 \begin{Thm}[\Humph{Thm~22.2}]
-    Let $B$ be a Borel subgroup of $G$ with maximal torus $H$.
+    Let $B$ be a Borel subgroup of $G$ and $H$ a maximal torus.
     Then the union of all conjugates of $B$ (resp.~$H$, resp.~$B_u$) is $G$ (resp.~$G_s$, resp.~$G_u$).
 \end{Thm}
 
@@ -203,11 +205,16 @@ The maximal tori (resp.~maximal connected unipotent subgroups) of $G$ are those 
     Then $Z(B) = Z(G)$
 \end{Prop}
 
-Each Borel subgroup $B$ contains a unique maximal torus $H$.
+\begin{Prop}[\Humph{Prop.~24.1A}]
+    Let $H$ be a maximal torus with Weyl group $W$.
+    Then $W$ permutes the set $\mathcal B^H$ simply transitively.
+\end{Prop}
+
 Setting $N = R_u(B) = B_u$ one gets a decomposition
 \[
-    B = HN, \qquad H∩N = \{1\}.
+    B = HN, \qquad H∩N = \{1\}
 \]
+with $H$ a maximal torus.
 
 \begin{Thm}[Bruhat decomposition]
     Let $B$ be a Borel subgroup of $G$ with corresponding maximal torus $H$ and Weyl group $W$.
