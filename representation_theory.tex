@@ -10,6 +10,7 @@
 
 \newcommand\Humph[1]{\cite[#1]{Humphreys:1975:LinearAlgebraicGroups}}
 \newcommand\open{\circ}
+\newcommand\conn{\circ}
 
 \title{basic definitions of (geometric) representation theory}
 \author{Clemens Koppensteiner}
@@ -17,7 +18,9 @@
 \begin{document}
 \maketitle
 
-\section*{general theory}
+\section*{theory}
+
+\subsection*{general definitions}
 
 Let $G$ be an affine algebraic group over an algebraically closed field $k$ of characteristic $0$.
 
@@ -102,12 +105,28 @@ If $T \cong \Gm^n$, then $X(T) = ℤ^n$.
     If $H$ is a maximal torus, then $W = W(H)$ is the \emph{Weyl group} of $G$.
 \end{Def}
 
-Any two maximal tori of $G$ are conjugate.
+\begin{Thm}[\Humph{Cor.~21.3A}]
+    Any two maximal tori of $G$ are conjugate.
+\end{Thm}
+
 Hence the Weyl group of $G$ is defined up to non-canonical isomorphism.
-Note that if $H$ is a maximal torus, then $Z_G(H) = H$.
+
+\begin{Thm}[\Humph{Thm.~22.3}]
+    If $H$ is a maximal torus, then $Z_G(H)$ is connected and hence equal to $H$.
+\end{Thm}
+
 The Weyl group of $G$ is always finite.
 
 If $T$ is a torus, then $W(T)$ has a natural action on $T$ by conjugation.
+
+\begin{Def}
+    The dimension of the maximal tori of $G$ is called the \emph{rank} of $G$.
+\end{Def}
+
+\begin{Prop}
+    Let $φ\colon G → G'$ be an epimorphism of (connected) algebraic groups.
+    Then $φ$ sends maximal tori to maximal tori and all maximal tori of $G'$ are obtained in this way.
+\end{Prop}
 
 \subsection*{solvable and nilpotent groups}
 
@@ -150,36 +169,42 @@ Moreover, if $H$ is a subgroup of a connected solvable $G$ with $H$ consisting o
 
 \subsection*{borel subgroups}
 
-\subsection*{parabolic subgroups}
-
 \begin{Def}
-    A subgroup $P$ of $G$ is called \emph{parabolic} if $\rquot GP$ is projective.
-    A \emph{Borel subgroup} of $G$ is a minimal parabolic subgroup.
+    A \emph{Borel subgroup} of $G$ is a maximal (automatically closed and connected) solvable subgroup of $G$.
 \end{Def}
+
+Note that the Borel subgroups of $G$ and $G^\conn$ coincide.
+In the following statements it might be necessary to assume that $G$ is connected.
+
+\begin{Thm}[\Humph{Thm.~21.3 and Thm.~23.1}]
+    Let $B$ be a Borel subgroup.
+    Then $\rquot{G}{B}$ is a projective variety and all Borel subgroups are conjugate to $B$.
+    Further $N_G(B) = B$
+\end{Thm}
+
+The projective variety $\mathcal{Fl} = \rquot GB$ is called the \emph{flag variety of $G$}.
+Its points are parametrize with the collection $\mathcal B$ of all Borel subgroups of $G$ (by sending each Borel to its unique fixed point in $\mathcal{Fl}$.
+The action of $G$ on $\mathcal B$ by conjugation corresponds to the action of $G$ on $\mathcal Fl$ by left multiplication.
+
+The maximal tori (resp.~maximal connected unipotent subgroups) of $G$ are those of the Borel subgroups of $G$, and are all conjugate.
 
 \begin{Prop}
-    A subgroup of $G$ is a Borel if and only if it is a maximal closed, connected solvable subgroup.
-    A subgroup of $G$ is parabolic if and only if it contains a Borel subgroup of $G$.
+    Let $φ\colon G → G'$ be an epimorphism of (connected) algebraic groups.
+    Then $φ$ sends Borel subgroups (resp.~maximal connected unipotent subgroups) to subgroups of the same type and such subgroups of $G'$ are obtained in this way.
 \end{Prop}
 
-\begin{Def}
-    Let $P$ be a parabolic subgroup.
-    Then $\rquot{P}{R_u(P)}$ is called a \emph{Levi} of $G$.
-\end{Def}
+\begin{Thm}[\Humph{Thm~22.2}]
+    Let $B$ be a Borel subgroup of $G$ with maximal torus $H$.
+    Then the union of all conjugates of $B$ (resp.~$H$, resp.~$B_u$) is $G$ (resp.~$G_s$, resp.~$G_u$).
+\end{Thm}
 
-The normalizer of a parabolic $P$ is equal to $P$. 
-Thus the set $[P]$ of all conjugates to $P$ in $G$ is isomorphic to $\rquot GP$.
-Every Borel subgroups is conjugate
-
-\begin{Def}
-    Let $P$ be a parabolic subgroup of $G$.
-    Then the projective variety $\rquot GP$ is called the \emph{partial flag variety} corresponding to $P$.
-    If $P = B$ is a Borel, then $\mathcal{Fl} = \rquot GB$ is called the \emph{flag variety of $G$}.
-\end{Def}
-
+\begin{Prop}[\Humph{Cor.~22.2B}]
+    Let $B$ be a Borel subgroup of $G$.
+    Then $Z(B) = Z(G)$
+\end{Prop}
 
 Each Borel subgroup $B$ contains a unique maximal torus $H$.
-Setting $N = R_u(B)$ one gets a decomposition
+Setting $N = R_u(B) = B_u$ one gets a decomposition
 \[
     B = HN, \qquad H∩N = \{1\}.
 \]
@@ -197,6 +222,49 @@ Note that the double coset $BwB$ does not depend on the choice of representative
 \begin{Def}
     The locally closed subvarieties $X_w = \rquot{BwB}B$ of $X = \mathcal{Fl}$ are called \emph{Schubert cells} and the closures $\overline{X_w}$ are called \emph{Schubert varieties} of $G$.
 \end{Def}
+
+\subsection*{parabolic subgroups}
+
+\begin{Def}
+    A subgroup $P$ of $G$ is called \emph{parabolic} if $\rquot GP$ is projective (or equivalently, complete).
+\end{Def}
+
+\begin{Prop}[\Humph{Cor.~21.3B}]
+    A closed subgroup of $G$ is parabolic if and only if it contains a Borel subgroup of $G$.
+    Hence a Borel subgroup of $G$ is a minimal parabolic subgroup.
+\end{Prop}
+
+\begin{Prop}
+    The normalizer of a parabolic $P$ is equal to $P$. 
+    In particular all parabolic subgroups are connected.
+\end{Prop}
+
+\begin{Prop}
+    Let $P$ and $Q$ be conjugate parabolic subgroups both containing the Borel subgroup $B$.
+    Then $P = Q$.
+
+    In particular the set of conjugacy classes of parabolic subgroups is in bijection with parabolic subgroups containing a fixed Borel $B$.
+\end{Prop}
+
+\begin{Prop}
+    Let $φ\colon G → G'$ be an epimorphism of (connected) algebraic groups.
+    Then $φ$ sends parabolic subgroups to parabolic subgroups and all parabolic subgroups of $G'$ are obtained in this way.
+\end{Prop}
+
+\begin{Def}
+    Let $P$ be a parabolic subgroup.
+    Then $\rquot{P}{R_u(P)}$ is called a \emph{Levi} of $G$.
+\end{Def}
+
+Thus the set $[P]$ of all conjugates to $P$ in $G$ is isomorphic to $\rquot GP$.
+Every Borel subgroups is conjugate
+
+\begin{Def}
+    Let $P$ be a parabolic subgroup of $G$.
+    Then the projective variety $\rquot GP$ is called the \emph{partial flag variety} corresponding to $P$.
+\end{Def}
+
+
 
 \section*{examples}
 
