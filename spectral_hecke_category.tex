@@ -9,16 +9,12 @@
 \addbibresource{global.bib}
 %\bibliography{global.bib}
 
+\newcommand\SingSupp{\operatorname{SingSupp}}
+\newcommand\KD{\operatorname{KD}}
+
 \title{the spectral hecke category}
 \author{Clemens Koppensteiner}
 
-\newcommand\sHecke[1]{\operatorname{Hecke}_#1^{\mathrm{spec}}}
-\newcommand\sHeckeStack[1]{%
-    \rquot{\pt}{#1} 
-    ×\displaylimits_{\rquot{\liealg{\MakeLowercase{#1}}}{#1}}%
-    \rquot{\pt}{#1}}
-\newcommand\sHeckeCat[1]{\catIndCoh[\rquot{\mathrm{Nilp}(\liealg{\MakeLowercase{#1}}^*)}{#1}]{\sHecke G}}
-\newcommand\Sing{\operatorname{Sing}}
 
 \begin{document}
 
@@ -32,7 +28,7 @@
     The \emph{spectral Hecke category} is $\sHeckeCat G$.
 \end{Def}
 
-Note that the Kozul dual description of the singular support of applies to $\sHecke G$.
+Note that the Koszul dual description of the singular support of applies to $\sHecke G$.
 Hence its singular support stack is $\Sing(\sHecke G) = \rquot{\liealg g^*}G$.
 
 \begin{Q}
@@ -48,6 +44,17 @@ Hence its singular support stack is $\Sing(\sHecke G) = \rquot{\liealg g^*}G$.
     What are the corresponding subcategories of $\operatorname{Sph}(G,x)$?
 \end{Q}
 
+\section*{koszul duality}
+
+We have a Koszul duality isomorphism
+\[
+    \KD \colon \catIndCoh{\sHecke G} \isoto \left( \catModules{\SymAlg(\liealg g^*[-2])} \right)^G.
+\]
+
+\begin{Q}
+    Is $\left( \catModules{\SymAlg(\liealg g^*[-2])} \right)^G \cong \catQCoh{g^*}^{\Gm × G}$?
+\end{Q}
+
 \section*{\enquote{naive} geometric satake}
 
 As a \enquote{warm-up} can one answer these questions for the categories in the \enquote{naive} geometric Satake
@@ -55,12 +62,61 @@ As a \enquote{warm-up} can one answer these questions for the categories in the 
     \operatorname{Rep}(\ld G) \cong \cat{Perv}(\mathrm{Gr}_G)^{G(\O)}?
 \]
 
+\section*{relation between \texorpdfstring{$BG$ and $\sHecke G$}{BG and the spectral Hecke stack}}
+
 Note that we have a diagonal map $Δ\colon BG → \sHeckeStack G$ that induces a (monoidal?) map $Δ_*\colon \catRep G → \catIndCoh{\sHecke G}$.
 Since the map $BG → \rquot{\liealg g}{G}$ is separated (by same reference in the stacks project), $Δ$ is a closed immersion (and in particular proper).
-Since $BG$ is smooth, $Δ_*$ actually has image $\catIndCoh[\{0\}]{\sHecke G} \cong \catQCoh{\sHecke G}$ \cite[Theorem~6.3.3]{ArinkinGaitsgory:arXiv:v2:SingularSupport}.
+
+\subsection*{monadic description}
+
+The stack $BG$ is smooth and hence $\Sing{BG} = BG$ and $\catIndCoh{BG} = \catQCoh{BG}$.
+By \cite[Theorem~6.3.3]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, we have
+\[
+    \SingSupp(Δ_*\sheaf F) = \Sing(\sHecke G) = \rquot{\liealg g^*}{G}.
+\]
+By \cite[Corollary~7.4.12]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, the functor $Δ_*$ is conservative (hence the essential image of $Δ^*$ generates $\catQCoh{BG}$).
+By \cite[Proposition~7.4.19]{ArinkinGaitsgory:arXiv:v2:SingularSupport}, the essential imago of $\catQCoh{BG}$ under $Δ_*$ generates $\catIndCoh{\sHecke G}$.
+In particular, $Δ^!$ is conservative.
+
+\begin{Cor}
+    We have a monad $Δ^!Δ_*$ on $\catQCoh{BG}$ and a comonad $Δ_*Δ^!$ on $\catIndCoh{\sHecke G}$.
+    The (co)modules over these (co)monads describe the respective other category.
+\end{Cor}
 
 \begin{Q}
-    Can we describe the monad $Δ^!Δ_*$?
+    Can we describe $Δ^!Δ_*$ and $Δ_*Δ^!$?
+\end{Q}
+
+\begin{Q}
+    How do these monads interact with restriction of singular support to $\rquot{\mathrm{Nilp}(\liealg g^*)}G$?
+\end{Q}
+
+\subsection*{eisenstein series}
+
+\begin{Claim}
+    There is a commutative diagram
+    \[
+        \begin{tikzcd}
+            BG \arrow{d}{Δ} & BB \arrow{l} \arrow{r} \arrow{d}{Δ} & BH \arrow{d}{Δ} \\
+            \sHeckeStack G & \sHeckeStack B \arrow{l}\arrow{r} & \sHeckeStack H
+        \end{tikzcd}
+    \]
+\end{Claim}
+
+\begin{Q}
+    Are the squares in this diagram Cartesian?
+    If so, can we relate the induction/restriction functors for $BG$ with the Eisenstein series/constant term functors for $\sHecke G$?
+\end{Q}
+
+\subsection*{koszul duality}
+
+We have a Kozsul duality isomorphism
+\[
+    \KD \colon \catIndCoh{\sHecke G} \isoto \left( \catModules{\SymAlg(\liealg g^*[-2])} \right)^G.
+\]
+
+\begin{Q}
+    Is there a nice description of the functors $Δ_*$, $Δ^!$ combined with $\KD$, i.e.~as functors $\catQCoh{BG}^G \leftrightarrows \catQCoh{\liealg g^*}^{\Gm × G}$?
 \end{Q}
 
 \section*{filtration by orbits}
