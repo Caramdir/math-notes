@@ -1,0 +1,106 @@
+%type: notes
+%title: Groupoids and Monads
+%tags: algebraic geometry, category theory
+\documentclass[english]{short-notes}
+
+\usepackage{math-alg,math-ag, math-gl}
+\usepackage{xparse}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+\newcommand\catSpaces{\cat{Spaces}}
+%\newcommand\catSheaves[1]{\cat{Sh}(#1)}
+
+\title{groupoids and monads}
+\author{Clemens Koppensteiner}
+
+
+\begin{document}
+
+\maketitle
+
+\textbf{Warning:} There might be some confusion in the use of the words \enquote{source} and \enquote{target}.
+
+We let $\catSpaces$ be an appropriate category of algebraic spaces and $\cat{Sh}({-})$ be an appropriate sheaf theory on $\catSpaces$ (I have ind-coherent sheaves on derived stacks in mind, but we are only going to use some basic functors and adjunctions that hold in a large variety of cases).
+
+\section*{groupoids}
+
+\begin{Def}
+    A \emph{groupoid} $\mathcal G$ in $\catSpaces$ consists of a space $G₀$ of \enquote{objects} and a space $G₁$ of \enquote{morphisms} with
+    \begin{itemize}
+        \item \emph{source} and \emph{target} maps $s,t\colon G₁ \leftleftarrows G₀$,
+        \item a \emph{unit} $e\colon G₀ → G₁$,
+        \item a \emph{multiplication} (or \emph{composition}) map $m\colon G₁ ×\limits_{s,G₀,t} G₁ → G₁$,
+        \item a \emph{inverse} map $ι\colon G₁ → G₁$,
+    \end{itemize}
+    such that
+    \begin{itemize}
+        \item $s ∘ e = t ∘ e = \id_{G₀}$,
+        \item $s ∘ m = s ∘ p₂$ and $t ∘ m = t ∘ p₁$ (where $p_i\colon G₁ ×_{s,G₀,t} G₂$ are the projection maps.
+        \item $m$ is associative,
+        \item $ι$ interchanges $s$ and $t$ and is an inverse for $m$.
+    \end{itemize}
+\end{Def}
+
+\begin{Ex}
+    The basic example is the following:
+    Let $f\colon X → S$ be a map in $\catSpaces$. 
+    We set $G_0 = X$ and $G₁ = X ×_S X$.
+    The source and target maps are given by $p₁$ and $p₂$, the unit by the diagonal $Δ\colon X → X×_SX$, the inverse by interchanging the factors and multiplication is $p₁₃\colon X ×_S X ×_S X → X×_SX$.
+\end{Ex}
+
+\section*{monads}
+
+\begin{Def}
+    A \emph{monad} on a category $\cat C$ is a triple $(T, η, μ)$ consisting of
+    \begin{itemize}
+        \item an endofunctor $T\colon \cat C → \cat C$,
+        \item a natural transformation $η\colon \id_{\cat C} → T$, and
+        \item a natural transformation $μ\colon T∘T → T$
+    \end{itemize}
+    such that the appropriate \emph{coherence conditions} hold.
+\end{Def}
+
+\begin{Ex}
+    Let $F\colon \cat C \rightleftarrows \cat D\cocolon G$ be a pair of adjoint functors.
+    Then $GF$ is a monad on $\cat C$.
+\end{Ex}
+
+This can be generalized to higher categories.
+
+\section*{monads from groupoids}
+
+Let $\mathcal G$ be a groupoid in $\catSpaces$.
+Then we can give $s_*t^!$ the structure of a monad on $\catSheaves{G₀}$ in the following way.
+
+\begin{itemize}
+    \item $T = s_*t^!$.
+    \item By $(e_*,e^!)$-adjunction (assuming eg.~that $e$ is a closed embedding) we have a transformation 
+        \[
+            \id = (s∘e)_*(t∘e)! = s_*e_*e^!t^! → s_*t^!.
+        \]
+    \item Consider the following commutative diagram
+        \[
+            \begin{tikzcd}[column sep=small]
+                {}& & G₁ \arrow[bend right]{dddll}{s} \arrow[bend left]{dddrr}{t} & & \\
+                & & G₁ ×_{G₀} \arrow{u}{m}\arrow{dl}{π₁}\arrow{dr}{π₂} G₁ & & \\
+                & G₁ \arrow{dl}{s}\arrow{dr}{t} & & G₁ \arrow{dl}{s}\arrow{dr}{t} & \\
+                G₀ & & G₀ & & G₀
+            \end{tikzcd}
+        \]
+        with Cartesian middle square.
+        Then base change and $(m_*,m^!)$-adjuction (assuming e.g.~that $m$ is proper) gives a transformation
+        \[
+            T² =
+            s_*t^!s_*t^! =
+            (s∘π₁)_*(t∘π₂)^! =
+            (s∘m)_*(t∘m)^! =
+            s_*m_*m^!t^! →
+            s_*t^! =
+            T.
+        \]
+\end{itemize}
+
+\printbibliography
+\end{document}
