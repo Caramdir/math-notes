@@ -1,0 +1,73 @@
+%type: notes
+%title: geometric representation theory
+%tags: representation theory, algebraic groups, geometric representation theory
+\documentclass[english, no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+\title{basic theorems of geometric representation theory}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+\maketitle
+
+\section{notation}
+
+We fix a maximal torus $H$ and a Borel $B$ containing $H$.
+
+We write $X^*(G) = X^*(H) = \Hom(H,k^\units)$.
+
+We set $X = \mathcal{Fl} = \rquot GB$.
+
+\section{borel--weil--bott}
+
+\paragraph{References}
+    \cite[Section~2.5]{Schmid:2005:GeometricMethodsInRepresentationTheory},
+    \cite[Section~9.11]{HottaTakeuchiTanisaki:2008:DModulesPerverseSheavesRepresentationTheory},
+    \href{http://en.wikipedia.org/wiki/Borel–Weil–Bott_theorem}{Wikipedia}
+
+\begin{Lem}
+    $G$-equivariant vector bundles (i.e.\ $G$-equivariant coherent sheaves) on $X$ are the same as $B$-modules.
+\end{Lem}
+
+The correspondence sends an equivariant vector bundle to its fiber over $B ∈ X$.
+Conversely, a $B$-modules $V$ is sent to $\lquot{B}{(G×V)}$.
+
+Consider the Cartesian square
+\[
+    \begin{tikzcd}
+        \rquot GB \arrow{d}{p} \arrow{r}{f} \arrow{d} & BB \arrow{d}{a}\\
+        \pt \arrow{r} & BG
+    \end{tikzcd}
+\]
+\begin{Claim}
+    The equivalence is given by the functor $f^!\colon \catCoh{BB} → \catCoh{X}^G$.
+\end{Claim}
+
+If we restrict to line bundles, than we see that a one-dimensional representation of $B$ is the same a one-dimensional representation of $H$ (since $R(B)$ has to act trivially), i.e.~a character of $H$.
+We write $\mathcal L_λ$ for the line bundle on $X$ corresponding to $λ ∈ X^*(H)$.
+In other words, we have $\mathcal L_λ = f^!b^!ℂ_λ$, where $b\colon BB→BH$ is induced by the quotient map $B→H$ and $ℂ_λ ∈ \catRep H$ is the representation corresponding to $λ ∈ X^*(H)$.
+
+The (derived) global sections of a vector bundle on $X$ (or any projective variety with a $G$-action) give a $G$-representation.
+In other words we have the functor $p_*\colon \catCoh{G/B}^G → \catCoh{\pt}^G \cong \catCoh{BG}$.
+This gives a way to seeing $G$-representations in a geometric context.
+
+We are interested in describing the functor $\operatorname{ind} = a_*b^! \cong p_*f^!b^!\colon \catCoh{BH} → \catCoh{BG}$.
+
+\begin{Thm}[Borel--Weil--Bott]
+    If $λ$ is singular (i.e.~there exists no $w ∈ W$ such that $w(λ+ρ)-ρ$ is dominant), then $\operatorname{ind}(ℂ_λ) = 0$.
+    Otherwise, let $w$ be the unique element of the Weyl group such that $w(λ+ρ)-ρ$ is dominant.
+    Then $\operatorname{ind}(ℂ_λ) = V_{w(λ+ρ)-ρ}[-\ell(w)]$, where $V_χ$ is the irreducible representation of highest weight $χ$.
+\end{Thm}
+
+Note that $\mathcal L_{-2ρ}$ is the canonical bundle on $X$ so that this description is compatible with Serre duality.
+
+\section{bb-localization}
+
+\section{bgg-resolution}
+
+\printbibliography
+\end{document}
