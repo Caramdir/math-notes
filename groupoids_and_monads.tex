@@ -1,7 +1,7 @@
 %type: notes
 %title: Groupoids and Monads
 %tags: algebraic geometry, category theory
-\documentclass[english]{short-notes}
+\documentclass[english,no-theorem-numbers]{short-notes}
 
 \usepackage{math-alg,math-ag, math-gl}
 \usepackage{xparse}
@@ -11,6 +11,7 @@
 
 \newcommand\catSpaces{\cat{Spaces}}
 %\newcommand\catSheaves[1]{\cat{Sh}(#1)}
+\newcommand\incl{\operatorname{incl}}
 
 \title{groupoids and monads}
 \author{Clemens Koppensteiner}
@@ -67,6 +68,11 @@ We let $\catSpaces$ be an appropriate category of algebraic spaces and $\cat{Sh}
     Then $GF$ is a monad on $\cat C$.
 \end{Ex}
 
+\begin{Def}
+    Let $(T,η,μ)$ be a groupoid in $\cat C$.
+    A \emph{$T$-module} (or \emph{$T$}-algebra) is an object $A ∈ \cat C$ together with a morphism $ϑ\colon TA → A$ such that the obvious diagrams commute. 
+\end{Def}
+
 This can be generalized to higher categories.
 
 \section*{monads from groupoids}
@@ -101,6 +107,46 @@ Then we can give $s_*t^!$ the structure of a monad on $\catSheaves{G₀}$ in the
             T.
         \]
 \end{itemize}
+
+\subsection*{restricting to the unit}
+
+Assume that $e$ is a closed embedding and let $E$ be its image in $G₁$.
+We have adjoint functors
+\[
+    \operatorname{incl}\colon \catSheaves{G₁}_E \rightleftarrows \catSheaves{G₁}\cocolon Γ_E.
+\]
+Explicitly, $Γ_E \sheaf F$ is given as $\operatorname{Cone}\bigl(\sheaf F → j_*j^*\sheaf F\bigr)[-1]$.
+Assuming e.g.~that $s$ and $t$ are proper, we get adjoint functors
+\[
+    (s_E)_* = \incl ∘ s_*\colon \catSheaves{G₀} \rightleftarrows \catSheaves{G₁}_E \cocolon s_E^! = s^! ∘ Γ_E
+\]
+and analogously for $t$.
+As above, the groupoid $\mathcal G$ induces the structure of a monad on $(s_E)_*t_E^!$.
+
+Consider now the case $\mathcal G = X×_SX$ with $f\colon X → S$ proper.
+Let $p₁ = t$ and $p₂ = s$ be the two projections and let $(p_{2,Δ})_*$ and $p_{1,Δ}^!$ be defined as above.
+\begin{Prop}
+    Let $\sheaf F ∈ \catSheaves{S}$.
+    Then $f^!\sheaf F$ has a canonical structure as a $(p_{2,Δ})_*p_{1,Δ}^!$-module.
+\end{Prop}
+
+\begin{proof}
+    By $(\incl, Γ_Δ)$-adjunction and base change we get a morphism
+    \[
+        (p_{2,Δ})_*p_{1,Δ}^! =
+        (p₂)_* ∘ \incl ∘ Γ_Z ∘ p_1^! →
+        (p₂)_* p₁^! \isoto
+        f^!f_*.
+    \]
+    Combining this with $(f_*,f^!)$-adjunction we get the required map
+    \[
+        (p_{2,Δ})_*p_{1,Δ}^!(f^!\sheaf F) →
+        f^!f_*(f^!\sheaf F) =
+        f^!(f_*f^!)\sheaf F →
+        f^!\sheaf F.
+        \qedhere
+    \]
+\end{proof}
 
 \printbibliography
 \end{document}
