@@ -1,0 +1,36 @@
+%type: notes
+%title: Base-change map from adjunction
+%tags: algebraic geometry, category theory
+\documentclass[english,no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag, math-gl}
+\usepackage{xparse}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+\title{base change map from adjunction}
+\author{Clemens Koppensteiner}
+
+
+\begin{document}
+
+\maketitle
+
+Consider a commutative diagram of spaces of the following form:
+\[
+    \begin{tikzcd}
+        Z \arrow{r}{g'} \arrow{d}{f'} & Y \arrow{d}{f} \\
+        Y' \arrow{r}{g} & X
+    \end{tikzcd}
+\]
+Then the adjunction morphisms give a natural transformation
+\[
+    g^*f_* → f_*(f')^* →
+    f'_*(f')^*g^*f_* =
+    f'_*(g')^*f^*f_* →
+    f'_*(g')^*.
+\]
+
+
+\end{document}
