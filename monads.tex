@@ -1,5 +1,5 @@
 %type: notes
-%title: Groupoids and Monads
+%title: Monads
 %tags: algebraic geometry, category theory
 \documentclass[english,no-theorem-numbers]{short-notes}
 
@@ -13,19 +13,81 @@
 %\newcommand\catSheaves[1]{\cat{Sh}(#1)}
 \newcommand\incl{\operatorname{incl}}
 
-\title{groupoids and monads}
+\title{monads}
 \author{Clemens Koppensteiner}
-
 
 \begin{document}
 
 \maketitle
 
+We collect some standard category-theoretic constructions.
+For simplicity, we mostly use the language of 1-categories, but all concepts make sense in the setting of (stable) $∞$-categories or (co-complete) dg-categories.
+
+\section*{monads}
+
+\begin{Def}
+    A \emph{monad} on a category $\cat C$ is a triple $(T, η, μ)$ consisting of
+    \begin{itemize}
+        \item an endofunctor $T\colon \cat C → \cat C$,
+        \item a natural transformation $η\colon \id_{\cat C} → T$, and
+        \item a natural transformation $μ\colon T∘T → T$
+    \end{itemize}
+    such that the appropriate \emph{coherence conditions} hold.
+\end{Def}
+
+\begin{Def}
+    Let $(T,η,μ)$ be a groupoid in $\cat C$.
+    A \emph{$T$-module} (or \emph{$T$}-algebra) is an object $A ∈ \cat C$ together with a morphism $ϑ\colon TA → A$ such that the obvious diagrams commute.
+
+    A \emph{morphism} between $T$-modules $(A,ϑ_A)$ and $(B,ϑ_B)$ is a morphism $f\colon A → B$ such that $ϑ_B ∘ Tf = f∘ϑ_A$.
+
+    The category of all $T$-modules in $\cat C$ will be denoted $\catModules T$ or $\cat C^T$.
+\end{Def}
+
+\section*{adjunctions}
+
+\begin{Def}
+    An \emph{adjunction} is a pair of functors
+    \[
+        F\colon \cat C \leftrightarrows \cat D \cocolon G
+    \]
+    together with natural transformations
+    \[
+        η\colon \id[\cat C] → GF
+        \qquad\text{and}\qquad
+        ε\colon FG → \id[\cat D],
+    \]
+    called \emph{unit} and \emph{counit}, such that the compositions
+    \[
+        F \xrightarrow{Fη} FGF \xrightarrow{εF} F
+        \qquad\text{and}\qquad
+        G \xrightarrow{ηG} GFG \xrightarrow{Fε} G
+    \]
+    are the identity transformations.
+\end{Def}
+
+This gives a natural isomorphism
+\[
+    \Hom_{\cat D}(F({-}),{-}) \cong \Hom({-},G({-})).
+\]
+
+\begin{Construction}
+    Let $F\colon \cat C \rightleftarrows \cat D\cocolon G$ be a pair of adjoint functors.
+    Then $T = GF$ is a monad on $\cat C$.
+    Explicitly, the unit of $T$ is equal to the unit of the adjunction and the multiplication map is $GεF\colon GFGF → GF$.
+\end{Construction}
+
+\begin{Thm}[Barr--Beck--Lurie, \enquote{easy version}]
+    Let $F\colon \cat C \rightleftarrows \cat D\cocolon G$ be a pair of adjoint functors between co-complete dg-categories and assume that $G$ commutes with colimits (equivalently, $F$ preserves compactness).
+    Let $T = GF$ be the corresponding monad on $\cat C$.
+    Then $\cat D \cong \catModules{T}$ if and only if $G$ is conservative.
+\end{Thm}
+
+\section*{groupoids}
+
 \textbf{Warning:} There might be some confusion in the use of the words \enquote{source} and \enquote{target}.
 
 We let $\catSpaces$ be an appropriate category of algebraic spaces and $\cat{Sh}({-})$ be an appropriate sheaf theory on $\catSpaces$ (I have ind-coherent sheaves on derived stacks in mind, but we are only going to use some basic functors and adjunctions that hold in a large variety of cases).
-
-\section*{groupoids}
 
 \begin{Def}
     A \emph{groupoid} $\mathcal G$ in $\catSpaces$ consists of a space $G₀$ of \enquote{objects} and a space $G₁$ of \enquote{morphisms} with
@@ -51,31 +113,7 @@ We let $\catSpaces$ be an appropriate category of algebraic spaces and $\cat{Sh}
     The source and target maps are given by $p₁$ and $p₂$, the unit by the diagonal $Δ\colon X → X×_SX$, the inverse by interchanging the factors and multiplication is $p₁₃\colon X ×_S X ×_S X → X×_SX$.
 \end{Ex}
 
-\section*{monads}
-
-\begin{Def}
-    A \emph{monad} on a category $\cat C$ is a triple $(T, η, μ)$ consisting of
-    \begin{itemize}
-        \item an endofunctor $T\colon \cat C → \cat C$,
-        \item a natural transformation $η\colon \id_{\cat C} → T$, and
-        \item a natural transformation $μ\colon T∘T → T$
-    \end{itemize}
-    such that the appropriate \emph{coherence conditions} hold.
-\end{Def}
-
-\begin{Ex}
-    Let $F\colon \cat C \rightleftarrows \cat D\cocolon G$ be a pair of adjoint functors.
-    Then $GF$ is a monad on $\cat C$.
-\end{Ex}
-
-\begin{Def}
-    Let $(T,η,μ)$ be a groupoid in $\cat C$.
-    A \emph{$T$-module} (or \emph{$T$}-algebra) is an object $A ∈ \cat C$ together with a morphism $ϑ\colon TA → A$ such that the obvious diagrams commute. 
-\end{Def}
-
-This can be generalized to higher categories.
-
-\section*{monads from groupoids}
+\subsection*{monads from groupoids}
 
 Let $\mathcal G$ be a groupoid in $\catSpaces$.
 Then we can give $s_*t^!$ the structure of a monad on $\catSheaves{G₀}$ in the following way.
@@ -108,7 +146,7 @@ Then we can give $s_*t^!$ the structure of a monad on $\catSheaves{G₀}$ in the
         \]
 \end{itemize}
 
-\subsection*{restricting to the unit}
+\subsubsection*{Restricting to the unit}
 
 Assume that $e$ is a closed embedding and let $E$ be its image in $G₁$.
 We have adjoint functors
