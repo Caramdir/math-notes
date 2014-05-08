@@ -1,0 +1,42 @@
+%type: notes
+%title: Recollement
+%tags: algebraic geometry, category theory, algebraic topology
+\documentclass[english,no-theorem-numbers]{short-notes}
+
+\usepackage{math-alg,math-ag, math-gl}
+\usepackage{xparse}
+
+\addbibresource{global.bib}
+%\bibliography{global.bib}
+
+\newcommand\catSpaces{\cat{Spaces}}
+%\newcommand\catSheaves[1]{\cat{Sh}(#1)}
+\newcommand\incl{\operatorname{incl}}
+
+\title{recollement}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+For easy reference we collect a number of properties that the functors in a recollement have to satisfy.
+See also \url{http://ncatlab.org/nlab/show/recollement}.
+
+\begin{itemize}
+    \item There are triples adjoint functors $j_!,\, j^!=j^*,\, j_*$ and $i^*,\, i_* = i_!, \, i^!$.
+    \item The units $\id → j^*j_!$ and $\id → i^!i_*$ are isomorphisms, as are the counits $j^*j_* → \id$ and $i^*i_* → \id$.
+    \item $j^*i_* = 0$, $i^*j_! = 0$ and $i^!j^* = 0$.
+    \item $i_*$, $j_*$, $j_!$ are full embeddings.
+    \item There are distinguished triangles
+        \[
+            i_!i^! → \id → j_*j^*,
+        \]
+        \[
+            j_!j^! → \id → i_*i^*.
+        \]
+\end{itemize}
+
+
+\printbibliography
+\end{document}
