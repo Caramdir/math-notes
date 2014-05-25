@@ -5,7 +5,7 @@ list:
 	ls *.tex | sed 's/.tex//'
 
 dist: all
-	cp *.pdf ~/Dropbox/ezpdf\ library/00_Notes
+	rsync -av --del --include="*.pdf" -f 'hide, *' . ~/Dropbox/ezpdf\ library/00_Notes
 
 all: $(PDFS)
 
