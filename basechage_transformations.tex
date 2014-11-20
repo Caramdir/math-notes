@@ -1,0 +1,66 @@
+%type: notes
+%title: Natural transformations from squares
+%tags: algebraic geometry, category theory
+\documentclass[english,no-theorem-numbers]{short-notes}
+
+\usepackage{math-general}
+
+\title{Natural transformations from squares}
+\author{Clemens Koppensteiner}
+
+\begin{document}
+
+\maketitle
+
+\section*{Set-up}
+
+We place ourself into setting of the \enquote{six functors} (though we only use four of them).
+Thus is $f\colon X → Y$ is a morphism of spaces, we have adjoint pairs $f^*,\, f_*$ and $f_!,\, f^!$.
+In other words we have natural transformations
+\begin{align*}
+    \id & → f_*f^*, & \id & → f^!f_!, \\
+    f^*f_* & → \id, & f_!f^! & → \id.
+\end{align*}
+We will consider the following commutative diagram
+\[
+    \begin{tikzcd}
+        Z \arrow{r}{\tilde g} \arrow{d}{\tilde f} & Y \arrow{d}{f} \\
+        Y' \arrow{r}{g} & X
+    \end{tikzcd}
+\]
+
+\section*{Transformations}
+
+\begin{Thm}
+    There are the following natural transformations:
+    \begin{enumerate}
+        \item $g^*f_* → \tilde{f}_*\tilde{g}^*$;
+        \item $\tilde{f}_!\tilde{g}^! → g^!f_!$.
+    \end{enumerate}
+\end{Thm}
+
+\begin{proof}\leavevmode
+    \begin{enumerate}
+        \item $g^*f_* → \tilde{f}_*\tilde{f}^*g^*f_* = \tilde{f}_*\tilde{g}^*f^*f_* → \tilde{f}_*\tilde{g}^*$.
+        \item $\tilde{f}_!\tilde{g}^! → \tilde{f}_!\tilde{g}^!f^!f_! = \tilde{f}_!\tilde{f}^!g^!f_! →  g^!f_!$.
+            \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{Thm}
+    Assume that there is a natural transformation $\tilde{f}_!\tilde{g}^* → g^*f_!$.
+    Then there exists a natural transformation
+    \[
+        \tilde{g}^*f^! → \tilde{f}^!g^*.
+    \]
+\end{Thm}
+
+\begin{proof}
+    $\tilde{g}^*f^! → \tilde{f}^!\tilde{f}_!\tilde{g}^*f^! → \tilde{f}^!g^*f_!f^! → \tilde{f}^!g^*$.
+\end{proof}
+
+\begin{Rem}
+    In general non of these morphisms are isomorphisms.
+\end{Rem}
+
+\end{document}
