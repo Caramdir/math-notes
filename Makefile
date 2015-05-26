@@ -5,7 +5,7 @@ list:
 	ls *.tex | sed 's/.tex//'
 
 dist: all
-	rsync -av --del --include="*.pdf" -f 'hide, *' . ~/Dropbox/ezpdf\ library/00_Notes
+	rsync -avr --del --include="*.pdf" --include="Talks" -f 'hide, *' . ~/Dropbox/ezpdf\ library/00_Notes
 
 all: $(PDFS)
 
