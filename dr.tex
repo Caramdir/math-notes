@@ -1,0 +1,185 @@
+\documentclass{ck-article}
+
+\usepackage{math-ag}
+
+\title{De Rham space and D-modules}
+\author{Clemens Koppensteiner}
+
+\addbibresource{math.bib}
+
+\newcommand\dR{{\mathrm{dR}}}
+
+\newcommand\catDGCat{\cat{DGCat}}
+\newcommand\catFunct{\cat{Funct}}
+\newcommand\catInftyGrpoid{\cat{\infty\text{-}Grpd}}
+%\newcommand\catSchemes{\cat{Sch}}
+\newcommand\catDGSchAff{\cat{DGSch}^{\mathrm{aff}}}
+\newcommand\catPreStk{\cat{PreStk}}
+\newcommand\catCorrSch{\cat{Corr}(\catSchemes)}
+\newcommand\catCorrPreStk{\cat{Corr}(\catPreStk)}
+
+\begin{document}
+
+\maketitle
+
+\section{Crystals and D-modules}
+
+We fix a ground field $k$ of characteristic $0$.
+
+\begin{Def}
+    Let $X$ be a prestack (always taken over $k$).
+    The \emph{de Rham prestack} $X_{\dR}$ of $X$ is defined as
+    \[
+        X_{\dR}(S) = X(^{cl, red}S)
+    \]
+    for $S \in \catDGSchAff$.
+\end{Def}
+
+As limits and colimts in $\catPreStk = \catFunct((\catDGSchAff)^{\mathrm{op}},\, \catInftyGrpoid)$ are computed object-wise, the formation of the de Rham prestack commutes with limits and colimits.
+We also note that we a canonical morphism $X \to X_{\dR}$.
+
+\begin{Def}[\cite{GaitsgoryRozenblyum:2014:CrystalsAndDModules}]
+    The category of (left) \emph{D-modules} on $X$ is defined as
+    \[
+        \catDMod{X} = \cat{QCoh}^*(X_{\dR}).
+    \]
+\end{Def}
+
+The map $X \to X_{\dR}$ induces a forgetful functor $\catDMod{X} \to \catQCoh{X}$, commuting with the pullback of D-modules.
+
+\begin{Rem}
+    One also defines an equivalent category of \emph{right D-modules} as $\cat{IndCoh}^!(X_{\dR})$.
+    It turns out that in some regards this category is better behaved.
+    In particular its natural t-structure behaves well with regards to Kashiwara's Equivalence and the forgetful functor.
+    We note that one a smooth classical scheme $X$ the left and right t-structures are the same up to a shift by $\dim X$.
+\end{Rem}
+
+\subsection{Why does this definition make sense?}
+
+In this section we want to convince ourselves that the definition above agrees with the classical definition in the case of a smooth classical scheme $X$.
+We will do this on the level of abelian categories.
+
+\begin{Def}
+    Let $R$ be a commutative ring.
+    Two points $x, y \in X(R)$ are infinitesimally close if they have the same image under the map $R \to R^{red} = R/I$, where $I = \sqrt{0}$ is the nil-radical of $R$.
+\end{Def}
+
+Let $(X \times X)^\vee$ be the formal completion of $X \times X$ along the diagonal.
+Then $x$ and $y$ are infinitesimally close if the map $(x,y) \colon \Spec R \to X \times X$ factors through the $(X \times X)^\vee$.
+
+For a quasi-coherent sheaf $\sheaf F$ on $X$ and a point $x\colon \Spec R \to X$ we will write $\sheaf F_x = x^*(\sheaf F)$.
+
+\begin{Def}
+    A \emph{crystal of quasi-coherent sheaves} on $X$ consists of the following data:
+    \begin{enumerate}
+        \item A quasi-coherent sheaf $\sheaf F$ on $X$.
+        \item For every pair of infinitesimally close points $x,y \in X(R)$ an isomorphism $\eta_{x,y}\colon \sheaf F_x \isoto \sheaf F_y$, compatible with pullback along $\Spec R' \to \Spec R$:
+            \[
+                \eta_{x',y'} = \eta_{x,y} \otimes_R R',
+            \]
+            where $x',y'$ are the images of $x$ and $y$ in $X(R')$.
+        \item If $x$ is infinitesimally close to $y$ and $y$ is infinitesimally close to $z$, then we require that $\eta_{x,z} = \eta_{y,z} \cong \eta_{x,y}$.
+            In particular, $\eta_{x,x}$ is the identity on $\sheaf F_x$ and $\eta_{x,y}$ is inverse to $\eta_{y,x}$.
+    \end{enumerate}
+\end{Def}
+
+\begin{Prop}
+    For a smooth (classical) scheme $X$ over $k$, the following categories are equivalent:
+    \begin{enumerate}
+        \item $\catQCoh{X_{\dR}}$.
+        \item The category of crystals of quasi-coherent sheaves on $X$.
+        \item $\catDMod{X}$.
+    \end{enumerate}
+\end{Prop}
+
+\begin{proof}\footnote{This proof is taken from Lurie's notes at \url{http://www.math.harvard.edu/~gaitsgde/grad_2009/SeminarNotes/Nov17-19(Crystals).pdf}}
+    Unwinding the definitions, we immediately see that the first two categories are equivalent.
+    The interesting point is the equivalence of crystals and D-modules.
+
+    For any $n \ge 0$ denote by $X^{(n)}$ the $n$-th infinitesimal  neighborhood of the diagonal in $X \times X$, i.e.~the closed subscheme corresponding to the sheaf of ideals $\sheaf I^{n+1}$, where $\sheaf I$ defines the diagonal.
+    Let $\pi_1, \pi_2 \colon (X \times X)^\vee$ be the two projections and let $\pi_i^{(n)}$ be the restriction of $\pi_i \to X^{(n)}$.
+
+    To give the family of isomorphisms $\eta_{x,y}$ is equivalent to giving an isomorphism $\pi_1^*\sheaf F \isoto \pi_2^*\sheaf F$.
+    Giving such a maps in turn equivalent to giving a compatible family of maps $\pi_1^{(n),*}\sheaf F \to \pi_2^{(n),*}\sheaf F$, or
+    \[
+        \sheaf F \to \pi_{1,*}^{(n)}\pi_2^{(n),*}\sheaf F = \O_{X^{(n)}} \otimes \O_X \sheaf F.
+    \]
+    Let now $\sheaf D_X^{\le n}$ be the sheaf of differential operators on $X$ of degree at most $n$.
+    Let $D$ be such a differential operator and represent an element of $\O_{X^{(n)}}$ by $g(x,y) \bmod \sheaf I^{n+1}$.
+    Keeping $y$ constant, we can let $D$ act on $g$ to obtain a new function $Dg$ of two variables.
+    Since $D$ has order at most $n$ this operation takes $\sheaf I^{n+1}$ to $\sheaf I$ and hence $Dg$ is independent of the choice $g$ as a function on $X = X^{(0)}$.
+    In other words, we obtain a pairing
+    \[
+        \sheaf D_X^{\le n} \otimes_{\O_X} \to \O_{X^{(n)}} \to \O_X, \quad \langle D, g\rangle = Dg.
+    \]
+    An explicit computation in coordinates shows that this pairing is perfect.
+    Thus giving a map $\sheaf F \to \O_{X^{(n)}} \otimes \O_X \sheaf F$ is equivalent to giving a map $\sheaf D_X^{\le n} \otimes \sheaf F \to \sheaf F$.
+    A compatible family of such maps is the same as a map $\sheaf D_X \otimes \sheaf F \to \sheaf F$.
+
+    Thus giving all $\eta_{x,y}$ is the same as giving a map $\alpha\colon\sheaf D_X \otimes \sheaf F \to \sheaf F$.
+    The requirement that $\eta_{x,z} = \eta_{y,z} \circ \eta_{x,y}$ translates to associativity of the action of $\sheaf D_X$ on $\sheaf F$.
+    In particular $\eta_{x,x} = \id$ translates to $1 \in \sheaf D_X$ acting on $\sheaf F$ as the identity.
+    Together with $\eta_{x,x} = \eta_{y,x} \circ \eta_{x,y}$, this guarantees that all $\eta_{x,y}$ are invertible.
+\end{proof}
+
+
+\section{What is a good theory of D-modules}
+
+\cite{FrancisGaitsgory:2012:ChiralKoszulDuality} make the following demands for a \enquote{theory of D-modules}:
+Let $\catCorrSch$ be the $(2,1)$-category whose objects are finite type schemes with $\Hom(X,Y)$ being the groupoid of all correspondences between $X$ and $Y$.
+Thus $1$-morphisms are diagrams
+\[
+    \begin{tikzcd}
+        & Z \arrow[dl] \arrow[dr] & \\
+        X & & Y
+    \end{tikzcd}
+\]
+Morphisms between such diagrams are given in the obvious way.
+Correspondences are composed by taking the obvious cartesian square.
+
+A theory of D-modules is then a functor
+\[
+    \cat{D}\colon \catCorrSch \to \catDGCat
+\]
+which on the level of objects assigns to each scheme $X$ the category of D-modules $\catDMod{X}$.
+On the level of $1$-morphism we interpret the image of a correspondence $X \xleftarrow{f} Z \xrightarrow{g} Y$ as the functor $g_* f^!$.
+
+Note we have a functor $\catSchemes \to \catCorrSch$ which sends $f\colon X \to Y$ to the correspondence $X = X \xrightarrow{f} Y$ and a functor $\catSchemes^{\mathrm{op}} \to \catCorrSch$ sending $f\colon X \to Y$ to $Y \xleftarrow{f} X = X$.
+Restricting the functor $\cat{D}$ along these functors gives functors $\cat{D}_*$ and $\cat{D}^!$, assigning to each scheme $X$ the category $\catDMod{X}$ and to $f$ the pushforward $f_*$ (resp.~the pullback $f^!$).
+
+Part of the data of $\cat{D}$ is for each cartesian square
+\[
+    \begin{tikzcd}
+        Z \arrow[r, "\tilde f"] \arrow[d, "\tilde g"] & X' \arrow[d, "g"] \\
+        X \arrow[r, "f"] & Y
+    \end{tikzcd}
+\]
+a base-change isomorphism $g^!f_* \cong \tilde f_*\tilde g^!$.
+The point of the whole formalism is then that this base-change isomorphism is appropriately functorial.
+
+Upgrading this further \cite{GaitsgoryRozenblyum:2017:StudyInDAG:2} constructs a functor
+\[
+    \cat{D}\colon \catCorrPreStk \to \catDGCat,
+\]
+where now $\catCorrPreStk$ is the $(\infty, 2)$-category whose objects are (laft) prestacks (in the sense of the last talk) and whose $1$-morphisms are correspondences
+\[
+    \begin{tikzcd}
+        & Z \arrow[dl, "p"] \arrow[dr, "q"] & \\
+        X & & Y
+    \end{tikzcd}
+\]
+with $p$ (?) ind-inf-schematic (?).
+The non-invertible $2$-morphisms are commutative diagrams
+\[
+    \begin{tikzcd}
+        & Z \arrow[ddl]  \arrow[ddr] \arrow[d, "f" description] & \\
+        & Z \arrow[dl]  \arrow[dr] & \\
+        X & & Y
+    \end{tikzcd}
+\]
+with $f$ proper (?).
+The point here is that this also encodes $(f_*, f^!)$-adjunction for proper $f$.
+
+\printbibliography
+
+\end{document}
