@@ -78,7 +78,7 @@ For a quasi-coherent sheaf $\sheaf F$ on $X$ and a point $x\colon \Spec R \to X$
                 \eta_{x',y'} = \eta_{x,y} \otimes_R R',
             \]
             where $x',y'$ are the images of $x$ and $y$ in $X(R')$.
-        \item If $x$ is infinitesimally close to $y$ and $y$ is infinitesimally close to $z$, then we require that $\eta_{x,z} = \eta_{y,z} \cong \eta_{x,y}$.
+        \item If $x$ is infinitesimally close to $y$ and $y$ is infinitesimally close to $z$, then we require that $\eta_{x,z} = \eta_{y,z} \circ \eta_{x,y}$.
             In particular, $\eta_{x,x}$ is the identity on $\sheaf F_x$ and $\eta_{x,y}$ is inverse to $\eta_{y,x}$.
     \end{enumerate}
 \end{Def}
@@ -93,6 +93,7 @@ For a quasi-coherent sheaf $\sheaf F$ on $X$ and a point $x\colon \Spec R \to X$
 \end{Prop}
 
 \begin{proof}\footnote{This proof is taken from Lurie's notes at \url{http://www.math.harvard.edu/~gaitsgde/grad_2009/SeminarNotes/Nov17-19(Crystals).pdf}}
+    As $X$ is smooth, the map $X(R) \to X(R^{red})$ is surjective.
     Unwinding the definitions, we immediately see that the first two categories are equivalent.
     The interesting point is the equivalence of crystals and D-modules.
 
@@ -102,7 +103,7 @@ For a quasi-coherent sheaf $\sheaf F$ on $X$ and a point $x\colon \Spec R \to X$
     To give the family of isomorphisms $\eta_{x,y}$ is equivalent to giving an isomorphism $\pi_1^*\sheaf F \isoto \pi_2^*\sheaf F$.
     Giving such a maps in turn equivalent to giving a compatible family of maps $\pi_1^{(n),*}\sheaf F \to \pi_2^{(n),*}\sheaf F$, or
     \[
-        \sheaf F \to \pi_{1,*}^{(n)}\pi_2^{(n),*}\sheaf F = \O_{X^{(n)}} \otimes \O_X \sheaf F.
+        \sheaf F \to \pi_{1,*}^{(n)}\pi_2^{(n),*}\sheaf F = \O_{X^{(n)}} \otimes_{\O_X} \sheaf F.
     \]
     Let now $\sheaf D_X^{\le n}$ be the sheaf of differential operators on $X$ of degree at most $n$.
     Let $D$ be such a differential operator and represent an element of $\O_{X^{(n)}}$ by $g(x,y) \bmod \sheaf I^{n+1}$.
@@ -110,7 +111,7 @@ For a quasi-coherent sheaf $\sheaf F$ on $X$ and a point $x\colon \Spec R \to X$
     Since $D$ has order at most $n$ this operation takes $\sheaf I^{n+1}$ to $\sheaf I$ and hence $Dg$ is independent of the choice $g$ as a function on $X = X^{(0)}$.
     In other words, we obtain a pairing
     \[
-        \sheaf D_X^{\le n} \otimes_{\O_X} \to \O_{X^{(n)}} \to \O_X, \quad \langle D, g\rangle = Dg.
+        \sheaf D_X^{\le n} \otimes_{\O_X} \O_{X^{(n)}} \to \O_X, \quad \langle D, g\rangle = Dg.
     \]
     An explicit computation in coordinates shows that this pairing is perfect.
     Thus giving a map $\sheaf F \to \O_{X^{(n)}} \otimes \O_X \sheaf F$ is equivalent to giving a map $\sheaf D_X^{\le n} \otimes \sheaf F \to \sheaf F$.
@@ -168,7 +169,7 @@ where now $\catCorrPreStk$ is the $(\infty, 2)$-category whose objects are (laft
         X & & Y
     \end{tikzcd}
 \]
-with $p$ (?) ind-inf-schematic (?).
+with $p$ ind-inf-schematic.
 The non-invertible $2$-morphisms are commutative diagrams
 \[
     \begin{tikzcd}
@@ -177,7 +178,7 @@ The non-invertible $2$-morphisms are commutative diagrams
         X & & Y
     \end{tikzcd}
 \]
-with $f$ proper (?).
+with $f$ proper.
 The point here is that this also encodes $(f_*, f^!)$-adjunction for proper $f$.
 
 \printbibliography
