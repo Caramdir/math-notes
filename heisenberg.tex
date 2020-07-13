@@ -147,7 +147,7 @@ The element $1 \in H$ is called the \emph{vacuum vector} and $H \cdot 1 = F$.
 
 \begin{Example}
     If $\dim V = 1$, one can identify $F$ with the polynomial ring $k[x_1,x_2,\dots]$ in infinitely many variables via $a(-n) \mapsto x_n$.
-    Thus $a(-n)$ acts by multiplication with $x_n$ and $a(n) \cdot x_i = n\delta_{n,i}$. [on $x_i^k$?]
+    Thus $a(-n)$ acts by multiplication with $x_n$ and $a(n) \cdot x_i = n\delta_{n,i}$. [write down action on $x_i^k$?]
 \end{Example}
 
 \subsubsection{Symmetric functions}
@@ -183,13 +183,13 @@ The algebra $\Lambda$ has several well-known generating sets:
         \]
         where $\alpha$ runs through all multiindices conjugate to $\lambda$ under the $\SymGrp\infty$-action.
         The symmetric monomials generate $\Lambda$ as a free $k$-module.
-    \item For any partition $\lambda$ define the \emph{Schur function} (or \emph{S-dunction})
+    \item For any partition $\lambda$ define the \emph{Schur function} (or \emph{S-function})
         \[
             s_\lambda = \sum_T x^{\operatorname{wt} T},
         \]
         where $T$ runs through all semistandard\footnote{A Young tableau is \emph{semistandard} if its entries increase weakly along the rows and strictly along the columns.} Young tableaux $T$ with $\ZZ_{>0}$-entries of shape $\lambda$, and $\operatorname{wt}(T)$ is the weight vector of $T$, i.e., $\operatorname{wt}(T)_i$ is the number of times $i$ appears in $T$.
         The Schur functions generate $\Lambda$ as a free $k$-module.
-    \item The \emph{power sums} (also \emph{primitive symmetric functions}(?))
+    \item The \emph{power sum functions}
         \[
             p_n = \sum_i x_i^n.
         \]
@@ -204,11 +204,16 @@ On defines a comultiplication on $\Lambda$ by
     \Delta(e_n) = \sum_{i=0}^n e_i \otimes e_{n-i}
 \]
 and a counit by $\epsilon(e_n) = 0$ for $n \ge 0$ (i.e., projection on the constant term).
-Alternatively, one has (over $\QQ$)
+The power sum functions are primitive:
 \[
-    \Delta(p_{i_1}\dotsm p_{i_n}) = \sum_{k=0}^n p_{i_1}\dotsm p_{i_k} \otimes p_{i_{k+1}}\dotsm p_{i_n}.
+    \Delta(p_i) = p_{i} \otimes 1 + 1 \otimes p_i.
 \]
-Further $\Lambda$ obtains the structure of graded (by degree) Hopf algebra with a antipode $S$ satisfying $(e_n) = (-1)^n h_n$ and $S(p_n) = (-1)^np_n$.
+From this one can deduce the coalgebra structure (over $\QQ$):
+\[
+    \Delta(p_{i_1}\dotsm p_{i_n}) =
+    \sum_{\{j_1,\dots,j_k\} \sqcup \{\ell_1, \dots, \ell_{n-k}\} = \{i_1,\dots,i_n\}} p_{j_1}\dotsm p_{j_k} \otimes p_{\ell_{1}}\dotsm p_{\ell_{n-k}}.
+\] 
+Further $\Lambda$ obtains the structure of graded (by degree) Hopf algebra with a antipode $S$ satisfying $S(e_n) = (-1)^n h_n$ and $S(p_n) = -p_n$.
 
 The Hopf algebra $\Lambda$ has a standard inner product, called \emph{Hall inner product}, which is characterized by having the Schur functions as an orthonormal basis:
 \[
