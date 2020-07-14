@@ -9,6 +9,7 @@
 \DeclareMathOperator\Ind{Ind}
 \newcommand\SymGrp[1]{S_{#1}}
 \newcommand\triv{{\mathrm{triv}}}
+\DeclareMathOperator\Heis{Heis}
 
 
 \title{Heisenberg algebras}
@@ -150,81 +151,6 @@ The element $1 \in H$ is called the \emph{vacuum vector} and $H \cdot 1 = F$.
     Thus $a(-n)$ acts by multiplication with $x_n$ and $a(n) \cdot x_i = n\delta_{n,i}$. [write down action on $x_i^k$?]
 \end{Example}
 
-\subsubsection{Symmetric functions}
-
-We let
-\[
-    \Lambda = \varprojlim_{n \to \infty} k[x_1,\dotsc,x_n]^{\SymGrp n}
-\]
-be the algebra of symmetric functions\footnote{\url{https://mathoverflow.net/a/85990} contains many references. See also \url{https://www.math.upenn.edu/~peal/polynomials}}.
-We have isomorphisms
-\[
-    \Lambda \cong 
-    \bigoplus_{n=0}^\infty Z(\CC[\SymGrp n]) \cong
-    \bigoplus_{n=0}^\infty K_0(\catModules{\CC[\SymGrp n]}),
-\]
-where $Z(\CC[\SymGrp n])$ is the center of the group ring of $\SymGrp n$ and $K_0(\catModules{\CC[\SymGrp n]})$ is the Grothendieck ring of finite dimensional $\SymGrp n$-representations.
-
-The algebra $\Lambda$ has several well-known generating sets:
-\begin{itemize}
-    \item The \emph{elementary symmetric functions} 
-        \[
-            e_n = \sum_{i_1 < \dots < i_n} x_{i_1} \dotsm x_{i_n}.
-        \]
-        Thus $e_0 = 1$, $e_1 = x_1 + x_2 + \dots$, $e_2 = x_1x_2 + x_1x_3 + \dots + x_2x_3  + \dots$.
-    \item The \emph{complete symmetric functions} 
-        \[
-            h_n = \sum_{i_1 \le \dots \le i_n} x_{i_1} \dotsm x_{i_n}.
-        \]
-        Thus $h_0 = 1$, $h_1 = x_1 + x_2 + \dots$, $h_2 = x_1^2 + x_1x_2 + x_1x_3 + \dots + x_2^2 + x_2x_3  + \dots$.
-    \item For any partition $\lambda$ define the \emph{symmetric monomial}
-        \[
-            m_\lambda = \sum_{\alpha} x^\alpha,
-        \]
-        where $\alpha$ runs through all multiindices conjugate to $\lambda$ under the $\SymGrp\infty$-action.
-        The symmetric monomials generate $\Lambda$ as a free $k$-module.
-    \item For any partition $\lambda$ define the \emph{Schur function} (or \emph{S-function})
-        \[
-            s_\lambda = \sum_T x^{\operatorname{wt} T},
-        \]
-        where $T$ runs through all semistandard\footnote{A Young tableau is \emph{semistandard} if its entries increase weakly along the rows and strictly along the columns.} Young tableaux $T$ with $\ZZ_{>0}$-entries of shape $\lambda$, and $\operatorname{wt}(T)$ is the weight vector of $T$, i.e., $\operatorname{wt}(T)_i$ is the number of times $i$ appears in $T$.
-        The Schur functions generate $\Lambda$ as a free $k$-module.
-    \item The \emph{power sum functions}
-        \[
-            p_n = \sum_i x_i^n.
-        \]
-        Note that these generate over $k = \QQ$, but not over $k=\ZZ$.
-        For a partition $\lambda = (\lambda_1,\dots,\lambda_k)$ set
-        \[
-            p_\lambda = p_{\lambda_1}\dotsm p_{\lambda_k}.
-        \]
-\end{itemize}
-On defines a comultiplication on $\Lambda$ by
-\[
-    \Delta(e_n) = \sum_{i=0}^n e_i \otimes e_{n-i}
-\]
-and a counit by $\epsilon(e_n) = 0$ for $n \ge 0$ (i.e., projection on the constant term).
-The power sum functions are primitive:
-\[
-    \Delta(p_i) = p_{i} \otimes 1 + 1 \otimes p_i.
-\]
-From this one can deduce the coalgebra structure (over $\QQ$):
-\[
-    \Delta(p_{i_1}\dotsm p_{i_n}) =
-    \sum_{\{j_1,\dots,j_k\} \sqcup \{\ell_1, \dots, \ell_{n-k}\} = \{i_1,\dots,i_n\}} p_{j_1}\dotsm p_{j_k} \otimes p_{\ell_{1}}\dotsm p_{\ell_{n-k}}.
-\] 
-Further $\Lambda$ obtains the structure of graded (by degree) Hopf algebra with a antipode $S$ satisfying $S(e_n) = (-1)^n h_n$ and $S(p_n) = -p_n$.
-
-The Hopf algebra $\Lambda$ has a standard inner product, called \emph{Hall inner product}, which is characterized by having the Schur functions as an orthonormal basis:
-\[
-    \langle s_\lambda, s_\mu\rangle = \delta_{\lambda,\mu}.
-\]
-The power sum functions also provide an orthogonal basis with
-\[
-    \langle p_\lambda, p_\mu\rangle = z_\lambda\delta_{\lambda,\mu},
-\]
-where if $m_i$ is the number of parts of size $i$ in $\lambda$ then $z_\lambda = \prod_i m_i!i^{m_i}$.
-% Relations to S_n-reps
 
 \subsection{A different set of generators}
 
@@ -335,6 +261,112 @@ These operators induce an action of the Virasoro algebra on $V$ \cite[Propositio
 \section{Virasoro operators and W-algebras}
 
 \section{The Heisenberg double}
+
+\subsection{Positive self-adjoint Hopf algebras}
+
+\begin{Definition}
+    A \emph{positive self-adjoint Hopf algebra}, or \emph{PSH}, is a connected graded Hopf algebra over $\ZZ$ with an inner product and a distinguished finite orthogonal $\ZZ$-basis in each grade such that multiplication and comultiplication are adjoint and take elements with positive coefficients in the basis to elements with positive coefficients in the basis.
+\end{Definition}
+
+\subsubsection{Symmetric functions}
+
+We let
+\[
+    \Lambda = \varprojlim_{n \to \infty} k[x_1,\dotsc,x_n]^{\SymGrp n}
+\]
+be the algebra of symmetric functions\footnote{\url{https://mathoverflow.net/a/85990} contains many references. See also \url{https://www.math.upenn.edu/~peal/polynomials}}.
+We have isomorphisms
+\[
+    \Lambda \cong 
+    \bigoplus_{n=0}^\infty Z(\CC[\SymGrp n]) \cong
+    \bigoplus_{n=0}^\infty K_0(\catModules{\CC[\SymGrp n]}),
+\]
+where $Z(\CC[\SymGrp n])$ is the center of the group ring of $\SymGrp n$ and $K_0(\catModules{\CC[\SymGrp n]})$ is the Grothendieck ring of finite dimensional $\SymGrp n$-representations.
+
+The algebra $\Lambda$ has several well-known generating sets:
+\begin{itemize}
+    \item The \emph{elementary symmetric functions} 
+        \[
+            e_n = \sum_{i_1 < \dots < i_n} x_{i_1} \dotsm x_{i_n}.
+        \]
+        Thus $e_0 = 1$, $e_1 = x_1 + x_2 + \dots$, $e_2 = x_1x_2 + x_1x_3 + \dots + x_2x_3  + \dots$.
+    \item The \emph{complete symmetric functions} 
+        \[
+            h_n = \sum_{i_1 \le \dots \le i_n} x_{i_1} \dotsm x_{i_n}.
+        \]
+        Thus $h_0 = 1$, $h_1 = x_1 + x_2 + \dots$, $h_2 = x_1^2 + x_1x_2 + x_1x_3 + \dots + x_2^2 + x_2x_3  + \dots$.
+    \item For any partition $\lambda$ define the \emph{symmetric monomial}
+        \[
+            m_\lambda = \sum_{\alpha} x^\alpha,
+        \]
+        where $\alpha$ runs through all multiindices conjugate to $\lambda$ under the $\SymGrp\infty$-action.
+        The symmetric monomials generate $\Lambda$ as a free $k$-module.
+    \item For any partition $\lambda$ define the \emph{Schur function} (or \emph{S-function})
+        \[
+            s_\lambda = \sum_T x^{\operatorname{wt} T},
+        \]
+        where $T$ runs through all semistandard\footnote{A Young tableau is \emph{semistandard} if its entries increase weakly along the rows and strictly along the columns.} Young tableaux $T$ with $\ZZ_{>0}$-entries of shape $\lambda$, and $\operatorname{wt}(T)$ is the weight vector of $T$, i.e., $\operatorname{wt}(T)_i$ is the number of times $i$ appears in $T$.
+        The Schur functions generate $\Lambda$ as a free $k$-module.
+    \item The \emph{power sum functions}
+        \[
+            p_n = \sum_i x_i^n.
+        \]
+        Note that these generate over $k = \QQ$, but not over $k=\ZZ$.
+        For a partition $\lambda = (\lambda_1,\dots,\lambda_k)$ set
+        \[
+            p_\lambda = p_{\lambda_1}\dotsm p_{\lambda_k}.
+        \]
+\end{itemize}
+On defines a comultiplication on $\Lambda$ by
+\[
+    \Delta(e_n) = \sum_{i=0}^n e_i \otimes e_{n-i}
+\]
+and a counit by $\epsilon(e_n) = 0$ for $n \ge 0$ (i.e., projection on the constant term).
+The power sum functions are primitive:
+\[
+    \Delta(p_i) = p_{i} \otimes 1 + 1 \otimes p_i.
+\]
+From this one can deduce the coalgebra structure (over $\QQ$):
+\[
+    \Delta(p_{i_1}\dotsm p_{i_n}) =
+    \sum_{\{j_1,\dots,j_k\} \sqcup \{\ell_1, \dots, \ell_{n-k}\} = \{i_1,\dots,i_n\}} p_{j_1}\dotsm p_{j_k} \otimes p_{\ell_{1}}\dotsm p_{\ell_{n-k}}.
+\] 
+Further $\Lambda$ obtains the structure of graded (by degree) Hopf algebra with a antipode $S$ satisfying $S(e_n) = (-1)^n h_n$ and $S(p_n) = -p_n$.
+
+The Hopf algebra $\Lambda$ has a standard inner product, called \emph{Hall inner product}, which is characterized by having the Schur functions as an orthonormal basis:
+\[
+    \langle s_\lambda, s_\mu\rangle = \delta_{\lambda,\mu}.
+\]
+The power sum functions also provide an orthogonal basis with
+\[
+    \langle p_\lambda, p_\mu\rangle = z_\lambda\delta_{\lambda,\mu},
+\]
+where if $m_i$ is the number of parts of size $i$ in $\lambda$ then $z_\lambda = \prod_i m_i!i^{m_i}$.
+% Relations to S_n-reps
+
+\subsection{Heisenberg double}
+
+Given a PSH $A$ and an element $x \in A$, define $m_x$ and $\Delta_x$ in $\End(A)$ by
+\[
+    m_x = m \circ i_x \qquad \Delta_x = j_x \circ \Delta,
+\]
+where
+\[
+    i_x(y) = x \otimes y \qquad j_x(y_1 \otimes y_2) = y_x \langle x, y_1 \rangle.
+\]
+One immediately checks that $m_x$ and $\Delta_x$ are adjoint.
+Define a map $\phi\colon A \otimes A \to \End_\ZZ(A)$ by
+\[
+    x \otimes y \mapsto m_x\Delta_y.
+\]
+The morphism $\phi$ is injective and its image is a subalgebra of $\End_\ZZ(A)$, called the \emph{Heisenberg double $\Heis(A)$ of $A$} \cite[Proposition~5.4]{GalGal:2017:SymmetricSelfajointHopfCategories}.
+
+\begin{Example}
+    Let $A = \Lambda$ be the Hopf algebra of symmetric functions.
+    Then $\Lambda$ with the Hall inner product and Schur functions as basis is a PSH [proof?].
+    The Heisenberg double $\Heis(\Lambda)$ is the infinite dimensional Heisenberg algebra.
+    Indeed setting $a_n = \phi(1 \otimes p_n)$ and $a_{-n} = \phi(p_n \otimes 1)$ for $n \ge 0$ one computes that $[a_i, a_j] = i\delta_{i,-j}$.
+\end{Example}
 
 \section{Quantum versions}
 
