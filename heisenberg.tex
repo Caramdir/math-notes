@@ -10,6 +10,11 @@
 \newcommand\SymGrp[1]{S_{#1}}
 \newcommand\triv{{\mathrm{triv}}}
 \DeclareMathOperator\Heis{Heis}
+\newcommand{\normord}[1]{\mathopen{:}#1\mathclose{:}}
+
+% symbols not available in font:
+\renewcommand\lParen{((}
+\renewcommand\rParen{))}
 
 
 \title{Heisenberg algebras}
@@ -23,7 +28,7 @@
 
 \section{Heisenberg algebras}
 
-Recall that the \emph{Heisenberg group} is the subgroup of $\GL 3$ consisting of upper triangular matrices of the form
+Recall that the \emph{Heisenberg group} is the subgroup of $\SL 3$ consisting of upper triangular matrices of the form
 \[
     \begin{pmatrix}
         1 & a & b \\
@@ -369,6 +374,214 @@ The morphism $\phi$ is injective and its image is a subalgebra of $\End_\ZZ(A)$,
 \end{Example}
 
 \section{Quantum versions}
+
+\section{Vertex algebras}
+
+\subsection{Formal distributions}
+
+Let $\CC\lParen z,w\rParen$ be the fraction field of the ring of formal power series $\CC\lBrack z,w \rBrack$.
+One observes that this is not the same as the ring of formal Laurant series $\sum_{i > N_z}\sum_{j > N_w} a_{i,j} z^iw^i$.
+Indeed the element $(z-w)^{-1}$ does not have a unique series representation in $\CC\lBrack z^{\pm1},\, w^{\pm1}\rBrack$: one can expand it as
+\[
+    i_{z,w}\frac{1}{z-w} \coloneqq \frac1z\sum_{n \ge 0} z^{-n}w^n
+\]
+or
+\[
+    i_{w,z}\frac{1}{z-w} \coloneqq -\frac1w\sum_{n \ge 0} z^{n}w^{-n}.
+\]
+Analytically, the former converges for $|z| > |w|$, while the latter converges for $|w| > |z|$.
+
+\begin{Definition}
+    Let $z$ be a (multi-)variable and $R$ a $\CC$-algebra.
+    The vector space $R\lBrack z^{\pm1}, w^{\pm1}\rBrack$ is called the \emph{space of formal distributions}.
+    The element 
+    \[
+        \delta(z-w) \coloneqq i_{z,w}\frac{1}{z-w} - i_{w,z}\frac{1}{z-w} = \sum_n z^{-n-1} w^n
+    \]
+    of 
+    $R\lBrack z^{\pm1},\, w^{\pm1}\rBrack$ is called the \emph{formal $\delta$-function.}
+\end{Definition}
+
+For $A(z) = \sum_n A_nz^n \in R\lBrack z^{\pm1}, \rBrack$ we set $\Res_z A(z) = A_{-1}$ and $\partial A(z) = \sum_n nA_n z^{n-1}$.
+
+One has an isomorphism $R\lBrack z^{\pm1}\rBrack \to \Hom_\CC(\CC[z^{\pm}], R)$, i.e.~Laurant polynomials can be viewed as test functions on which formal distributions act \cite[Lemma~10.2]{Schottenloher:2008:AMathematicalIntroToCFT}
+
+One notes that $R\lBrack z^{\pm1}\rBrack$ is not a ring, do to potential infinite sums when forming the Cauchy product $A(z)B(z)$ for $A(z), B(z) \in R\lBrack z^{\pm1}\rBrack$.
+However, we can form $A(z)B(w) \in R\lBrack z^{\pm1},\, w^{\pm1}\rBrack$.
+Further the product of $\delta(z-w)$ with any element of $R\lBrack z^{\pm1}\rBrack$ is always well defined.
+Setting $D^j \coloneqq D^j_w \coloneqq \frac{1}{j!} \partial_w^j$ we have
+\begin{align*}
+    \delta(z-w) & = \delta(w-z) \\
+    f(z)\delta(z-q) &= f(w)\delta(z-w) \\
+    \Res_z f(z)\delta(z-w) &= f(w) \\
+    (z-w)^{n+1} D^n \delta(z-w) & = 0 \quad \text{for all } n \ge 0.
+\end{align*}
+
+\begin{Proposition}[{\cite[Proposition~10.6]{Schottenloher:2008:AMathematicalIntroToCFT}}]
+    For any $f(z,w) \in R\lBrack z^{\pm1},\, w^{\pm1}\rBrack$ and $N \ge 0$ the following are equivalent:
+    \begin{enumerate}
+        \item $(z-w)^N f(z,w) = 0$.
+        \item $f(z,w) = \sum_{j=0}^{N-1} c^j(w) D_w^j\delta(z-w)$ for some $c^j(w) \in R\lBrack w^{\pm1}\rBrack$.
+    \end{enumerate}
+    Moreover, in this case $c^j(w)$ is uniquely determined and equal to $\Res_z(z-w)^jf$.
+\end{Proposition}
+
+\begin{Definition}
+    Two formal distributions $A, B \in R\lBrack z^{\pm1}\rBrack$ are \emph{local} with respect to each other if there exists $N \in \NN$ such that
+    \[
+        (z-w)^N[A(z), B(w)] = 0
+    \]
+    in $ R\lBrack z^{\pm1},\, w^{\pm1}\rBrack$. (Note that we do not assume $R$ to be commutative.)
+\end{Definition}
+
+In the context of formal distributions for $A(z) = \sum_n A_n z^n$ one sets $A_{(n)} = A_{-n-1} = \Res_z(A(z)z^{n})$ and
+\[
+    A(z)_- = \sum_{n \ge 0} A_{(n)}z^{-n-1}, \qquad A(z)_+ = \sum_{n < 0} A_{(n)} z^{-n-1},
+\]
+so that $A(z) = A(z)_{-} + A(z)_+$.
+
+\begin{Definition}
+    The \emph{normal ordered product} of two formal distributions $A, B \in R\lBrack z^{\pm1}\rBrack$ is
+    \[
+        \normord{A(z)B(w)} \coloneqq A(z)_+B(w) + B(w)A(z)_- \in  R\lBrack z^{\pm1},\, w^{\pm1}\rBrack.
+    \]
+\end{Definition}
+
+Note that in the normal order product all coefficients of $z^n$ in $A$ and $B$ with $n$ positive are multiplied from the left with coefficients for $n < 0$.
+
+
+Let
+\[
+    i_{z,w}\frac{1}{(z-w)^{j+1}} \coloneqq \sum_{n\ge 0} \binom{n}{j} z^{-n-1}w^{n-j}
+\]
+and
+\[
+    i_{w,z}\frac{1}{(z-w)^{j+1}} \coloneqq -\sum_{n\ge 1} \binom{-n}{j} z^{n-1}w^{-n-j}
+\]
+be the expansions for $|z| > |w|$ and $|w| > |z|$ respectively.
+
+
+\begin{Proposition}[{\cite[Theorem~10.10]{Schottenloher:2008:AMathematicalIntroToCFT}}]
+    For $A, B \in R\lBrack z^{\pm1}\rBrack$ and $N \ge 0$ the following are equivalent:
+    \begin{enumerate}
+        \item $A$ and $B$ are local with respect to each other with $(z-w)^N f(z,w) = 0$.
+        \item $[A(z), B(w)] = \sum_{j=0}^{N-1} C^j(w) D^j\delta(z-w)$ for some $C^j(w) \in R\lBrack  w^{\pm1}\rBrack$.
+        \item 
+            $A(z)B(w) = \sum_{j=1}^{N-1} i_{z,w}\frac{1}{(z-w)^{j+1}} C^j(w) + \normord{A(z)B(w)}$ and
+            $B(w)A(z) = \sum_{j=1}^{N-1} i_{w,z}\frac{1}{(z-w)^{j+1}} C^j(w) + \normord{A(z)B(w)}$
+            for some $C^j(w) \in R\lBrack  w^{\pm1}\rBrack$.
+    \end{enumerate}
+\end{Proposition}
+
+In the above case one calls $\normord{A(z)B(w)}$ the regular part of $A(z)B(w)$ and $\sum_{j=1}^{N-1} i_{z,w}\frac{1}{(z-w)^{j+1}} C^{j(w)}$ the singular part and writes
+\[
+    A(z)B(w) \sim \sum_{j=1}^{N-1} i_{z,w}\frac{1}{(z-w)^{j+1}} C^j(w)
+\]
+Sometimes one leaves out the $i_{z,w}$, silently assuming $|z| > |w|$ and we may do so below.
+
+\begin{Example}
+    Let $R$ be the infinite dimensional Heisenberg algebra with generators $a_n$, $n \in \ZZ$ and $c$, and relations $[a_m, a_n] = \delta_{m,-n}c$ and $[a_n, c] = 0$.
+    Set $A(z) = \sum_{n \in \ZZ} z^{-n-1}$.
+    One computes
+    \[
+        [A(z), A(w)] = \sum_{m, n} [a_m, a_n] z^{-m-1}w^{-n-1} = \sum_m m z^{-m-1}w^{m-1}x = \partial_w\delta(z-w)C.
+    \]
+    Thus $A$ is local with respect to itself:
+    \[
+        A(z)A(w) \sim \frac{c}{(z-w)^2}.
+        \qedhere
+    \]
+\end{Example}
+
+\begin{Example}
+    Let $R$ be the Virasoro algebra with generators $L_n$, $n \in \ZZ$ and $c$, and relations $[L_m,L_n] = (m-n)L_{m+n} \frac{m}{12}(m^2-1)\delta_{m,-n}c$ and $[L_n, C] = 0$.
+    Set $L(z) = \sum_{n \in \ZZ} z^{-n-2}$.
+    Then $L$ is local with respect to itself:
+    \[
+        [L(z), L(w)] =
+        \frac{c}{12} \partial_w^3\delta(z-w) + 2L(w)\partial_w\delta(z-w) + (\partial_wL(w))\delta(z-w),
+    \]
+    and
+    \[
+        L(z)L(w)] \sim
+        \frac{c}{2} \frac{1}{(z-w)^4} + \frac{2L(w)}{(z-w)^2} + \frac{\partial_wL(w)}{z-w}.
+        \qedhere
+    \]
+\end{Example}
+
+\subsection{Fields}
+
+\begin{Definition}
+    Let $V$ be a complex vector space.
+    An element
+    \[
+        a = \sum_n a_{(n)} z^{-n-1} \in \End_\CC(V)\lBrack z^{\pm1} \rBrack
+    \]
+    is a \emph{field} if for all $v \in V$ there exists $n_0 \in \NN$ such that $a_{(n)} \cdot v = 0$ for all $n \ge n_0$.
+    We write $\mathcal F(V)$ for the vector space of all fields on $V$.
+\end{Definition}
+
+\begin{Example}\label{ex:heisenberg_field}
+    Let $V = k[x_1,x_2,\dots]$ be the polynomial ring in infinitely many variables and $\rho\colon H \to \End(V)$ the Fock space representation:
+    for $n > 0$ we have
+    \begin{align*}
+        \rho(a_n)(P) &= \frac{\partial}{\partial x_n}P, \\
+        \rho(a_0)(P) & = 0 \\
+        \rho(a_{-n)}(P) & = nx_nP \\
+        \rho(c)(P) & = P
+    \end{align*}
+    One immediately checks that
+    \[
+        \Phi(z) = \sum_n \rho(a_n) z^{-n-1} \in \End(V)\lBrack z^{\pm1} \rBrack
+    \]
+    is a field on $V$.
+\end{Example}
+
+[Add \cite[Proposition 10.17]{Schottenloher:2008:AMathematicalIntroToCFT}?]
+
+\begin{Definition}
+    A \emph{vertex algebra} is a vector space $V$ with a distinguished vector $\Omega$ (or $|0\rangle$), called the \emph{vacuum vector}, an endomorphism $T \in \End(V)$, called \emph{infinitesimal translation operator}, and a linear map $Y \colon V \to \mathcal{F}(V)$,
+    \[
+        a \mapsto Y(a, z) = \sum_{n \in \ZZ} a_{(n)} z^{-n-1}, \quad a_{(n)} \in \End(V),
+    \]
+    called the \emph{vertex operator} and providing the \emph{state field correspondence}, such that
+    \begin{description}
+        \item[V1 (translation invariance)] $[T,\, Y(a,z)] = \partial Y(a,z)$,
+        \item[V2 (locality)] For any $a, b \in V$, $Y(a,z)$ and $Y(b,z)$ are local,
+        \item[V3 (vacuum)] $T\Omega = 0$, $Y(\Omega, z) = \id_V$ and $\res{Y(a,z)\Omega}{z=0} = a$.
+    \end{description}
+\end{Definition}
+
+\begin{Theorem}[{\cite[Theorem~10.24]{Schottenloher:2008:AMathematicalIntroToCFT}}]
+    Let $V$ be a vector space with an endomorphism $T$ and a distinguished vector $Ω∈V$.
+    Let $(Φ_a)_{a∈I}$ be a collection of fields $Φ_a(z) = ∑a_{(k)}z^{−k−1} = a(z) ∈ \End(V)\lBrack z^{±1}\rBrack$, indexed by a linear independent subset $I⊂V$ such that the following conditions are satisfied for all $a,b∈I$:
+    \begin{enumerate}
+        \item $[T,Φ_a(z)] = ∂Φ_a(z)]$
+        \item $TΩ = 0$ and $\res{Φ_a(z)Ω}{z=0} =a$.
+        \item $Φ_a$ and $Φ_b$ are local with respect to each other for all $a, b \in I$
+        \item The set $\Bigl\{a^1_{(−k_1)} a^2_{(−k_2)} \dotsm a^n_{(−k_n)} \cdot Ω : a^j ∈ I,\, k_j>0 \Bigr\}$ of vectors along with $Ω$ forms a basis of $V$.
+    \end{enumerate}
+    Then there exists a unique vertex algebra with translation operator $T$, vacuum vector $Ω$, and $Y(a,z)=Φ_a(z)$ for all $a∈I$, given by
+    \[
+        Y\bigl(a^1_{(−k_1)} \dotsm a^n_{(−k_n)} \cdot Ω,\, z\bigr) \coloneqq
+        \normord{D^{k_1−1}Φ_{a^1}(z) \dotsm D^{k_n−1}Φ_{a_n}(z)}
+    \]
+    together with $Y(Ω,z) = \id_V$.
+\end{Theorem}
+
+[I am confused here: how to make sense of expressions like $\normord{\Phi_a(z)\Phi_b(z)}$ without infinite sums?]
+
+\begin{Example}
+    Continuing Example~\ref{ex:heisenberg_field}, the element $1$ generates $V = \CC[x_1,\dots]$ under the Heisenberg action.
+    Thus setting 
+    \begin{align*}
+        \Phi_1(z) & = \Phi(z) = \sum_n \rho(a_n) z^{-n-1}, \\
+        \Omega &= 1, \\
+        T &= \sum_{m > 0} \rho(a_{-m-1})\rho(a_m)
+    \end{align*}
+    gives the \emph{Heisenberg vertex algebra.}
+    We note that $T$ is uniquely determined by the conditions $T\Omega = 0$ and $[T, a_n] = -na_{n-1}$.
+\end{Example}
 
 \printbibliography
 
